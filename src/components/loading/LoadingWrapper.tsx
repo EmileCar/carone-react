@@ -1,7 +1,7 @@
 import React from 'react';
 import LoadingSpinner from './LoadingSpinner';
 
-const LoadingWrapper = ({ isPending }) => {
+const LoadingWrapper = ({ isPending, children }: { isPending: boolean, children: React.ReactNode }) => {
   return (
     isPending ? (
       <LoadingSpinner />
