@@ -1,0 +1,19 @@
+{
+  "name": "carone-react",
+  "version": "1.0.0",
+  "description": "A React library for simple web projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmileCar/carone-react.git"
+  },
+  "author": "Emile Caron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmileCar/carone-react/issues"
+  },
+  "homepage": "https://github.com/EmileCar/carone-react#readme"
+}
