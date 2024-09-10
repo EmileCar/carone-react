@@ -1,0 +1,47 @@
+.button {
+	background-color: var(--main-color);
+	padding: var(--s0);
+    border-radius: var(--border-radius-md);
+	color: white;
+	text-decoration: none;
+	transition: transform 0.1s ease-in-out, filter 0.1s ease-in-out;
+	display: inline-block;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	min-height: 55px;
+	box-shadow: 1px 0px 15px rgb(197, 197, 197);
+}
+
+.button.submit{
+	width: 50%;
+	margin-top: var(--s1);
+}
+
+.button.full-width {
+	width: 100%;
+}
+
+.button.inverted{
+	background-color: white;
+	color: var(--main-color);
+}
+
+.button.uppercase {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.button.hover:hover {
+	transform: scale(1.05);
+}
+
+.button.darken:hover {
+	filter: brightness(0.8);
+}
+
+.button-inverted {
+	background-color: white;
+	color: var(--main-color);
+}

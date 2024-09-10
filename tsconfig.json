@@ -1,17 +1,17 @@
 {
 	"compilerOptions": {
 		"outDir": "./dist",
-		"module": "ES6",
-		"target": "ES5",
-		"lib": ["dom", "es2015"],
-		"jsx": "react",
 		"declaration": true,
-		"sourceMap": true,
-		"moduleResolution": "node",
+		"declarationDir": "./dist/types",
 		"esModuleInterop": true,
+		"jsx": "react",
+		"module": "ESNext",
+		"moduleResolution": "node",
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
+		"strict": true,
+		"target": "es5",
+		"lib": ["dom", "es2017"]
 	},
-	"include": ["src"],
+	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist"]
 }
