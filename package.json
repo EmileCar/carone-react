@@ -2,7 +2,7 @@
   "name": "carone-react",
   "version": "1.0.0",
   "description": "A React library for simple web projects",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/EmileCar/carone-react/issues"
   },
-  "homepage": "https://github.com/EmileCar/carone-react#readme"
+  "homepage": "https://github.com/EmileCar/carone-react#readme",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.6.2"
+  }
 }
