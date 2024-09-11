@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
-
+import "../styles"
 interface Config {
   mainColor: string;
   secondaryColor: string;
@@ -38,14 +38,13 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
 
   useEffect(() => {
     if (mergedConfig.resetStyle) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = './styles/reset.css';
-      document.head.appendChild(link);
-
-      return () => {
-        document.head.removeChild(link);
-      };
+      import('../styles/reset.css')
+        .then(() => {
+          console.log('reset.css loaded successfully');
+        })
+        .catch((error) => {
+          console.error('Error loading reset.css:', error);
+        });
     }
   }, [mergedConfig.resetStyle]);
 
