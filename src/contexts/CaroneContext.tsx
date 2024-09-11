@@ -18,7 +18,13 @@ const CaroneContext = createContext<CaroneConfig>(defaultConfig);
  * ```
  */
 export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) => {
-  const mergedConfig = { ...defaultConfig, ...config };
+  const mergedConfig = {
+    ...defaultConfig,
+    ...config,
+    sizes: { ...defaultConfig.sizes, ...config.sizes },
+    fontSizes: { ...defaultConfig.fontSizes, ...config.fontSizes },
+    borderRadiusSizes: { ...defaultConfig.borderRadiusSizes, ...config.borderRadiusSizes },
+  };
 
   useEffect(() => {
     const root = document.documentElement;
