@@ -1,6 +1,6 @@
 {
   "name": "carone-react",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "A React library for simple web projects",
   "main": "dist/index.js",
   "scripts": {
