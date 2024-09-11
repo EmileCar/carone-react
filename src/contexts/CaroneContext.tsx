@@ -33,6 +33,8 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
     root.style.setProperty('--secondary-color', mergedConfig.secondaryColor || defaultConfig.secondaryColor!);
     root.style.setProperty('--error-color', mergedConfig.errorColor || defaultConfig.errorColor!);
     root.style.setProperty('--success-color', mergedConfig.successColor || defaultConfig.successColor!);
+    root.style.setProperty('--main-font', mergedConfig.mainFont || defaultConfig.mainFont!);
+    root.style.setProperty('--title-font', mergedConfig.titleFont || defaultConfig.titleFont!);
 
     const sizes = mergedConfig.sizes || defaultConfig.sizes!;
     Object.entries(sizes).forEach(([key, value]) => {
