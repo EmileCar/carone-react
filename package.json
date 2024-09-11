@@ -2,15 +2,16 @@
   "name": "carone-react",
   "version": "1.0.27",
   "description": "A React library for simple web projects",
-  "main": "dist/index.js",
+  "main": "build/src/index.js",
   "scripts": {
-    "build": "rm -rf dist && rm -rf resources && tsc && copyfiles -u 1 'src/styles/*' dist",
+    "build": "rm -rf build && tsc && copyfiles -u 1 'src/styles/*' build/src && copyfiles -u 1 resources/* build/resources",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "types": "dist/types/index.d.ts",
+  "types": "build/types/index.d.ts",
   "files": [
-    "dist",
-    "resources"
+    "buil/src",
+    "build/resources",
+    "build/types"
   ],
   "repository": {
     "type": "git",

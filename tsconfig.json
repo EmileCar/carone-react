@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"outDir": "./dist",
+		"outDir": "./build/src",
 		"declaration": true,
-		"declarationDir": "./dist/types",
+		"declarationDir": "./build/types",
 		"esModuleInterop": true,
 		"jsx": "react",
 		"module": "ESNext",
@@ -13,5 +13,5 @@
 		"lib": ["dom", "es2017"]
 	},
 	"include": ["src/**/*"],
-	"exclude": ["node_modules", "dist"]
+	"exclude": ["node_modules", "build"]
 }
