@@ -1,17 +1,17 @@
 {
 	"compilerOptions": {
-		"outDir": "./build/dist",
-		"declaration": true,
-		"declarationDir": "./build/types",
-		"esModuleInterop": true,
-		"jsx": "react",
-		"module": "ESNext",
-		"moduleResolution": "node",
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ES2017",
-		"lib": ["dom", "es2017"]
+	  "outDir": "./dist/build",
+	  "declaration": true,
+	  "declarationDir": "./dist/types",
+	  "esModuleInterop": true,
+	  "jsx": "react",
+	  "module": "ESNext",
+	  "moduleResolution": "node",
+	  "skipLibCheck": true,
+	  "strict": true,
+	  "target": "ES2017",
+	  "lib": ["dom", "es2017"]
 	},
 	"include": ["src/**/*"],
-	"exclude": ["node_modules", "build"]
+	"exclude": ["node_modules", "dist"]
 }

@@ -95,6 +95,7 @@ out
 .nuxt
 dist
 build
+types
 
 # Gatsby files
 .cache/
