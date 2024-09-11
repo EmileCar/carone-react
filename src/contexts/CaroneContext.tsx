@@ -36,6 +36,12 @@ const CaroneContext = createContext<Config>(defaultConfig);
 export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) => {
   const mergedConfig = { ...defaultConfig, ...config };
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--main-color', mergedConfig.mainColor);
+    root.style.setProperty('--secondary-color', mergedConfig.secondaryColor);
+  }, [mergedConfig]);
+
   return (
     <CaroneContext.Provider value={mergedConfig}>
       {children}
