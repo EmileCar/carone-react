@@ -40,7 +40,7 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
     if (mergedConfig.resetStyle) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = '../styles/reset.css';
+      link.href = './styles/reset.css';
       document.head.appendChild(link);
 
       return () => {
