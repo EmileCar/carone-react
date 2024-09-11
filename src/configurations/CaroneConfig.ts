@@ -12,6 +12,8 @@ type BorderRadiusSizeKeys = '--border-radius-sm' | '--border-radius-md' | '--bor
  * @param secondaryColor - The secondary color of the application.
  * @param errorColor - The color for error messages.
  * @param successColor - The color for success messages.
+ * @param mainFont - The main font for the application.
+ * @param titleFont - The font for titles in the application.
  * @param sizes - The sizes for the application.
  *  - `--s-99`
  * - `--s-2`
@@ -36,11 +38,13 @@ export interface CaroneConfig {
   secondaryColor?: string;
   errorColor?: string;
   successColor?: string;
-  sizes?: {
-    [key in SizeKeys]?: string;
-  };
+  mainFont?: string;
+  titleFont?: string;
   fontSizes?: {
     [key in FontSizeKeys]?: string;
+  };
+  sizes?: {
+    [key in SizeKeys]?: string;
   };
   borderRadiusSizes?: {
     [key in BorderRadiusSizeKeys]?: string;
@@ -57,6 +61,15 @@ export const defaultConfig: CaroneConfig = {
   secondaryColor: 'black',
   errorColor: 'red',
   successColor: 'green',
+  mainFont: 'Arial',
+  titleFont: 'Arial',
+  fontSizes: {
+    '--small-font-size': '1rem',
+    '--default-font-size': '1.2rem',
+    '--large-font-size': '1.5rem',
+    '--subtitle-font-size': '1.8rem',
+    '--title-font-size': '3rem',
+  },
   sizes: {
     '--s-99': '0.1rem',
     '--s-2': '0.2rem',
@@ -65,13 +78,6 @@ export const defaultConfig: CaroneConfig = {
     '--s1': '1.5rem',
     '--s2': '2rem',
     '--s3': '3rem',
-  },
-  fontSizes: {
-    '--small-font-size': '1rem',
-    '--default-font-size': '1.2rem',
-    '--large-font-size': '1.5rem',
-    '--subtitle-font-size': '1.8rem',
-    '--title-font-size': '3rem',
   },
   borderRadiusSizes: {
     '--border-radius-sm': '0.2rem',
