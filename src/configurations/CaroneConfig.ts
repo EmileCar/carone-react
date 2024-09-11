@@ -4,6 +4,33 @@ type SizeKeys = '--s-99' | '--s-2' | '--s-1' | '--s0' | '--s1' | '--s2' | '--s3'
 type FontSizeKeys = '--small-font-size' | '--default-font-size' | '--large-font-size' | '--subtitle-font-size' | '--title-font-size';
 type BorderRadiusSizeKeys = '--border-radius-sm' | '--border-radius-md' | '--border-radius-lg';
 
+/**
+ * CaroneConfig is the configuration object for the CaroneProvider.
+ * All properties are optional, and if not provided, default values will be used.
+ *
+ * @param mainColor - The main color of the application.
+ * @param secondaryColor - The secondary color of the application.
+ * @param errorColor - The color for error messages.
+ * @param successColor - The color for success messages.
+ * @param sizes - The sizes for the application.
+ *  - `--s-99`
+ * - `--s-2`
+ * - `--s-1`
+ * - `--s0`
+ * - `--s1`
+ * - `--s2`
+ * - `--s3`
+ * @param fontSizes - The font sizes for the application.
+ * - `--small-font-size`
+ * - `--default-font-size`
+ * - `--large-font-size`
+ * - `--subtitle-font-size`
+ * - `--title-font-size`
+ * @param borderRadiusSizes - The border radius sizes for the application.
+ * - `--border-radius-sm`
+ * - `--border-radius-md`
+ * - `--border-radius-lg`
+ */
 export interface CaroneConfig {
   mainColor?: string;
   secondaryColor?: string;
@@ -26,8 +53,10 @@ export interface ConfigProviderProps {
 }
 
 export const defaultConfig: CaroneConfig = {
-  mainColor: '#3498db',
-  secondaryColor: '#2ecc71',
+  mainColor: 'blue',
+  secondaryColor: 'black',
+  errorColor: 'red',
+  successColor: 'green',
   sizes: {
     '--s-99': '0.1rem',
     '--s-2': '0.2rem',

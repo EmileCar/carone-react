@@ -25,9 +25,21 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
 
     root.style.setProperty('--main-color', mergedConfig.mainColor || defaultConfig.mainColor!);
     root.style.setProperty('--secondary-color', mergedConfig.secondaryColor || defaultConfig.secondaryColor!);
+    root.style.setProperty('--error-color', mergedConfig.errorColor || defaultConfig.errorColor!);
+    root.style.setProperty('--success-color', mergedConfig.successColor || defaultConfig.successColor!);
 
     const sizes = mergedConfig.sizes || defaultConfig.sizes!;
     Object.entries(sizes).forEach(([key, value]) => {
+      root.style.setProperty(key, value);
+    });
+
+    const fontSizes = mergedConfig.fontSizes || defaultConfig.fontSizes!;
+    Object.entries(fontSizes).forEach(([key, value]) => {
+      root.style.setProperty(key, value);
+    });
+
+    const borderRadiusSizes = mergedConfig.borderRadiusSizes || defaultConfig.borderRadiusSizes!;
+    Object.entries(borderRadiusSizes).forEach(([key, value]) => {
       root.style.setProperty(key, value);
     });
   }, [mergedConfig]);
