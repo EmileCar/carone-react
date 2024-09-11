@@ -1,6 +1,6 @@
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
 
-interface Config {
+export interface Config {
   mainColor: string;
   secondaryColor: string;
   resetStyle?: boolean;
