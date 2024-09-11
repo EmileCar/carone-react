@@ -1,9 +1,9 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode, useEffect } from 'react';
 
 interface Config {
   mainColor: string;
   secondaryColor: string;
-  // Add more configuration options as needed
+  resetStyle?: boolean;
 }
 
 interface ConfigProviderProps {
@@ -14,6 +14,7 @@ interface ConfigProviderProps {
 const defaultConfig: Config = {
   mainColor: '#3498db',
   secondaryColor: '#2ecc71',
+  resetStyle: false,
 };
 
 const CaroneContext = createContext<Config>(defaultConfig);
@@ -34,6 +35,19 @@ const CaroneContext = createContext<Config>(defaultConfig);
  */
 export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) => {
   const mergedConfig = { ...defaultConfig, ...config };
+
+  useEffect(() => {
+    if (mergedConfig.resetStyle) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '../styles/reset.css';
+      document.head.appendChild(link);
+
+      return () => {
+        document.head.removeChild(link);
+      };
+    }
+  }, [mergedConfig.resetStyle]);
 
   return (
     <CaroneContext.Provider value={mergedConfig}>
