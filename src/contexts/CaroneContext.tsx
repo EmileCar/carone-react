@@ -1,9 +1,13 @@
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
 
+type SizeKeys = '--s-99' | '--s-2' | '--s-1' | '--s0' | '--s1' | '--s2' | '--s3';
+
 export interface CaroneConfig {
-  mainColor: string;
-  secondaryColor: string;
-  resetStyle?: boolean;
+  mainColor?: string;
+  secondaryColor?: string;
+  sizes?: {
+    [key in SizeKeys]?: string;
+  };
 }
 
 interface ConfigProviderProps {
@@ -14,7 +18,15 @@ interface ConfigProviderProps {
 const defaultConfig: CaroneConfig = {
   mainColor: '#3498db',
   secondaryColor: '#2ecc71',
-  resetStyle: false,
+  sizes: {
+    '--s-99': '0.1rem',
+    '--s-2': '0.2rem',
+    '--s-1': '0.5rem',
+    '--s0': '1rem',
+    '--s1': '1.5rem',
+    '--s2': '2rem',
+    '--s3': '3rem',
+  },
 };
 
 const CaroneContext = createContext<CaroneConfig>(defaultConfig);
@@ -38,8 +50,14 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
 
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty('--main-color', mergedConfig.mainColor);
-    root.style.setProperty('--secondary-color', mergedConfig.secondaryColor);
+
+    root.style.setProperty('--main-color', mergedConfig.mainColor || defaultConfig.mainColor!);
+    root.style.setProperty('--secondary-color', mergedConfig.secondaryColor || defaultConfig.secondaryColor!);
+
+    const sizes = mergedConfig.sizes || defaultConfig.sizes!;
+    Object.entries(sizes).forEach(([key, value]) => {
+      root.style.setProperty(key, value);
+    });
   }, [mergedConfig]);
 
   return (
