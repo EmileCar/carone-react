@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outDir": "./build/src",
+		"outDir": "./build/dist",
 		"declaration": true,
 		"declarationDir": "./build/types",
 		"esModuleInterop": true,
