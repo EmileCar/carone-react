@@ -1,5 +1,5 @@
 import React from "react";
-import "./Spinner.css";
+import "../../styles/Spinner.css";
 
 interface LoadingSpinnerProps {
   color?: string;
