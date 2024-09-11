@@ -2,7 +2,7 @@
   "name": "carone-react",
   "version": "1.0.29",
   "description": "A React library for simple web projects",
-  "main": "build/src/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "rm -rf build && tsc && copyfiles -u 1 'src/styles/*' build/src && copyfiles -u 1 resources/* build/resources",
     "test": "echo \"Error: no test specified\" && exit 1"
