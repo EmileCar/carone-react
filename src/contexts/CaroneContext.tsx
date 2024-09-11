@@ -1,33 +1,5 @@
-import React, { createContext, useContext, ReactNode, useEffect } from 'react';
-
-type SizeKeys = '--s-99' | '--s-2' | '--s-1' | '--s0' | '--s1' | '--s2' | '--s3';
-
-export interface CaroneConfig {
-  mainColor?: string;
-  secondaryColor?: string;
-  sizes?: {
-    [key in SizeKeys]?: string;
-  };
-}
-
-interface ConfigProviderProps {
-  config?: Partial<CaroneConfig>;
-  children: ReactNode;
-}
-
-const defaultConfig: CaroneConfig = {
-  mainColor: '#3498db',
-  secondaryColor: '#2ecc71',
-  sizes: {
-    '--s-99': '0.1rem',
-    '--s-2': '0.2rem',
-    '--s-1': '0.5rem',
-    '--s0': '1rem',
-    '--s1': '1.5rem',
-    '--s2': '2rem',
-    '--s3': '3rem',
-  },
-};
+import React, { createContext, useContext, useEffect } from 'react';
+import { CaroneConfig, ConfigProviderProps, defaultConfig } from '../configurations/CaroneConfig';
 
 const CaroneContext = createContext<CaroneConfig>(defaultConfig);
 
