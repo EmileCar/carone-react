@@ -1,23 +1,23 @@
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
 
-export interface Config {
+export interface CaroneConfig {
   mainColor: string;
   secondaryColor: string;
   resetStyle?: boolean;
 }
 
 interface ConfigProviderProps {
-  config?: Partial<Config>;
+  config?: Partial<CaroneConfig>;
   children: ReactNode;
 }
 
-const defaultConfig: Config = {
+const defaultConfig: CaroneConfig = {
   mainColor: '#3498db',
   secondaryColor: '#2ecc71',
   resetStyle: false,
 };
 
-const CaroneContext = createContext<Config>(defaultConfig);
+const CaroneContext = createContext<CaroneConfig>(defaultConfig);
 
 /**
  * CaroneProvider provides a context for configuring the web application.
