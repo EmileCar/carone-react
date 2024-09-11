@@ -4,7 +4,7 @@
   "description": "A React library for simple web projects",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && copyfiles -u 1 'src/styles/*' dist",
+    "build": "rm -rf dist && tsc && copyfiles -u 1 'src/styles/*' dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "types": "dist/types/index.d.ts",
