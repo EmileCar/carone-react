@@ -9,9 +9,9 @@
   },
   "types": "build/types/index.d.ts",
   "files": [
-    "buil/src",
-    "build/resources",
-    "build/types"
+    "src",
+    "resources",
+    "types"
   ],
   "repository": {
     "type": "git",
