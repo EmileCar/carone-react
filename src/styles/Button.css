@@ -13,26 +13,3 @@
 	min-height: 55px;
 	box-shadow: 1px 0px 15px rgb(197, 197, 197);
 }
-
-.carone-button.submit{
-	width: 50%;
-	margin-top: var(--s1);
-}
-
-.carone-button.inverted{
-	background-color: white;
-	color: var(--main-color);
-}
-
-.carone-button.hover:hover {
-	transform: scale(1.05);
-}
-
-.carone-button.darken:hover {
-	filter: brightness(0.8);
-}
-
-.button-inverted {
-	background-color: white;
-	color: var(--main-color);
-}

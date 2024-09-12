@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/Button.css';
 import LoadingSpinner from '../loading/LoadingSpinner';
 import { classNames } from '../../utils/classNameUtil';
+import { HoverEffect } from '../../utils/hoverEffect';
 
 interface ButtonProps {
     /** The text to display on the button */
@@ -10,38 +11,46 @@ interface ButtonProps {
     uppercase?: boolean;
     /** The callback function to call when the button is clicked */
     onClick: () => void;
+    /** The type of the button */
+    type?: 'button' | 'submit' | 'reset';
     /** If the button should take up the full width of its container */
     fullWidth?: boolean;
     /** If the button should be disabled */
     disabled?: boolean;
     /** A custom class name to apply to the button */
     className?: string;
-    /** If the button should have one or more hover effects */
-    hoverEffect?: string;
+    /** If the button should have one or more hover effects. Can be a single effect, an array of effects, or a custom string (your classname of the effect) */
+    hoverEffect?: HoverEffect | HoverEffect[] | string;
     /** The amount of px to make the button round */
     borderRadius?: number;
     /** The icon of a button. This will a put before the text. */
     icon?: string;
     /** If the state is pending, a loading icon will be shown instead of the text. */
     pending?: boolean;
+    /** If the default action of the button should be prevented */
+    preventDefault?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
     text = "Default button",
     uppercase = false,
     onClick,
+    type = 'button',
     fullWidth = false,
     disabled = false,
     className = '',
     hoverEffect = '',
     borderRadius = 0,
     icon = '',
-    pending= false
+    pending= false,
+    preventDefault = false
 }) => {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+        if (preventDefault) e.preventDefault();
         onClick();
     };
+
+    const hoverEffectClasses = Array.isArray(hoverEffect) ? hoverEffect.join(' ') : hoverEffect;
 
     return (
         <button
@@ -49,8 +58,9 @@ const Button: React.FC<ButtonProps> = ({
             className={classNames(
                 'carone-button inherit-font',
                 className,
-                hoverEffect,
+                hoverEffectClasses,
             )}
+            type={type}
             disabled={disabled}
             style={{
                 ...(borderRadius && { borderRadius: `${borderRadius}px` }),
