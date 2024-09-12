@@ -3,7 +3,7 @@ import '../../styles/Header.css';
 import { useState, useEffect } from "react";
 import { classNames } from '../../utils/classNameUtil';
 
-interface HeaderLink {
+export interface HeaderLink {
 	label: string;
 	url: string;
 	external?: boolean;
