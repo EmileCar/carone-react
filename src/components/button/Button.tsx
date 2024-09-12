@@ -4,6 +4,9 @@ import LoadingSpinner from '../loading/LoadingSpinner';
 import { classNames } from '../../utils/classNameUtil';
 import { HoverEffect } from '../../utils/hoverEffect';
 
+/**
+ * The props for the Button component.
+ */
 interface ButtonProps {
     /** The text to display on the button */
     text?: string;
@@ -20,7 +23,7 @@ interface ButtonProps {
     /** A custom class name to apply to the button */
     className?: string;
     /** If the button should have one or more hover effects. Can be a single effect, an array of effects, or a custom string (your classname of the effect) */
-    hoverEffect?: HoverEffect | HoverEffect[] | string;
+    hoverEffect?: HoverEffect | (HoverEffect | string)[] | string;
     /** The amount of px to make the button round */
     borderRadius?: number;
     /** The icon of a button. This will a put before the text. */
@@ -31,6 +34,9 @@ interface ButtonProps {
     preventDefault?: boolean;
 }
 
+/**
+ * A button component that can be customized with different props.
+ */
 const Button: React.FC<ButtonProps> = ({
     text = "Default button",
     uppercase = false,
