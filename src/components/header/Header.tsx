@@ -3,25 +3,31 @@ import '../../styles/Header.css';
 import { useState, useEffect } from "react";
 import { classNames } from '../../utils/classNameUtil';
 
+/**
+ * A link in the header.
+ */
 export interface HeaderLink {
 	label: string;
 	url: string;
 	external?: boolean;
 }
 
+/**
+ * The props for the Header component.
+ */
 interface HeaderProps {
-	title: string;
+	/** The title of the header. This can be a string or a ReactNode */
+	title?: string | React.ReactNode;
+	/** The links to display in the header */
 	links: HeaderLink[];
+	/** A custom class name to apply to the header */
 	className: string;
+	/** A callback function to call when the navigation is toggled */
 	onNavToggle?: (isOpen: boolean) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ title, links, className, onNavToggle }) => {
 	const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
-
-	useEffect(() => {
-		setIsNavOpen(false);
-	}, [location]);
 
 	const handleClickNavToggle = () => {
 		const newNavState = !isNavOpen;
@@ -32,9 +38,11 @@ const Header: React.FC<HeaderProps> = ({ title, links, className, onNavToggle })
 	return (
 		<header className="header">
       		<div className={classNames('header__content', className, isNavOpen && "open")}>
-				<a href="/" className="header__logo--container layered-grid">
-					<h1>{title}</h1>
-				</a>
+				{title &&
+					<div className="header__title--container">
+						{typeof title === 'string' ? <h1 className="header__title">{title}</h1> : title}
+					</div>
+				}
 
 				<nav className={`navbar ${isNavOpen ? 'navOpen' : ''}`}>
 					<ul className="menu__items">
