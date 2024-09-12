@@ -1,19 +1,14 @@
-.header {
-    position: fixed;
-    width: 100vw;
+.carone-header {
+    width: 100%;
     z-index: 15;
     transition: opacity 0.5s ease-in-out;
-    background-color: white;
-    color: var(--main-color);
-    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.4);
-}
-
-.header-admin {
     background-color: var(--main-color);
-    color: white;
+    color: var(--font-color-on-main-color);
+    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.4);
+    padding: 0 var(--s0);
 }
 
-.header__content {
+.carone-header .carone-header__content {
     max-width: 90rem;
     margin: 0 auto;
     display: flex;
@@ -22,87 +17,47 @@
     transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.header__logo--container {
-    color: white;
-    text-decoration: none;
-    padding: 0rem 2rem;
+.carone-header .carone-header__title-container{
+    display: grid;
+    place-items: center;
 }
 
-.header-admin .header__logo--container {
-    padding: 0rem 2rem;
-    transform: scale(0.8);
+.carone-header .carone-header__title-container h1{
+    font-family: var(--title-font);
 }
 
-.header__content h1 {
-    background-color: red;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.admin-nav .item__link {
-    padding: 1rem;
-}
-
-.admin-nav .toggle-button {
-    padding: 1rem;
-}
-
-.navbar {
-    position: absolute;
-    text-align: left;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    transform: scale(1, 0);
-    transform-origin: top;
-    transition: transform 400ms ease-in-out;
-    height: 100vh;
-    background: white;
-}
-
-.header-admin .navbar {
+.carone-header .carone-header__navOpen {
     background-color: var(--main-color);
     color: white;
 }
 
-.navbar.navOpen {
-    transform: scale(1, 1);
-}
-
-.menu__items {
+.carone-header .carone-header__menu-items {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-top: var(--s3);
 }
 
-.menu__item {
-    position: relative;
+.carone-hedaer .carone-header__navbar {
+
 }
 
-.item__link {
+.carone-header .carone-header__menu-item-link {
     color: inherit;
     text-decoration: none;
-    padding: 2rem 1.8rem;
-    transition: color 0.2s;
+    padding: var(--s1);
     white-space: nowrap;
     display: block;
     text-align: center;
+    transition: color 0.2s;
 }
 
-.item__link:hover {
+.carone-header .carone-header__menu-item-link:hover {
     background-color: rgba(0, 0, 0, 0.08);
 }
 
-.topnav .icon {
+.carone-header .carone-header__toggle-button {
     display: none;
-}
-
-.toggle-button {
     padding: 1rem 1.5rem;
-    display: block;
     right: 3%;
     top: 50%;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
@@ -113,8 +68,8 @@
     position: absolute !important;
     top: -100% !important;
 }
-
-/* Default breakpoint for non-admin headers */
+/*
+Default breakpoint for non-admin headers
 @media screen and (min-width: 65rem) {
     .navbar {
         position: relative;
@@ -151,7 +106,7 @@
     }
 }
 
-/* Admin specific breakpoint at 55rem */
+/* Admin specific breakpoint at 55rem 
 @media screen and (min-width: 55rem) {
     .header-admin .navbar {
         position: relative;
@@ -186,4 +141,4 @@
         top: 50%;
         transform: translate(50%, -50%);
     }
-}
+} */

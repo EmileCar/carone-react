@@ -5,6 +5,7 @@
 html{
     font-family: var(--main-font);
     font-size: var(--default-font-size);
+    color: var(--default-font-color);
 }
 
 *{
@@ -12,7 +13,7 @@ html{
     padding: 0;
 }
 
-ul[role='list'], ol[role='list']{
+ul, ol{
     list-style: none;
 }
 

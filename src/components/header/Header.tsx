@@ -20,13 +20,30 @@ interface HeaderProps {
 	title?: string | React.ReactNode;
 	/** The links to display in the header */
 	links: HeaderLink[];
+	/** The class name for the links */
+	linkClassName?: string;
 	/** A custom class name to apply to the header */
-	className: string;
+	className?: string;
 	/** A callback function to call when the navigation is toggled */
 	onNavToggle?: (isOpen: boolean) => void;
+	/** If the header should stick to the top of the page */
+	sticky?: boolean;
+	/** If the header should be responsive */
+	resposive?: boolean;
+	/** The maximum width of the content */
+	maxContentWidth?: number;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, links, className, onNavToggle }) => {
+const Header: React.FC<HeaderProps> = ({
+	title,
+	links,
+	linkClassName = '',
+	className = '',
+	onNavToggle,
+	sticky = false,
+	resposive = false,
+	maxContentWidth = 1200
+}) => {
 	const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
 
 	const handleClickNavToggle = () => {
@@ -36,33 +53,42 @@ const Header: React.FC<HeaderProps> = ({ title, links, className, onNavToggle })
 	};
 
 	return (
-		<header className="header">
-      		<div className={classNames('header__content', className, isNavOpen && "open")}>
+		<header
+			className={classNames(
+				'carone-header',
+				className,
+			)}
+			style={{
+				...(sticky && { position: 'sticky'}
+			),
+		}}>
+      		<div className={
+				classNames(
+					'carone-header__content',
+					(isNavOpen && resposive) && "carone-header__navOpen"
+				)}
+				style={{
+					maxWidth: maxContentWidth
+				}}
+			>
 				{title &&
-					<div className="header__title--container">
+					<div className="carone-header__title-container">
 						{typeof title === 'string' ? <h1 className="header__title">{title}</h1> : title}
 					</div>
 				}
 
-				<nav className={`navbar ${isNavOpen ? 'navOpen' : ''}`}>
-					<ul className="menu__items">
+				<nav className={classNames("carone-header__navbar", (isNavOpen && resposive) && "carone-header__navOpen")}>
+					<ul className="carone-header__menu-items">
 						{links.map((link, index) => (
-						<li className="menu__item" key={index}>
-							{/* Render either an internal or external link */}
-							{link.external ? (
-							<a className="item__link" href={link.url} target="_blank" rel="noopener noreferrer">
-								{link.label}
-							</a>
-							) : (
-							<a className="item__link" href={link.url}>
-								{link.label}
-							</a>
-							)}
-						</li>
+							<li className="carone-header__menu-item" key={index}>
+								<a className={classNames("carone-header__menu-item-link", linkClassName)} href={link.url} {...(link.external && { target: '_blank' })}>
+									{link.label}
+								</a>
+							</li>
 						))}
 					</ul>
 				</nav>
-        		<span className="pi pi-bars toggle-button" style={{ fontSize: '3rem' }} onClick={handleClickNavToggle}></span>
+        		<span className="pi pi-bars carone-header__toggle-button" style={{ fontSize: '3rem' }} onClick={handleClickNavToggle}></span>
 			</div>
    		</header>
   );

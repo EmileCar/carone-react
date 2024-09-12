@@ -35,6 +35,8 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
     root.style.setProperty('--success-color', mergedConfig.successColor || defaultConfig.successColor!);
     root.style.setProperty('--main-font', mergedConfig.mainFont || defaultConfig.mainFont!);
     root.style.setProperty('--title-font', mergedConfig.titleFont || defaultConfig.titleFont!);
+    root.style.setProperty('--default-font-color', mergedConfig.fontColor || defaultConfig.fontColor!);
+    root.style.setProperty('--font-color-on-main-color', mergedConfig.fontColorOnMainColor || defaultConfig.fontColorOnMainColor!);
 
     const sizes = mergedConfig.sizes || defaultConfig.sizes!;
     Object.entries(sizes).forEach(([key, value]) => {
