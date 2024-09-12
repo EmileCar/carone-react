@@ -43,7 +43,7 @@ const Button: React.FC<ButtonProps> = ({
         <button
             onClick={handleClick}
             className={classNames(
-                'button inherit-font',
+                'carone-button inherit-font',
                 customClassName,
                 hover && 'hover',
                 darken && 'darken',
