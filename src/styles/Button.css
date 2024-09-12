@@ -19,18 +19,9 @@
 	margin-top: var(--s1);
 }
 
-.carone-button.full-width {
-	width: 100%;
-}
-
 .carone-button.inverted{
 	background-color: white;
 	color: var(--main-color);
-}
-
-.carone-button.uppercase {
-	font-weight: bold;
-	text-transform: uppercase;
 }
 
 .carone-button.hover:hover {
