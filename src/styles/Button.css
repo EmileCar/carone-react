@@ -1,4 +1,4 @@
-.button {
+.carone-button {
 	background-color: var(--main-color);
 	padding: var(--s0);
     border-radius: var(--border-radius-md);
@@ -14,30 +14,30 @@
 	box-shadow: 1px 0px 15px rgb(197, 197, 197);
 }
 
-.button.submit{
+.carone-button.submit{
 	width: 50%;
 	margin-top: var(--s1);
 }
 
-.button.full-width {
+.carone-button.full-width {
 	width: 100%;
 }
 
-.button.inverted{
+.carone-button.inverted{
 	background-color: white;
 	color: var(--main-color);
 }
 
-.button.uppercase {
+.carone-button.uppercase {
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
-.button.hover:hover {
+.carone-button.hover:hover {
 	transform: scale(1.05);
 }
 
-.button.darken:hover {
+.carone-button.darken:hover {
 	filter: brightness(0.8);
 }
 

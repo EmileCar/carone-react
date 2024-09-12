@@ -9,7 +9,7 @@ interface ButtonProps {
     fullWidth?: boolean;
     disabled?: boolean;
     uppercase?: boolean;
-    customClassName?: string;
+    className?: string;
     hover?: boolean;
     darken?: boolean;
     round?: boolean;
@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
     fullWidth = false,
     disabled = false,
     uppercase = false,
-    customClassName = '',
+    className = '',
     hover = false,
     darken = false,
     round = false,
@@ -44,7 +44,7 @@ const Button: React.FC<ButtonProps> = ({
             onClick={handleClick}
             className={classNames(
                 'carone-button inherit-font',
-                customClassName,
+                className,
                 hover && 'hover',
                 darken && 'darken',
                 uppercase && 'uppercase',
