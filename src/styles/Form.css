@@ -1,0 +1,214 @@
+/* FORM & GROUP STYLING */
+.carone-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s0);
+}
+
+.carone-form .carone-form__group {
+    display: flex;
+    gap: var(--s0);
+}
+
+.carone-form .carone-form__group-half {
+    display: flex;
+    width: 100%;
+    gap: var(--s0);
+}
+
+@media screen and (max-width: 740px) {
+    .carone-form .carone-form__group{
+        flex-wrap: wrap;
+    }
+}
+
+/* LABEL & ERROR STYLING */
+.carone-form .carone-label {
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    width: 100%;
+    align-self: flex-start;
+}
+
+.carone-form .carone-label.flex-column {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.carone-form .carone-label .error-message {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.carone-form .carone-label.carone-error .error-message {
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: initial;
+    text-align: left;
+    font-style: italic;
+    font-size: var(--small-font-size);
+}
+
+.carone-form .carone-label.carone-error .carone-input {
+    border: var(--s-2) solid var(--error-color);
+    outline: none;
+}
+
+/* INPUT STYLING */
+.carone-form .carone-input {
+    padding: var(--s-1);
+    width: 100%;
+    outline: var(--s-99) solid var(--main-color);
+    border: var(--s-2) solid transparent;
+    border-radius: var(--border-radius-sm);
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.carone-form .carone-input:focus {
+    box-shadow: 0 0 2px 2px var(--main-color)
+}
+
+.carone-form .carone-label.carone-error .carone-input:focus {
+    box-shadow: 0 0 2px 2px var(--error-color);
+}
+
+.carone-form .carone-input::placeholder {
+    color: var(--main-color);
+    opacity: 0.5;
+}
+
+/* CHECKBOX STYLING */
+.carone-form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+/* DISABLED STYLING */
+.carone-form.disabled {
+    pointer-events: none;
+}
+
+.carone-form.disabled .carone-input {
+    background-color: rgb(228, 228, 228);
+    outline: var(--s-99) solid gray;
+    color: gray;
+}
+
+.carone-form .carone-input:disabled {
+    background-color: rgb(228, 228, 228);
+    outline: var(--s-99) solid gray;
+    color: gray;
+}
+
+.carone-label.disabled {
+    color: gray;
+}
+
+/* VARIOUS STYLING */
+.carone-form select.input option {
+    cursor: pointer;
+}
+
+form .label .required {
+    color: var(--error-color);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* AUTOCOMPLETE STYLING */
+.carone-form .autocomplete-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    outline: var(--s-99) solid var(--main-color);
+    border-radius: var(--border-radius-sm);
+    position: relative;
+}
+
+.carone-form .autocomplete-input{
+    width: 100%;
+    padding: var(--s-1);
+    border: var(--s-2) solid transparent;
+    outline: none;
+}
+
+.carone-form.disabled .autocomplete-wrapper{
+    outline: var(--s-99) solid gray;
+    background-color: rgb(228, 228, 228);
+}
+
+.carone-form.disabled .autocomplete-input {
+    color: gray;
+    background-color: rgb(228, 228, 228);
+}
+
+.carone-form .autocomplete-dropdown{
+    height: 100%;
+    padding: 0 var(--s-1);
+    background-color: var(--main-color);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.carone-form .autocomplete-dropdown:hover{
+    background-color: var(--darker-main-color);
+}
+
+.carone-form .autocomplete-suggestions{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    max-height: 10rem;
+    overflow-y: auto;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.4);
+}
+
+.carone-form .autocomplete-suggestion{
+	padding: var(--s-1);
+	border: 2px solid var(--main-color);
+	border-top: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.carone-form .autocomplete-suggestion:not(.no-suggestions){
+    cursor: pointer;
+}
+
+.carone-form .autocomplete-suggestion:not(.no-suggestions):hover{
+    background-color: rgb(185, 210, 255);
+}
+
+.carone-form .autocomplete-suggestion:first-child{
+    border-top: 2px solid var(--main-color);
+}
+
+.autocomplete-values{
+    display: flex;
+    gap: var(--s-1);
+    align-self: center;
+    padding: var(--s-1);
+}
+
+.autocomplete-value{
+    background-color: var(--main-color);
+    color: white;
+    padding: var(--s-2) var(--s-1);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    gap: var(--s-1);
+}
+
+.autocomplete-value-delete{
+    cursor: pointer;
+}
