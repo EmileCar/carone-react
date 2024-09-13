@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormContext from '../../contexts/FormContext';
 import { classNames } from '../../utils/classNameUtil';
 import '../../styles/Form.css';
+import { useWindowResize } from '../../hooks/useWindowResize';
 
 /**
  * The props for the Form component.
@@ -13,6 +14,8 @@ interface FormProps {
     className?: string;
     /** If the form should be disabled */
     disabled?: boolean;
+    /** The width at which the form should wrap */
+    wrapAt?: number;
     /** The children components */
     children: any;
 }
@@ -24,12 +27,21 @@ const Form: React.FC<FormProps> = ({
     onSubmit,
     className = '',
     disabled = false,
+    wrapAt = 0,
     children
 }) => {
+    const [wrapped, setWrapped] = useState<boolean>(false);
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onSubmit && onSubmit();
     }
+
+    useWindowResize(() => {
+        if(wrapAt > 0) {
+            setWrapped(window.innerWidth <= wrapAt);
+        }
+    });
 
     return (
         <FormContext.Provider value={true}>
@@ -37,7 +49,8 @@ const Form: React.FC<FormProps> = ({
                 className={classNames(
                     'carone-form',
                     className,
-                    disabled && 'disabled'
+                    disabled && 'disabled',
+                    wrapped && 'carone-form__wrapped'
                 )}
                 onSubmit={handleSubmit}
             >

@@ -3,6 +3,7 @@ import '../../styles/Header.css';
 import { useState, useEffect } from "react";
 import { classNames } from '../../utils/classNameUtil';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useWindowResize } from '../../hooks/useWindowResize';
 
 /**
  * A link in the header.
@@ -58,23 +59,16 @@ const Header: React.FC<HeaderProps> = ({
 		if (onNavToggle) onNavToggle(newNavState);
 	};
 
-	useEffect(() => {
+	useWindowResize(() => {
 		if (responsiveAt && responsiveAt > 0) {
-
-			const handleResize = () => {
-				if (window.innerWidth <= responsiveAt) {
-					setIsResponsive(true);
-				} else {
-					setIsResponsive(false);
-					setIsNavOpen(false);
-				}
-			};
-
-			handleResize();
-			window.addEventListener('resize', handleResize);
-			return () => window.removeEventListener('resize', handleResize);
+			if (window.innerWidth <= responsiveAt) {
+				setIsResponsive(true);
+			} else {
+				setIsResponsive(false);
+				setIsNavOpen(false);
+			}
 		}
-	}, [responsiveAt]);
+	});
 
 	return (
 		<header

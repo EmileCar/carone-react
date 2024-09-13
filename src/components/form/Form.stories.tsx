@@ -46,7 +46,7 @@ export const LabeledGroupedForm = () => {
     const [email, setEmail] = React.useState('');
 
     return (
-        <Form onSubmit={() => alert('Submitted!')}>
+        <Form onSubmit={() => alert('Submitted!')} wrapAt={600}>
             <Group>
                 <Label text='Name' required>
                     <Input type="text" name='Name' value={name} onChange={(e) => setName(e.target.value)} />

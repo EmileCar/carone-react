@@ -16,10 +16,8 @@
     gap: var(--s0);
 }
 
-@media screen and (max-width: 740px) {
-    .carone-form .carone-form__group{
-        flex-wrap: wrap;
-    }
+.carone-form.carone-form__wrapped .carone-form__group{
+    flex-wrap: wrap;
 }
 
 /* LABEL & ERROR STYLING */
