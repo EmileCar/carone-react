@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../../styles/Header.css';
 import { useState, useEffect } from "react";
 import { classNames } from '../../utils/classNameUtil';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 /**
  * A link in the header.
@@ -28,12 +29,15 @@ interface HeaderProps {
 	onNavToggle?: (isOpen: boolean) => void;
 	/** If the header should stick to the top of the page */
 	sticky?: boolean;
-	/** If the header should be responsive */
-	resposive?: boolean;
+	/** If the header should be responsive at a certain width in px */
+	responsiveAt?: number;
 	/** The maximum width of the content */
 	maxContentWidth?: number;
 }
 
+/**
+ * A header component that can be customized with different props.
+ */
 const Header: React.FC<HeaderProps> = ({
 	title,
 	links,
@@ -41,10 +45,12 @@ const Header: React.FC<HeaderProps> = ({
 	className = '',
 	onNavToggle,
 	sticky = false,
-	resposive = false,
+	responsiveAt,
 	maxContentWidth = 1200
 }) => {
 	const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+	const [isResponsive, setIsResponsive] = useState<boolean>(false);
+	const headerRef = useRef<HTMLDivElement>(null);
 
 	const handleClickNavToggle = () => {
 		const newNavState = !isNavOpen;
@@ -52,20 +58,39 @@ const Header: React.FC<HeaderProps> = ({
 		if (onNavToggle) onNavToggle(newNavState);
 	};
 
+	useEffect(() => {
+		if (responsiveAt && responsiveAt > 0) {
+
+			const handleResize = () => {
+				if (window.innerWidth <= responsiveAt) {
+					setIsResponsive(true);
+				} else {
+					setIsResponsive(false);
+					setIsNavOpen(false);
+				}
+			};
+
+			handleResize();
+			window.addEventListener('resize', handleResize);
+			return () => window.removeEventListener('resize', handleResize);
+		}
+	}, [responsiveAt]);
+
 	return (
 		<header
 			className={classNames(
 				'carone-header',
 				className,
+				(isResponsive) && 'carone-header__responsive'
 			)}
+			ref={headerRef}
 			style={{
-				...(sticky && { position: 'sticky'}
-			),
+				...(sticky && { position: 'sticky', top: 0 }),
 		}}>
       		<div className={
 				classNames(
 					'carone-header__content',
-					(isNavOpen && resposive) && "carone-header__navOpen"
+					isNavOpen && isResponsive && 'carone-header__navOpen'
 				)}
 				style={{
 					maxWidth: maxContentWidth
@@ -77,7 +102,7 @@ const Header: React.FC<HeaderProps> = ({
 					</div>
 				}
 
-				<nav className={classNames("carone-header__navbar", (isNavOpen && resposive) && "carone-header__navOpen")}>
+				<nav className={classNames("carone-header__navbar", (isNavOpen && isResponsive) && "carone-header__navOpen")}>
 					<ul className="carone-header__menu-items">
 						{links.map((link, index) => (
 							<li className="carone-header__menu-item" key={index}>
@@ -88,7 +113,13 @@ const Header: React.FC<HeaderProps> = ({
 						))}
 					</ul>
 				</nav>
-        		<span className="pi pi-bars carone-header__toggle-button" style={{ fontSize: '3rem' }} onClick={handleClickNavToggle}></span>
+				<div className="carone-header__toggle-button-container">
+        			<span
+						className={`bi ${isNavOpen ? 'bi-x-lg' : 'bi-list'} carone-header__toggle-button`}
+						onClick={handleClickNavToggle}
+						style={{ fontSize: 'var(--title-font-size)' }}
+					/>
+				</div>
 			</div>
    		</header>
   );

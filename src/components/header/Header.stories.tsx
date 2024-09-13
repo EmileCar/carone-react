@@ -14,3 +14,5 @@ export const NoTitleHeader = () => <Header links={links} />;
 export const NoLinksHeader = () => <Header title="No Links" links={[]} />;
 export const CustomClassNameHeader = () => <Header title="Custom Class Name" links={links} className="custom-class" linkClassName='custom-link-class' />;
 export const StickyHeader = () => <div style={{height: "100rem"}}><Header title="Sticky Header" links={links} sticky /></div>;
+export const ResponsiveHeader = () => <Header title="Responsive Header" links={links} responsiveAt={600} />;
+export const StickyAndResponsiveHeader = () => <div style={{height: "100rem"}}><Header title="Sticky and Responsive Header" links={links} sticky responsiveAt={600} /></div>;
