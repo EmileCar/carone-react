@@ -14,6 +14,7 @@ if (typeof window !== 'undefined') {
 /**
  * A hook that runs a callback whenever the window is resized.
  * @param callback The callback to run on resize
+ * @returns void
  */
 export const useWindowResize = (callback: () => void) => {
   useEffect(() => {
