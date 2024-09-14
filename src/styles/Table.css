@@ -1,0 +1,115 @@
+.carone-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 1px 0px 15px rgb(197, 197, 197);
+}
+
+.carone-table th:first-child{
+    border-top-left-radius: var(--border-radius-md);
+}
+
+.carone-table th:last-child{
+    border-top-right-radius: var(--border-radius-md);
+}
+
+.carone-table th,
+.carone-table td {
+    padding: var(--s0);
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.carone-table th {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.carone-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.carone-table tbody tr {
+    cursor: inherit; /* Default cursor */
+    color: inherit;
+}
+
+.carone-table tbody tr.hoverable {
+    cursor: pointer;
+}
+
+.carone-table tbody tr.hoverable:hover {
+    background-color: #e6e6e6;
+}
+
+.carone-table th.sortable{
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.carone-table th.sortable:hover{
+    background-color: var(--darker-main-color);
+}
+
+.sort-indicator {
+    display: inline-block;
+    width: var(--s0);
+    margin-left: var(--s-1);
+    text-align: left;
+}
+
+.paginator{
+    display: flex;
+    gap: var(--s-1);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: var(--s-1);
+}
+
+.paginator .button{
+    padding: var(--s-2) var(--s0);
+    line-height: 0;
+}
+
+@media (max-width: 700px) {
+    .carone-table,
+    .carone-table thead,
+    .carone-table tbody,
+    .carone-table th,
+    .carone-table td,
+    .carone-table tr {
+        display: block; /* Force all elements to display as block */
+    }
+
+    .carone-table thead {
+        display: none; /* Hide table headers on mobile */
+    }
+
+    .carone-table tr {
+        margin-bottom: var(--s1);
+        border-bottom: 3px solid var(--main-color);
+    }
+
+    .carone-table td {
+        padding: var(--s0) var(--s1);
+        text-align: center;
+        position: relative;
+    }
+
+    .carone-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: var(--s1);
+        width: calc(100% - var(--s2));
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .carone-table tbody tr:nth-child(even) {
+        background-color: transparent;
+    }
+
+    .carone-table tbody tr.hoverable:hover {
+        background-color: transparent;
+    }
+}

@@ -22,7 +22,7 @@ interface ButtonProps {
     disabled?: boolean;
     /** A custom class name to apply to the button */
     className?: string;
-    /** If the button should have one or more hover effects. Can be a single effect, an array of effects, or a custom string (your classname of the effect) */
+    /** If the button should have one or more hover effects. Can be a single effect, an array of effects, or a custom string (your classname of the effect). You can use the HoverEffect enum to get the available effects. */
     hoverEffect?: HoverEffect | (HoverEffect | string)[] | string;
     /** The amount of px to make the button round */
     borderRadius?: number;
