@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { classNames } from '../../utils/classNameUtil';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useWindowResize } from '../../hooks/useWindowResize';
+import { usePageContext } from '../../contexts/PageContext';
 
 /**
  * A link in the header.
@@ -49,6 +50,8 @@ const Header: React.FC<HeaderProps> = ({
 	responsiveAt,
 	maxContentWidth = 1200
 }) => {
+	usePageContext();
+
 	const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
 	const [isResponsive, setIsResponsive] = useState<boolean>(false);
 	const headerRef = useRef<HTMLDivElement>(null);
