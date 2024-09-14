@@ -4,5 +4,13 @@
     min-height: 100vh;
 }
 
+.carone-page__content{
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--s0);
+    flex-grow: 1;
+}
+
 .carone-footer{
+    padding: var(--s0);
 }

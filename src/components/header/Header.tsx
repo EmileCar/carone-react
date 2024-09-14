@@ -39,6 +39,7 @@ interface HeaderProps {
 
 /**
  * A header component that can be customized with different props.
+ * This component needs to be used inside a Page component.
  */
 const Header: React.FC<HeaderProps> = ({
 	title,

@@ -3,6 +3,7 @@ import React from 'react';
 import Page from './Page';
 import Header, { HeaderLink } from '../header/Header';
 import Footer from '../footer/Footer';
+import PageContent from './PageContent';
 
 export default {
     title: 'Page',
@@ -17,11 +18,11 @@ const links: HeaderLink[] = [
 
 export const PageExample = () =>
     <Page>
-        <main style={{ flexGrow: 1}}>
+        <Header links={links} title="Page example"/>
+        <PageContent>
             <h1>Page content</h1>
             <p>This is an example of a page component.</p>
-        </main>
-        <Header links={links} title="Page example"/>
+        </PageContent>
         <Footer>
             <p>Footer content</p>
         </Footer>
