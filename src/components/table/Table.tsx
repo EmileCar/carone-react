@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { Paginator } from './Paginator';
-import { Column, ColumnProps } from './Column';
+import Paginator from './Paginator';
+import Column, { ColumnProps } from './Column';
 import Form from '../form/Form';
 import Label from '../form/Label';
 import Input from '../form/Input';

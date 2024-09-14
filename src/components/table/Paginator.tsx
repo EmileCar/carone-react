@@ -14,7 +14,7 @@ interface PaginatorProps {
 /**
  * A paginator component that can be used to navigate through pages.
 */
-export const Paginator: React.FC<PaginatorProps> = ({ totalPages, currentPage, onPageChange }) => {
+const Paginator: React.FC<PaginatorProps> = ({ totalPages, currentPage, onPageChange }) => {
     const handlePrev = () => {
         if (currentPage > 0) onPageChange(currentPage - 1);
     };
@@ -49,3 +49,5 @@ export const Paginator: React.FC<PaginatorProps> = ({ totalPages, currentPage, o
         </div>
     );
 };
+
+export default Paginator;

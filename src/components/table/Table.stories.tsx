@@ -2,7 +2,7 @@
 import React from 'react';
 
 import Table from './Table';
-import { Column } from './Column';
+import Column from './Column';
 
 export default {
     title: 'Table',

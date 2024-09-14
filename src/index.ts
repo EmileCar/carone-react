@@ -5,12 +5,18 @@ export { CaroneProvider, useConfig } from './contexts/CaroneContext';
 export { CaroneConfig } from './configurations/CaroneConfig';
 
 // Exporting components
+export { default as Page } from './components/page/Page';
 export { default as Header, HeaderLink } from './components/header/Header';
+export { default as PageContent } from './components/page/PageContent';
+export { default as Footer } from './components/footer/Footer';
 export { default as Button } from './components/button/Button';
 export { default as Form } from './components/form/Form';
 export { default as Input } from './components/form/Input';
 export { default as Label } from './components/form/Label';
 export { default as Group } from './components/form/Group';
+export { default as Table } from './components/table/Table';
+export { default as Column } from './components/table/Column';
+export { default as Paginator } from './components/table/Paginator';
 
 // Exporting hooks
 export { useWindowResize } from './hooks/useWindowResize';

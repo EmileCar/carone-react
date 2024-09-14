@@ -14,6 +14,8 @@ export interface ColumnProps<T> {
 /**
  * A column component that represents a column of a Table. It can be customized with different props.
  */
-export const Column = <T,>({ field, header, body, sortable, sortFunction }: ColumnProps<T>) => {
+const Column = <T,>({ field, header, body, sortable, sortFunction }: ColumnProps<T>) => {
     return null;
 }
+
+export default Column;
