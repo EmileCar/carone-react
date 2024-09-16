@@ -1,17 +1,30 @@
 import { ReactNode } from "react";
 
 /**
+ * The available colors of the application.
+ * The values of these colors are used as CSS variables.
+*/
+export enum Color {
+  Main = '--main-color',
+  Secondary = '--secondary-color',
+  Error = '--error-color',
+  Success = '--success-color',
+  Font = '--default-font-color',
+  FontOnMain = '--font-color-on-main-color'
+}
+
+/**
  * The available sizes of the application.
  * The values of these sizes are used as CSS variables.
 */
 export enum Size {
-	XS = '--s-99',
-	SM = '--s-2',
-	MD = '--s-1',
-	LG = '--s0',
-	XL = '--s1',
-	XXL = '--s2',
-	XXXL = '--s3'
+  XXS = '--s-99',
+  XS = '--s-2',
+  SM = '--s-1',
+  MD = '--s0',
+  LG = '--s1',
+  XL = '--s2',
+  XXL = '--s3'
 }
 
 /**
@@ -19,11 +32,11 @@ export enum Size {
  * The values of these sizes are used as CSS variables.
 */
 export enum FontSize {
-	Small = '--small-font-size',
-	Default = '--default-font-size',
-	Large = '--large-font-size',
-	Subtitle = '--subtitle-font-size',
-	Title = '--title-font-size'
+  Small = '--small-font-size',
+  Default = '--default-font-size',
+  Large = '--large-font-size',
+  Subtitle = '--subtitle-font-size',
+  Title = '--title-font-size'
 }
 
 /**
@@ -31,46 +44,61 @@ export enum FontSize {
  * The values of these sizes are used as CSS variables.
 */
 export enum BorderRadius {
-	Small = '--border-radius-sm',
-	Medium = '--border-radius-md',
-	Large = '--border-radius-lg'
+  Small = '--border-radius-sm',
+  Medium = '--border-radius-md',
+  Large = '--border-radius-lg'
 }
 
-/**
- * The available colors of the application.
-*/
-type Colors = {
-	main: string;
-	secondary: string;
-	error: string;
-	success: string;
-	font: string;
-	fontOnMain: string;
+type ColorConfig = {
+  main: string;
+  secondary: string;
+  error: string;
+  success: string;
+  font: string;
+  fontOnMain: string;
 };
 
 type FontConfig = {
-	mainFont: string;
-	titleFont: string;
-	sizes: Partial<Record<FontSize, string>>;
+  mainFont: string;
+  titleFont: string;
+  sizes: {
+    small: string;
+    default: string;
+    large: string;
+    subtitle: string;
+    title: string;
+  }
 };
 
 type SizeConfig = {
-	padding: Partial<Record<Size, string>>;
-	borderRadius: Partial<Record<BorderRadius, string>>;
+  padding: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+    xxxl: string;
+  },
+  borderRadius: {
+    small: string;
+    medium: string;
+    large: string;
+  }
 };
 
 /**
  * CaroneConfig is the configuration object for the CaroneProvider.
  * All properties are optional, and if not provided, default values will be used.
  *
- * @param colors {Partial<Colors>} The colors of the application.
+ * @param colors {Partial<ColorConfig>} The colors of the application.
  * @param fonts {Partial<FontConfig>} The fonts of the application.
  * @param sizes {Partial<SizeConfig>} The sizes of the application.
- * 
+ *
  * @example
  * ```tsx
  * // the default configuration object as an example
- * const config = {
+  const config = {
     colors: {
       main: 'blue',
       secondary: 'black',
@@ -83,83 +111,78 @@ type SizeConfig = {
       mainFont: 'Verdana',
       titleFont: 'Arial',
       sizes: {
-        [FontSize.Small]: '0.8rem',
-        [FontSize.Default]: '1rem',
-        [FontSize.Large]: '1.5rem',
-        [FontSize.Subtitle]: '1.8rem',
-        [FontSize.Title]: '3rem',
+        small: '0.8rem',
+        default: '1rem',
+        large: '1.5rem',
+        subtitle: '1.8rem',
+        title: '3rem',
       }
     },
     sizes: {
       padding: {
-        [Size.XS]: '0.1rem',
-        [Size.SM]: '0.2rem',
-        [Size.MD]: '0.5rem',
-        [Size.LG]: '1rem',
-        [Size.XL]: '1.5rem',
-        [Size.XXL]: '2rem',
-        [Size.XXXL]: '3rem',
+        xs: '0.1rem',
+        sm: '0.2rem',
+        md: '0.5rem',
+        lg: '1rem',
+        xl: '1.5rem',
+        xxl: '2rem',
+        xxxl: '3rem',
       },
       borderRadius: {
-        [BorderRadius.Small]: '0.2rem',
-        [BorderRadius.Medium]: '0.5rem',
-        [BorderRadius.Large]: '1rem',
+        small: '0.2rem',
+        medium: '0.5rem',
+        large: '1rem',
       }
     }
   };
-	* <CaroneProvider config={config}>
-	*   <App />
-	* </CaroneProvider>
-	* ```
+  * <CaroneProvider config={config}>
+  *   <App />
+  * </CaroneProvider>
+  * ```
 */
 export interface CaroneConfig {
-	colors?: Partial<Colors>;
-	fonts?: Partial<FontConfig>;
-	sizes?: Partial<SizeConfig>;
-}
-
-export interface ConfigProviderProps {
-	config?: Partial<CaroneConfig>;
-	children: ReactNode;
+  /** The colors of the application */
+  colors?: Partial<ColorConfig>;
+  /** The fonts of the application */
+  fonts?: Partial<FontConfig>;
+  /** The sizes of the application */
+  sizes?: Partial<SizeConfig>;
 }
 
 export const defaultConfig: CaroneConfig = {
-	/** The default colors of the application */
-	colors: {
-		main: 'blue',
-		secondary: 'black',
-		error: 'red',
-		success: 'green',
-		font: 'green',
-		fontOnMain: 'white',
-	},
-	/** The default fonts of the application */
-	fonts: {
-		mainFont: 'Verdana',
-		titleFont: 'Arial',
-		sizes: {
-			[FontSize.Small]: '0.8rem',
-			[FontSize.Default]: '1rem',
-			[FontSize.Large]: '1.5rem',
-			[FontSize.Subtitle]: '1.8rem',
-			[FontSize.Title]: '3rem',
-		}
-	},
-	/** The default sizes of the application */
-	sizes: {
-		padding: {
-			[Size.XS]: '0.1rem',
-			[Size.SM]: '0.2rem',
-			[Size.MD]: '0.5rem',
-			[Size.LG]: '1rem',
-			[Size.XL]: '1.5rem',
-			[Size.XXL]: '2rem',
-			[Size.XXXL]: '3rem',
-		},
-		borderRadius: {
-			[BorderRadius.Small]: '0.2rem',
-			[BorderRadius.Medium]: '0.5rem',
-			[BorderRadius.Large]: '1rem',
-		}
-	}
+  colors: {
+    main: 'blue',
+    secondary: 'black',
+    error: 'red',
+    success: 'green',
+    font: 'green',
+    fontOnMain: 'white',
+  },
+  fonts: {
+    mainFont: 'Verdana',
+    titleFont: 'Arial',
+    sizes: {
+      small: '0.8rem',
+      default: '1rem',
+      large: '1.5rem',
+      subtitle: '1.8rem',
+      title: '3rem',
+    }
+  },
+  sizes: {
+    padding: {
+      xs: '0.1rem',
+      sm: '0.2rem',
+      md: '0.5rem',
+      lg: '1rem',
+      xl: '1.5rem',
+      xxl: '2rem',
+      xxxl: '3rem',
+    },
+    borderRadius: {
+      small: '0.2rem',
+      medium: '0.5rem',
+      large: '1rem',
+    }
+  }
 };
