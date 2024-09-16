@@ -18,13 +18,13 @@ export enum Color {
  * The values of these sizes are used as CSS variables.
 */
 export enum Size {
-  XXS = '--s-99',
-  XS = '--s-2',
-  SM = '--s-1',
-  MD = '--s0',
-  LG = '--s1',
-  XL = '--s2',
-  XXL = '--s3'
+  XXS = 'var(--xxs)',
+  XS = 'var(--xs)',
+  SM = 'var(--sm)',
+  MD = 'var(--md)',
+  LG = 'var(--lg)',
+  XL = 'var(--xl)',
+  XXL = 'var(--xxl)',
 }
 
 /**
@@ -72,13 +72,13 @@ type FontConfig = {
 
 type SizeConfig = {
   padding: {
+    xxs: string;
     xs: string;
     sm: string;
     md: string;
     lg: string;
     xl: string;
     xxl: string;
-    xxxl: string;
   },
   borderRadius: {
     small: string;
@@ -171,13 +171,13 @@ export const defaultConfig: CaroneConfig = {
   },
   sizes: {
     padding: {
-      xs: '0.1rem',
-      sm: '0.2rem',
-      md: '0.5rem',
-      lg: '1rem',
-      xl: '1.5rem',
-      xxl: '2rem',
-      xxxl: '3rem',
+      xxs: '0.1rem',
+      xs: '0.2rem',
+      sm: '0.5rem',
+      md: '1rem',
+      lg: '1.5rem',
+      xl: '2rem',
+      xxl: '3rem',
     },
     borderRadius: {
       small: '0.2rem',

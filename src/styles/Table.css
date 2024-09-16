@@ -14,7 +14,7 @@
 
 .carone-table th,
 .carone-table td {
-    padding: var(--s0);
+    padding: var(--md);
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -52,22 +52,22 @@
 
 .sort-indicator {
     display: inline-block;
-    width: var(--s0);
-    margin-left: var(--s-1);
+    width: var(--md);
+    margin-left: var(--sm);
     text-align: left;
 }
 
 .paginator{
     display: flex;
-    gap: var(--s-1);
+    gap: var(--sm);
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: var(--s-1);
+    margin-top: var(--sm);
 }
 
 .paginator .button{
-    padding: var(--s-2) var(--s0);
+    padding: var(--xs) var(--md);
     line-height: 0;
 }
 
@@ -86,12 +86,12 @@
     }
 
     .carone-table tr {
-        margin-bottom: var(--s1);
+        margin-bottom: var(--lg);
         border-bottom: 3px solid var(--main-color);
     }
 
     .carone-table td {
-        padding: var(--s0) var(--s1);
+        padding: var(--md) var(--lg);
         text-align: center;
         position: relative;
     }
@@ -99,8 +99,8 @@
     .carone-table td::before {
         content: attr(data-label);
         position: absolute;
-        left: var(--s1);
-        width: calc(100% - var(--s2));
+        left: var(--lg);
+        width: calc(100% - var(--xl));
         text-align: left;
         font-weight: bold;
     }

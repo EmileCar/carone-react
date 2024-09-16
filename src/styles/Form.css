@@ -2,18 +2,18 @@
 .carone-form {
     display: flex;
     flex-direction: column;
-    gap: var(--s0);
+    gap: var(--md);
 }
 
 .carone-form .carone-form__group {
     display: flex;
-    gap: var(--s0);
+    gap: var(--md);
 }
 
 .carone-form .carone-form__group-half {
     display: flex;
     width: 100%;
-    gap: var(--s0);
+    gap: var(--md);
 }
 
 .carone-form.carone-form__wrapped .carone-form__group{
@@ -52,16 +52,16 @@
 }
 
 .carone-form .carone-label.carone-error .carone-input {
-    border: var(--s-2) solid var(--error-color);
+    border: var(--xs) solid var(--error-color);
     outline: none;
 }
 
 /* INPUT STYLING */
 .carone-form .carone-input {
-    padding: var(--s-1);
+    padding: var(--sm);
     width: 100%;
-    outline: var(--s-99) solid var(--main-color);
-    border: var(--s-2) solid transparent;
+    outline: var(--xxs) solid var(--main-color);
+    border: var(--xs) solid transparent;
     border-radius: var(--border-radius-sm);
     transition: box-shadow 0.1s ease-in-out;
 }
@@ -96,13 +96,13 @@
 
 .carone-form.disabled .carone-input {
     background-color: rgb(228, 228, 228);
-    outline: var(--s-99) solid gray;
+    outline: var(--xxs) solid gray;
     color: gray;
 }
 
 .carone-form .carone-input:disabled {
     background-color: rgb(228, 228, 228);
-    outline: var(--s-99) solid gray;
+    outline: var(--xxs) solid gray;
     color: gray;
 }
 
@@ -125,20 +125,20 @@ form .label .required {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    outline: var(--s-99) solid var(--main-color);
+    outline: var(--xxs) solid var(--main-color);
     border-radius: var(--border-radius-sm);
     position: relative;
 }
 
 .carone-form .autocomplete-input{
     width: 100%;
-    padding: var(--s-1);
-    border: var(--s-2) solid transparent;
+    padding: var(--sm);
+    border: var(--xs) solid transparent;
     outline: none;
 }
 
 .carone-form.disabled .autocomplete-wrapper{
-    outline: var(--s-99) solid gray;
+    outline: var(--xxs) solid gray;
     background-color: rgb(228, 228, 228);
 }
 
@@ -149,7 +149,7 @@ form .label .required {
 
 .carone-form .autocomplete-dropdown{
     height: 100%;
-    padding: 0 var(--s-1);
+    padding: 0 var(--sm);
     background-color: var(--main-color);
     display: grid;
     place-items: center;
@@ -173,7 +173,7 @@ form .label .required {
 }
 
 .carone-form .autocomplete-suggestion{
-	padding: var(--s-1);
+	padding: var(--sm);
 	border: 2px solid var(--main-color);
 	border-top: none;
     transition: background-color 0.2s ease-in-out;
@@ -193,18 +193,18 @@ form .label .required {
 
 .autocomplete-values{
     display: flex;
-    gap: var(--s-1);
+    gap: var(--sm);
     align-self: center;
-    padding: var(--s-1);
+    padding: var(--sm);
 }
 
 .autocomplete-value{
     background-color: var(--main-color);
     color: white;
-    padding: var(--s-2) var(--s-1);
+    padding: var(--xs) var(--sm);
     border-radius: var(--border-radius-lg);
     display: flex;
-    gap: var(--s-1);
+    gap: var(--sm);
 }
 
 .autocomplete-value-delete{

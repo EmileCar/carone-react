@@ -1,6 +1,6 @@
 .carone-divided-content{
     display: flex;
-    gap: var(--s1);
+    gap: var(--lg);
 }
 
 .carone-divided-content__left{

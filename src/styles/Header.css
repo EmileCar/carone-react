@@ -5,7 +5,7 @@
     background-color: var(--main-color);
     color: var(--font-color-on-main-color);
     box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.4);
-    padding: 0 var(--s0);
+    padding: 0 var(--md);
     position: relative;
     flex-shrink: 0;
 }
@@ -15,7 +15,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    gap: var(--s0);
+    gap: var(--md);
     white-space: nowrap;
     transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -48,7 +48,7 @@
 .carone-header .carone-header__menu-item-link {
     color: inherit;
     text-decoration: none;
-    padding: var(--s1);
+    padding: var(--lg);
     white-space: nowrap;
     display: block;
     text-align: center;
@@ -69,7 +69,7 @@
     cursor: pointer;
     display: block;
     height: 100%;
-    padding: var(--s-1);
+    padding: var(--sm);
 }
 
 .nav-toggle {
@@ -89,7 +89,7 @@
 }
 
 .carone-header.carone-header__responsive .carone-header__menu-item-link {
-    padding: var(--s1) var(--s0);
+    padding: var(--lg) var(--md);
 }
 
 .carone-header.carone-header__responsive .carone-header__navbar {

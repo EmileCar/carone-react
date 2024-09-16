@@ -7,27 +7,27 @@
 .carone-page__content{
     margin: 0 auto;
     width: 100%;
-    padding: var(--s0);
+    padding: var(--md);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--s3);
+    gap: var(--xxl);
 }
 
 .carone-section {
     display: flex;
     flex-direction: column;
-    gap: var(--s1);
+    gap: var(--lg);
 }
 
 .carone-footer{
-    padding: var(--s0);
+    padding: var(--md);
 }
 
 .carone-section-title__container{
     display: flex;
     flex-direction: column;
-    gap: var(--s0);
+    gap: var(--md);
 }
 
 .carone-section-title h2{
