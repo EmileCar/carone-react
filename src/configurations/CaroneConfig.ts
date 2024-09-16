@@ -1,58 +1,76 @@
 import { ReactNode } from "react";
 
-type SizeKeys = '--s-99' | '--s-2' | '--s-1' | '--s0' | '--s1' | '--s2' | '--s3';
-type FontSizeKeys = '--small-font-size' | '--default-font-size' | '--large-font-size' | '--subtitle-font-size' | '--title-font-size';
-type BorderRadiusSizeKeys = '--border-radius-sm' | '--border-radius-md' | '--border-radius-lg';
+/**
+ * The available sizes of the application.
+ * The values of these sizes are used as CSS variables.
+*/
+export enum Size {
+  XS = '--s-99',
+  SM = '--s-2',
+  MD = '--s-1',
+  LG = '--s0',
+  XL = '--s1',
+  XXL = '--s2',
+  XXXL = '--s3'
+}
+
+/**
+ * The available font sizes of the application.
+ * The values of these sizes are used as CSS variables.
+*/
+export enum FontSize {
+  Small = '--small-font-size',
+  Default = '--default-font-size',
+  Large = '--large-font-size',
+  Subtitle = '--subtitle-font-size',
+  Title = '--title-font-size'
+}
+
+/**
+ * The available border radius sizes of the application.
+ * The values of these sizes are used as CSS variables.
+*/
+export enum BorderRadius {
+  Small = '--border-radius-sm',
+  Medium = '--border-radius-md',
+  Large = '--border-radius-lg'
+}
+
+/**
+ * The available colors of the application.
+*/
+export type Colors = {
+  main: string;
+  secondary: string;
+  error: string;
+  success: string;
+  font: string;
+  fontOnMain: string;
+};
+
+export type FontConfig = {
+  mainFont: string;
+  titleFont: string;
+  sizes: Partial<Record<FontSize, string>>;
+};
+
+export type SizeConfig = {
+  padding: Partial<Record<Size, string>>;
+  borderRadius: Partial<Record<BorderRadius, string>>;
+};
 
 /**
  * CaroneConfig is the configuration object for the CaroneProvider.
  * All properties are optional, and if not provided, default values will be used.
  *
- * @param mainColor - The main color of the application.
- * @param secondaryColor - The secondary color of the application.
- * @param errorColor - The color for error messages.
- * @param successColor - The color for success messages.
- * @param mainFont - The main font for the application.
- * @param titleFont - The font for titles in the application.
- * @param fontColor - The default font color for the application.
- * @param fontColorOnMainColor - The font color to use when the main color is used as a background.
- * @param sizes - The sizes for the application.
- *  - `--s-99`
- * - `--s-2`
- * - `--s-1`
- * - `--s0`
- * - `--s1`
- * - `--s2`
- * - `--s3`
- * @param fontSizes - The font sizes for the application.
- * - `--small-font-size`
- * - `--default-font-size`
- * - `--large-font-size`
- * - `--subtitle-font-size`
- * - `--title-font-size`
- * @param borderRadiusSizes - The border radius sizes for the application.
- * - `--border-radius-sm`
- * - `--border-radius-md`
- * - `--border-radius-lg`
- */
+ * @param colors {Partial<Colors>} The colors of the application.
+ * @param fonts {Partial<FontConfig>} The fonts of the application.
+ * @param sizes {Partial<SizeConfig>} The sizes of the application.
+*/
 export interface CaroneConfig {
-  mainColor?: string;
-  secondaryColor?: string;
-  errorColor?: string;
-  successColor?: string;
-  mainFont?: string;
-  titleFont?: string;
-  fontColor?: string;
-  fontColorOnMainColor?: string;
-  fontSizes?: {
-    [key in FontSizeKeys]?: string;
-  };
-  sizes?: {
-    [key in SizeKeys]?: string;
-  };
-  borderRadiusSizes?: {
-    [key in BorderRadiusSizeKeys]?: string;
-  };
+  colors?: Partial<Colors>;
+  fonts?: Partial<FontConfig>;
+  sizes?: Partial<SizeConfig>;
 }
 
 export interface ConfigProviderProps {
@@ -61,33 +79,39 @@ export interface ConfigProviderProps {
 }
 
 export const defaultConfig: CaroneConfig = {
-  mainColor: 'blue',
-  secondaryColor: 'black',
-  errorColor: 'red',
-  successColor: 'green',
-  mainFont: 'Verdana',
-  titleFont: 'Arial',
-  fontColor: 'green',
-  fontColorOnMainColor: 'white',
-  fontSizes: {
-    '--small-font-size': '0.8rem',
-    '--default-font-size': '1rem',
-    '--large-font-size': '1.5rem',
-    '--subtitle-font-size': '1.8rem',
-    '--title-font-size': '3rem',
+  colors: {
+    main: 'blue',
+    secondary: 'black',
+    error: 'red',
+    success: 'green',
+    font: 'green',
+    fontOnMain: 'white',
+  },
+  fonts: {
+    mainFont: 'Verdana',
+    titleFont: 'Arial',
+    sizes: {
+      [FontSize.Small]: '0.8rem',
+      [FontSize.Default]: '1rem',
+      [FontSize.Large]: '1.5rem',
+      [FontSize.Subtitle]: '1.8rem',
+      [FontSize.Title]: '3rem',
+    }
   },
   sizes: {
-    '--s-99': '0.1rem',
-    '--s-2': '0.2rem',
-    '--s-1': '0.5rem',
-    '--s0': '1rem',
-    '--s1': '1.5rem',
-    '--s2': '2rem',
-    '--s3': '3rem',
-  },
-  borderRadiusSizes: {
-    '--border-radius-sm': '0.2rem',
-    '--border-radius-md': '0.5rem',
-    '--border-radius-lg': '1rem',
-  },
+    padding: {
+      [Size.XS]: '0.1rem',
+      [Size.SM]: '0.2rem',
+      [Size.MD]: '0.5rem',
+      [Size.LG]: '1rem',
+      [Size.XL]: '1.5rem',
+      [Size.XXL]: '2rem',
+      [Size.XXXL]: '3rem',
+    },
+    borderRadius: {
+      [BorderRadius.Small]: '0.2rem',
+      [BorderRadius.Medium]: '0.5rem',
+      [BorderRadius.Large]: '1rem',
+    }
+  }
 };
