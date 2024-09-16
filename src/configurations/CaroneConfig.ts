@@ -50,6 +50,7 @@ export enum BorderRadius {
 }
 
 type ColorConfig = {
+	/** The main color of the application */
 	main: string;
 	secondary: string;
 	error: string;
@@ -85,6 +86,10 @@ type SizeConfig = {
 		medium: string;
 		large: string;
 	}
+};
+
+type DeepPartial<T> = {
+	[P in keyof T]?: DeepPartial<T[P]>;
 };
 
 /**
@@ -133,20 +138,64 @@ const config = {
                 medium: '0.5rem',
                 large: '1rem',
             }
-        }
+        },
+		maxContentWidth: '1200px'
     };
-	* <CaroneProvider config={config}>
-	*   <App />
-	* </CaroneProvider>
-	* ```
+* <CaroneProvider config={config}>
+*   <App />
+* </CaroneProvider>
+* ```
 */
 export interface CaroneConfig {
-	/** The colors of the application */
-	colors?: Partial<ColorConfig>;
-	/** The fonts of the application */
-	fonts?: Partial<FontConfig>;
-	/** The sizes of the application */
-	sizes?: Partial<SizeConfig>;
+	/**
+	 * The colors of the application.
+	 *
+	 * @default
+	 *   main: 'blue',
+	 *   secondary: 'black',
+	 *   error: 'red',
+	 *   success: 'green',
+	 *   font: 'green',
+	 *   fontOnMain: 'white'
+	*/
+	colors?: DeepPartial<ColorConfig>;
+	/**
+	 * The fonts of the application.
+	 *
+	 * @default
+	 *   mainFont: 'Verdana',
+	 *   titleFont: 'Arial',
+	 *   sizes: {
+	 *     small: '0.8rem',
+	 *     default: '1rem',
+	 *     large: '1.5rem',
+	 *     subtitle: '1.8rem',
+	 *     title: '3rem',
+	 *   }
+	*/
+	fonts?: DeepPartial<FontConfig>;
+	/**
+	 * The sizes of the application.
+	 *
+	 * @default
+	 *  padding: {
+	 *		xxs: '0.1rem',
+	 *		xs: '0.2rem',
+	 *		sm: '0.5rem',
+	 *		md: '1rem',
+	 *		lg: '1.5rem',
+	 *		xl: '2rem',
+	 *		xxl: '3rem',
+	 *	 },
+	 *	 borderRadius: {
+	 *		small: '0.2rem',
+	 *		medium: '0.5rem',
+	 *		large: '1rem',
+	 *	 }
+	*/
+	sizes?: DeepPartial<SizeConfig>;
+	/** The maximum width of the content */
+	maxContentWidth?: string;
 }
 
 export const defaultConfig: CaroneConfig = {
@@ -184,5 +233,6 @@ export const defaultConfig: CaroneConfig = {
 			medium: '0.5rem',
 			large: '1rem',
 		}
-	}
+	},
+	maxContentWidth: '1200px'
 };

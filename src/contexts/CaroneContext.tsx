@@ -53,7 +53,8 @@ const config = {
                 medium: '0.5rem',
                 large: '1rem',
             }
-        }
+        },
+		maxContentWidth: '1200px'
     };
  * <CaroneProvider config={config}>
  *   <App />
@@ -101,6 +102,10 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
         Object.entries(borderRadius).forEach(([key, value]) => {
             root.style.setProperty(`--border-radius-${key}`, value);
         });
+
+		// Apply max content width
+		const maxContentWidth = mergedConfig.maxContentWidth || defaultConfig.maxContentWidth!;
+		root.style.setProperty('--max-content-width', maxContentWidth);
     }, [mergedConfig]);
 
     return (

@@ -33,7 +33,7 @@ interface HeaderProps {
 	sticky?: boolean;
 	/** If the header should be responsive at a certain width in px */
 	responsiveAt?: number;
-	/** The maximum width of the content */
+	/** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
 	maxContentWidth?: number;
 }
 
@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({
 	onNavToggle,
 	sticky = false,
 	responsiveAt,
-	maxContentWidth = 1200
+	maxContentWidth,
 }) => {
 	usePageContext();
 
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({
 					isNavOpen && isResponsive && 'carone-header__navOpen'
 				)}
 				style={{
-					maxWidth: maxContentWidth
+					maxWidth: maxContentWidth ? `${maxContentWidth}px` : 'var(--max-content-width)',
 				}}
 			>
 				{title &&

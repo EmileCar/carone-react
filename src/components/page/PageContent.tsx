@@ -6,7 +6,7 @@ import { classNames } from '../../utils/classNameUtil';
  * The props for the PageContent component.
  */
 interface PageContentProps {
-    /** The maximum width of the content */
+    /** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
     maxContentWidth?: number;
     /** A custom class name to apply to the content */
     className?: string;
@@ -18,7 +18,7 @@ interface PageContentProps {
  * The content of a page.
 */
 const PageContent: React.FC<PageContentProps> = ({
-    maxContentWidth = 1200,
+    maxContentWidth,
     className = '',
     children,
 }) => {
@@ -28,7 +28,7 @@ const PageContent: React.FC<PageContentProps> = ({
         <main
             className={classNames('carone-page__content', className)}
             style={{
-                maxWidth: maxContentWidth
+                maxWidth: maxContentWidth ? `${maxContentWidth}px` : "var(--max-content-width)",
             }}
         >
             {children}
