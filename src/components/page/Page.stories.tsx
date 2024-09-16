@@ -4,6 +4,7 @@ import Page from './Page';
 import Header, { HeaderLink } from '../header/Header';
 import Footer from '../footer/Footer';
 import PageContent from './PageContent';
+import DividedContent from '../dividedContent/DividedContent';
 
 export default {
     title: 'Page',
@@ -22,6 +23,21 @@ export const PageExample = () =>
         <PageContent>
             <h1>Page content</h1>
             <p>This is an example of a page component.</p>
+        </PageContent>
+        <Footer>
+            <p>Footer content</p>
+        </Footer>
+    </Page>;
+
+export const PageExampleWithDividedContent = () =>
+    <Page>
+        <Header links={links} title="Page example"/>
+        <PageContent>
+            <DividedContent
+            wrapAt={768}
+                leftContent={<h1>Left content</h1>}
+                rightContent={<h1>Right content</h1>}
+            />
         </PageContent>
         <Footer>
             <p>Footer content</p>

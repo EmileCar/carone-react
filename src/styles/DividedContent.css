@@ -1,0 +1,16 @@
+.carone-divided-content{
+    display: flex;
+    gap: var(--s1);
+}
+
+.carone-divided-content__left{
+    flex: 1;
+}
+
+.carone-divided-content__right{
+    flex: 1;
+}
+
+.carone-divided-content.carone-divided-content__wrapped{
+    flex-direction: column;
+}
