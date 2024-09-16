@@ -5,12 +5,12 @@ import { ReactNode } from "react";
  * The values of these colors are used as CSS variables.
 */
 export enum Color {
-  Main = '--main-color',
-  Secondary = '--secondary-color',
-  Error = '--error-color',
-  Success = '--success-color',
-  Font = '--default-font-color',
-  FontOnMain = '--font-color-on-main-color'
+  MAIN = 'var(--main-color)',
+  SECONDARY = 'var(--secondary-color)',
+  ERROR = 'var(--error-color)',
+  SUCCESS = 'var(--success-color)',
+  FONT = 'var(--default-font-color)',
+  FONTONMAIN = 'var(--font-color-on-main-color)'
 }
 
 /**
@@ -32,11 +32,11 @@ export enum Size {
  * The values of these sizes are used as CSS variables.
 */
 export enum FontSize {
-  Small = '--small-font-size',
-  Default = '--default-font-size',
-  Large = '--large-font-size',
-  Subtitle = '--subtitle-font-size',
-  Title = '--title-font-size'
+  SMALL = 'var(--small-font-size)',
+  DEFAULT = 'var(--default-font-size)',
+  LARGE = 'var(--large-font-size)',
+  SUBTITLE = 'var(--subtitle-font-size)',
+  TITLE = 'var(--title-font-size)'
 }
 
 /**
@@ -44,9 +44,9 @@ export enum FontSize {
  * The values of these sizes are used as CSS variables.
 */
 export enum BorderRadius {
-  Small = '--border-radius-sm',
-  Medium = '--border-radius-md',
-  Large = '--border-radius-lg'
+  SMALL = 'var(--border-radius-sm)',
+  MEDIUM = 'var(--border-radius-md)',
+  LARGE = 'var(--border-radius-lg)'
 }
 
 type ColorConfig = {
