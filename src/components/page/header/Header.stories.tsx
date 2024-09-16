@@ -1,7 +1,7 @@
 // src/components/button/Button.stories.tsx
 import React from 'react';
 import Header, { HeaderLink } from './Header';
-import Page from '../page/Page';
+import Page from '../../page/Page';
 
 export default {
     title: 'Header',

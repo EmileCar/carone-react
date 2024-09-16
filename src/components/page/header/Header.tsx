@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import '../../styles/Header.css';
-import { useState, useEffect } from "react";
-import { classNames } from '../../utils/classNameUtil';
+import '../../../styles/Header.css';
+import { useState } from "react";
+import { classNames } from '../../../utils/classNameUtil';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { useWindowResize } from '../../hooks/useWindowResize';
-import { usePageContext } from '../../contexts/PageContext';
+import { useWindowResize } from '../../../hooks/useWindowResize';
+import { usePageContext } from '../../../contexts/PageContext';
 
 /**
  * A link in the header.

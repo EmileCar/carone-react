@@ -1,10 +1,12 @@
 // src/components/page/Page.stories.tsx
 import React from 'react';
 import Page from './Page';
-import Header, { HeaderLink } from '../header/Header';
-import Footer from '../footer/Footer';
+import Header, { HeaderLink } from './header/Header';
+import Footer from './footer/Footer';
 import PageContent from './PageContent';
 import DividedContent from '../dividedContent/DividedContent';
+import Section from './section/Section';
+import SectionTitle from './section/SectionTitle';
 
 export default {
     title: 'Page',
@@ -33,11 +35,18 @@ export const PageExampleWithDividedContent = () =>
     <Page>
         <Header links={links} title="Page example"/>
         <PageContent>
-            <DividedContent
-            wrapAt={768}
-                leftContent={<h1>Left content</h1>}
-                rightContent={<h1>Right content</h1>}
-            />
+            <Section>
+                <SectionTitle title='Page Title'>
+                    Section 1
+                </SectionTitle>
+                <p>Content hereeee...</p>
+            </Section>
+            <Section>
+                <SectionTitle title='Page Title'>
+                    Section 2
+                </SectionTitle>
+                <p>Content hereeee...</p>
+            </Section>
         </PageContent>
         <Footer>
             <p>Footer content</p>
