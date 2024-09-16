@@ -13,7 +13,7 @@ const PageContext = createContext<boolean | null>(null);
 export const usePageContext = () => {
     const context = useContext(PageContext);
     if (context === null) {
-        throw new Error('Page-related components <Header, Footer> must be used within a Page component');
+        throw new Error('Page-related components <Header, Footer, PageContent, Section> must be used within a Page component');
     }
     return context;
 };

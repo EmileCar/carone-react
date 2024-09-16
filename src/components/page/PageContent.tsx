@@ -6,8 +6,11 @@ import { classNames } from '../../utils/classNameUtil';
  * The props for the PageContent component.
  */
 interface PageContentProps {
+    /** The maximum width of the content */
     maxContentWidth?: number;
+    /** A custom class name to apply to the content */
     className?: string;
+    /** The content of the page */
     children: ReactNode;
 }
 

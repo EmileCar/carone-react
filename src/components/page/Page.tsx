@@ -7,7 +7,9 @@ import { classNames } from '../../utils/classNameUtil';
  * The props for the Page component.
  */
 interface PageProps {
+    /** A custom class name to apply to the page */
     className?: string;
+    /** The children components */
     children: React.ReactNode;
 }
 
