@@ -3,6 +3,7 @@ import '../../styles/Button.css';
 import LoadingSpinner from '../loading/LoadingSpinner';
 import { classNames } from '../../utils/classNameUtil';
 import { HoverEffect } from '../../utils/hoverEffect';
+import { useConfig } from '../../contexts/CaroneContext';
 
 /**
  * The props for the Button component.
@@ -51,6 +52,9 @@ const Button: React.FC<ButtonProps> = ({
     pending= false,
     preventDefault = false
 }) => {
+    const context = useConfig();
+    console.log(context)
+
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (preventDefault) e.preventDefault();
         onClick();

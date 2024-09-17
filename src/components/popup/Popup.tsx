@@ -3,12 +3,14 @@ import "../../styles/Popup.css";
 import LoadingText from "../loading/LoadingText";
 import { usePopupContext } from "../../contexts/PopupContext";
 import SectionTitle from "../page/section/SectionTitle";
+import { classNames } from "../../utils/classNameUtil";
 
 /**
  * The props for the Popup component.
  */
-interface PopupProps {
+export interface PopupProps {
     title?: string;
+    className?: string;
     onClose?: () => void;
     isPending?: boolean;
     globalError?: string;
@@ -21,6 +23,7 @@ interface PopupProps {
 */
 const Popup: React.FC<PopupProps> = ({
     title,
+    className,
     onClose,
     isPending,
     globalError,
@@ -37,7 +40,7 @@ const Popup: React.FC<PopupProps> = ({
 
     return (
         <div className="overlay" onClick={closeHandler}>
-            <div className="popup" onClick={(e) => e.stopPropagation()}>
+            <div className={classNames("carone-popup", className)} onClick={(e) => e.stopPropagation()}>
                 <span className="close" onClick={closeHandler}>
                     &times;
                 </span>

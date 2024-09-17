@@ -1,8 +1,14 @@
 import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 import { CaroneConfig, defaultConfig } from '../configurations/CaroneConfig';
 import { BannerProvider } from './BannerContext';
+import { PopupProvider } from './PopupContext';
 
-const CaroneContext = createContext<CaroneConfig>(defaultConfig);
+const defaultConfigWithFlag = {
+    ...defaultConfig,
+    provided: false,
+};
+
+const CaroneContext = createContext<CaroneConfig & { provided: boolean }>(defaultConfigWithFlag);
 
 interface ConfigProviderProps {
     config?: Partial<CaroneConfig>;
@@ -63,12 +69,13 @@ const config = {
  * ```
  */
 export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) => {
-    const mergedConfig: CaroneConfig = {
+    const mergedConfig: CaroneConfig & { provided: boolean } = {
         ...defaultConfig,
         ...config,
         colors: { ...defaultConfig.colors, ...config.colors },
         fonts: { ...defaultConfig.fonts, ...config.fonts },
         sizes: { ...defaultConfig.sizes, ...config.sizes },
+        provided: true,
     };
 
     useEffect(() => {
@@ -111,9 +118,11 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
 
     return (
         <CaroneContext.Provider value={mergedConfig}>
-            <BannerProvider>
-                {children}
-            </BannerProvider>
+            <PopupProvider>
+                <BannerProvider>
+                    {children}
+                </BannerProvider>
+            </PopupProvider>
         </CaroneContext.Provider>
     );
 };
@@ -132,8 +141,10 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
  */
 export const useConfig = () => {
     const context = useContext(CaroneContext);
-    if (context === null) {
+
+    if (!context.provided) {
         throw new Error('Carone-react components must be used within a CaroneProvider. Wrap your application inside a CaroneProvider.');
     }
+
     return context;
 };

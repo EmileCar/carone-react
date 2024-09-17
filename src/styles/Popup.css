@@ -14,7 +14,7 @@
 	text-align: center;
 	animation: entryOverlay 200ms ease-in-out;
 }
-.popup {
+.carone-popup {
 	padding: var(--lg);
 	background: white;
 	border-radius: var(--border-radius-large);
@@ -24,7 +24,7 @@
 	margin: 4.5rem 0;
 	animation: entryPopup 300ms ease-in-out;
 }
-.popup .close {
+.carone-popup .close {
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -34,11 +34,11 @@
 	text-decoration: none;
 	color: var(--main-color);
 }
-.popup .close:hover {
+.carone-popup .close:hover {
 	cursor: pointer;
 	color: #000;
 }
-.popup .error:not(.label){
+.carone-popup .error:not(.label){
 	margin-bottom: var(--md);
 }
 .confirm-buttons{
@@ -61,7 +61,7 @@
 		padding: 40px 20px;
         text-align: left;
     }
-	.popup {
+	.carone-popup {
 		min-width: 450px;
 		margin: auto 0;
 	}

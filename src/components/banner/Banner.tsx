@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/Banner.css';
+import { useConfig } from '../../contexts/CaroneContext';
 
 export interface BannerProps {
     text?: string;
@@ -10,6 +11,7 @@ const Banner: React.FC<BannerProps> = ({
     text,
     children
 }) => {
+    useConfig();
 
     return (
         <div className="carone-banner">

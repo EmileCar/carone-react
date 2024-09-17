@@ -4,6 +4,7 @@ import Popup from './Popup';
 import Page from '../page/Page';
 import { usePopupContext } from '../../contexts/PopupContext';
 import Button from '../button/Button';
+import PageContent from '../page/PageContent';
 
 export default {
     title: 'Popup',
@@ -22,7 +23,9 @@ export const PopupInPage = () => {
 
     return (
         <Page>
-            <Button onClick={openTestPopup} text='Open Popup'/>
+            <PageContent>
+                <Button onClick={openTestPopup} text='Open Popup'/>
+            </PageContent>
         </Page>
     );
 }

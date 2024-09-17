@@ -1,8 +1,12 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, ReactElement } from 'react';
+import { PopupProps } from '../components/popup/Popup';
 
 interface PopupContextProps {
+    /** The current active popup component */
     popup: React.ReactNode;
-    registerPopup: (popup: React.ReactNode) => void;
+    /** Use this function to register a `Popup` component */
+    registerPopup: (popup: ReactElement<PopupProps>) => void;
+    /** Use this function to close the current popup */
     closePopup: () => void;
 }
 
@@ -20,9 +24,9 @@ export const PopupContext = createContext<PopupContextProps>({
  * This provider is used to provide the popup state and functions to open/close a popup.
  */
 export const PopupProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [popup, setPopup] = useState<React.ReactNode>(null);
+    const [popup, setPopup] = useState<ReactElement<PopupProps> | null>(null);
 
-    const registerPopup = (popup: React.ReactNode) => {
+    const registerPopup = (popup: ReactElement<PopupProps>) => {
         console.log('registerPopup');
         setPopup(popup);
     };

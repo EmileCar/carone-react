@@ -38,9 +38,7 @@ const config: CaroneConfig = {
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <CaroneProvider config={config}>
         <Story />
-      </CaroneProvider>
     ),
   ],
 };
