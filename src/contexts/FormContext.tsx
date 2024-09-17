@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from 'react';
+import { useConfig } from './CaroneContext';
 
 /**
  * The context for form-related components.

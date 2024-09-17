@@ -3,6 +3,7 @@ import FormContext from '../../contexts/FormContext';
 import { classNames } from '../../utils/classNameUtil';
 import '../../styles/Form.css';
 import { useWindowResize } from '../../hooks/useWindowResize';
+import { useConfig } from '../../contexts/CaroneContext';
 
 /**
  * The props for the Form component.
@@ -30,6 +31,8 @@ const Form: React.FC<FormProps> = ({
     wrapAt = 0,
     children
 }) => {
+    useConfig();
+
     const [wrapped, setWrapped] = useState<boolean>(false);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

@@ -4,6 +4,7 @@ import PageContext from '../../contexts/PageContext';
 import { classNames } from '../../utils/classNameUtil';
 import { useBanner } from '../../contexts/BannerContext';
 import { usePopupContext } from '../../contexts/PopupContext';
+import { useConfig } from '../../contexts/CaroneContext';
 
 /**
  * The props for the Page component.
@@ -53,6 +54,7 @@ const Page: React.FC<PageProps> = ({
     children,
     className= ''
 }) => {
+    useConfig();
     const { banner } = useBanner();
     const { popup } = usePopupContext();
 

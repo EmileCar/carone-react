@@ -4,6 +4,7 @@ import LoadingText from "../loading/LoadingText";
 import { usePopupContext } from "../../contexts/PopupContext";
 import SectionTitle from "../page/section/SectionTitle";
 import { classNames } from "../../utils/classNameUtil";
+import { useConfig } from "../../contexts/CaroneContext";
 
 /**
  * The props for the Popup component.
@@ -29,6 +30,7 @@ const Popup: React.FC<PopupProps> = ({
     globalError,
     children,
 }) => {
+    useConfig();
     const { closePopup } = usePopupContext();
 
     const closeHandler = () => {
