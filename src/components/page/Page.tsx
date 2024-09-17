@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/Page.css';
 import PageContext from '../../contexts/PageContext';
 import { classNames } from '../../utils/classNameUtil';
+import { useBanner } from '../../contexts/BannerContext';
 
 /**
  * The props for the Page component.
@@ -51,11 +52,14 @@ const Page: React.FC<PageProps> = ({
     children,
     className= ''
 }) => {
+    const { banner } = useBanner();
+
     return (
         <PageContext.Provider value={true}>
             <div
                 className={classNames('carone-page', className)}
             >
+                {banner}
                 {children}
             </div>
         </PageContext.Provider>

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/Banner.css';
 
-interface BannerProps {
+export interface BannerProps {
     text?: string;
     children?: React.ReactNode;
 }

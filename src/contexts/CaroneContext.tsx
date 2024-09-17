@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useEffect } from 'react';
 import { CaroneConfig, defaultConfig } from '../configurations/CaroneConfig';
+import { BannerProvider } from './BannerContext';
 
 const CaroneContext = createContext<CaroneConfig>(defaultConfig);
 
@@ -110,7 +111,9 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
 
     return (
         <CaroneContext.Provider value={mergedConfig}>
-            {children}
+            <BannerProvider>
+                {children}
+            </BannerProvider>
         </CaroneContext.Provider>
     );
 };
@@ -128,5 +131,9 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
  * ```
  */
 export const useConfig = () => {
-    return useContext(CaroneContext);
+    const context = useContext(CaroneContext);
+    if (context === null) {
+        throw new Error('Carone-react components must be used within a CaroneProvider. Wrap your application inside a CaroneProvider.');
+    }
+    return context;
 };
