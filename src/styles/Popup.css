@@ -1,0 +1,94 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	z-index: 20;
+    padding: var(--xl) var(--md);
+	overflow-y: auto;
+	display: grid;
+	place-items: center;
+	text-align: center;
+	animation: entryOverlay 200ms ease-in-out;
+}
+.popup {
+	padding: var(--lg);
+	background: white;
+	border-radius: var(--border-radius-large);
+    max-width: 1100px;
+	position: relative;
+    color: var(--main-color);
+	margin: 4.5rem 0;
+	animation: entryPopup 300ms ease-in-out;
+}
+.popup .close {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--main-color);
+}
+.popup .close:hover {
+	cursor: pointer;
+	color: #000;
+}
+.popup .error:not(.label){
+	margin-bottom: var(--md);
+}
+.confirm-buttons{
+	display: flex;
+	gap: var(--md);
+	width: 100%;
+	margin-top: var(--lg);
+}
+.confirm-button{
+	width: 100%;
+}
+.confirm-button.positive{
+	background-color: var(--success-color);
+}
+.confirm-button.negative{
+	background-color: var(--error-color);
+}
+@media screen and (min-width: 55rem) {
+    .overlay {
+		padding: 40px 20px;
+        text-align: left;
+    }
+	.popup {
+		min-width: 450px;
+		margin: auto 0;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.confirm-buttons{
+		flex-wrap: wrap;
+	}
+}
+
+@keyframes entryPopup {
+	0% {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes entryOverlay {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

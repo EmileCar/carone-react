@@ -3,6 +3,7 @@ import '../../styles/Page.css';
 import PageContext from '../../contexts/PageContext';
 import { classNames } from '../../utils/classNameUtil';
 import { useBanner } from '../../contexts/BannerContext';
+import { usePopupContext } from '../../contexts/PopupContext';
 
 /**
  * The props for the Page component.
@@ -53,6 +54,7 @@ const Page: React.FC<PageProps> = ({
     className= ''
 }) => {
     const { banner } = useBanner();
+    const { popup } = usePopupContext();
 
     return (
         <PageContext.Provider value={true}>
@@ -61,6 +63,7 @@ const Page: React.FC<PageProps> = ({
             >
                 {banner}
                 {children}
+                {popup}
             </div>
         </PageContext.Provider>
     );
