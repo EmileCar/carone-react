@@ -3,9 +3,12 @@ import './styles/carone.global.css';
 // Exporting contexts, providers and configurations
 export { CaroneProvider, useConfig } from './contexts/CaroneContext';
 export { CaroneConfig } from './configurations/CaroneConfig';
+export { useBanner } from './contexts/BannerContext';
+export { usePopupContext } from './contexts/PopupContext';
 
 // Exporting components
 export { default as Page } from './components/page/Page';
+export { default as Banner } from './components/banner/Banner';
 export { default as Header, HeaderLink } from './components/page/header/Header';
 export { default as PageContent } from './components/page/PageContent';
 export { default as Section } from './components/page/section/Section';
