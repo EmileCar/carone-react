@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/Hero.css';
 import { classNames } from '../../utils/classNameUtil';
+import HeroSlider, { HeroSliderProps } from './HeroSlider';
 
 /**
  * The props for the Hero component
@@ -8,8 +9,8 @@ import { classNames } from '../../utils/classNameUtil';
 interface HeroProps {
     /** The minimum height of the hero */
     minHeight?: string | number;
-    /** The background image of the hero */
-    backgroundImage?: string;
+    /** If you want background images, provide props for the HeroSlider component */
+    heroSliderProps?: HeroSliderProps;
     /** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
 	maxContentWidth?: number;
     /** A custom class name to apply to the hero */
@@ -31,22 +32,23 @@ interface HeroProps {
  */
 const Hero: React.FC<HeroProps> = ({
     minHeight,
-    backgroundImage,
+    heroSliderProps,
     maxContentWidth,
     className = '',
+    contentClassName = '',
     style,
     children,
 }) => {
     return (
         <div
-            className={classNames('carone-hero', className)}
+            className={classNames('carone-hero', "layered-grid", className)}
             style={{
-                backgroundImage: `url(${backgroundImage})`,
                 minHeight: minHeight ? `${minHeight}px` : '100vh',
                 maxWidth: maxContentWidth ? `${maxContentWidth}px` : '100%',
                 ...style,
         }}>
-            <div className={classNames('carone-hero-content', className)}>
+            {heroSliderProps && <HeroSlider {...heroSliderProps} />}
+            <div className={classNames('carone-hero__content', contentClassName)}>
                 {children}
             </div>
         </div>

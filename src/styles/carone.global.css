@@ -3,6 +3,15 @@
   font-size: inherit;
 }
 
+.layered-grid {
+	display: grid;
+	place-items: center;
+}
+.layered-grid>* {
+	grid-row: 1;
+	grid-column: 1;
+}
+
 .carone-error {
   color: var(--error-color);
 }
