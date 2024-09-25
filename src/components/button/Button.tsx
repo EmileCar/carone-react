@@ -14,16 +14,14 @@ interface ButtonProps {
     /** If the text should be uppercase */
     uppercase?: boolean;
     /** The callback function to call when the button is clicked */
-    onClick: () => void;
+    onClick: () => any;
     /** The type of the button */
     type?: 'button' | 'submit' | 'reset';
     /** If the button should take up the full width of its container */
     fullWidth?: boolean;
     /** If the button should be disabled */
     disabled?: boolean;
-    /** A custom class name to apply to the button */
-    className?: string;
-    /** If the button should have one or more hover effects. Can be a single effect, an array of effects, or a custom string (your classname of the effect). You can use the HoverEffect enum to get the available effects. */
+    /** If the button should have one or more hover effects. Can be a single effect, an array of effects, or a custom string (your classname of the effect). You can use the `HoverEffect` enum to get the available effects. */
     hoverEffect?: HoverEffect | (HoverEffect | string)[] | string;
     /** The amount of px to make the button round */
     borderRadius?: number;
@@ -33,10 +31,17 @@ interface ButtonProps {
     pending?: boolean;
     /** If the default action of the button should be prevented */
     preventDefault?: boolean;
+    /** A custom class name to apply to the button */
+    className?: string;
+    /** A custom style object to apply to the button */
+    style?: React.CSSProperties;
 }
 
 /**
  * A button component that can be customized with different props.
+ *
+ * @param {ButtonProps} props the props for the component
+ * @returns {React.ReactElement} the button component
  */
 const Button: React.FC<ButtonProps> = ({
     text = "Default button",
@@ -45,12 +50,13 @@ const Button: React.FC<ButtonProps> = ({
     type = 'button',
     fullWidth = false,
     disabled = false,
-    className = '',
     hoverEffect = '',
     borderRadius = 0,
     icon = '',
     pending= false,
-    preventDefault = false
+    preventDefault = false,
+    className = '',
+    style,
 }) => {
     const context = useConfig();
     console.log(context)
@@ -76,6 +82,7 @@ const Button: React.FC<ButtonProps> = ({
                 ...(borderRadius && { borderRadius: `${borderRadius}px` }),
                 ...(fullWidth && { width: '100%' }),
                 ...(uppercase && { textTransform: 'uppercase' }),
+                ...style,
             }}
         >
             {pending ? <LoadingSpinner color='white' size={22}/> : (

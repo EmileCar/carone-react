@@ -9,12 +9,14 @@ import '../../styles/Form.css';
 interface LabelProps {
     /** The display text of the label */
     text: string;
-    /** A custom class name to apply to the label */
-    className?: string;
     /** The error message to display. If this is set, the label will be styled as an error */
     errorMessage?: string;
     /** If the field is required */
     required?: boolean;
+    /** A custom class name to apply to the label */
+    className?: string;
+    /** A custom style object to apply to the label */
+    style?: React.CSSProperties;
     /** The children components */
     children?: React.ReactNode;
 }
@@ -22,13 +24,17 @@ interface LabelProps {
 /**
  * A label component that can be customized with different props.
  * This component needs to be used inside a Form component.
+ *
+ * @param {LabelProps} props the props for the component
+ * @returns {React.ReactElement} the label component
  */
 const Label: React.FC<LabelProps> = ({
     text,
-    className = '',
-    children,
     errorMessage,
-    required
+    required,
+    className = '',
+    style,
+    children,
 }) => {
     useFormContext();
 
@@ -37,7 +43,9 @@ const Label: React.FC<LabelProps> = ({
             "carone-label",
             className,
             errorMessage && "carone-error"
-        )}>
+        )}
+            style={style}
+        >
             {text} {required && <span className="required">*</span>}
             {children}
             {errorMessage && <small className="error-message">{errorMessage}</small>}
