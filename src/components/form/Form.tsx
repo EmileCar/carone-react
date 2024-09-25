@@ -11,25 +11,31 @@ import { useConfig } from '../../contexts/CaroneContext';
 interface FormProps {
     /** The function to call when the form is submitted */
     onSubmit?: () => void;
-    /** A custom class name to apply to the form */
-    className?: string;
     /** If the form should be disabled */
     disabled?: boolean;
     /** The width at which the form should wrap */
     wrapAt?: number;
+    /** A custom class name to apply to the form */
+    className?: string;
+    /** A custom style object to apply to the form */
+    style?: React.CSSProperties;
     /** The children components */
     children: any;
 }
 
 /**
  * A form component that can be customized with different props.
+ *
+ * @param {FormProps} props the props for the component
+ * @returns {React.ReactElement} the form component
  */
 const Form: React.FC<FormProps> = ({
     onSubmit,
-    className = '',
     disabled = false,
     wrapAt = 0,
-    children
+    className = '',
+    style,
+    children,
 }) => {
     useConfig();
 
@@ -56,6 +62,7 @@ const Form: React.FC<FormProps> = ({
                     wrapped && 'carone-form__wrapped'
                 )}
                 onSubmit={handleSubmit}
+                style={style}
             >
                 {children}
             </form>

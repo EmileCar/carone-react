@@ -25,8 +25,6 @@ interface HeaderProps {
 	links: HeaderLink[];
 	/** The class name for the links */
 	linkClassName?: string;
-	/** A custom class name to apply to the header */
-	className?: string;
 	/** A callback function to call when the navigation is toggled */
 	onNavToggle?: (isOpen: boolean) => void;
 	/** If the header should stick to the top of the page */
@@ -35,6 +33,9 @@ interface HeaderProps {
 	responsiveAt?: number;
 	/** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
 	maxContentWidth?: number;
+	/** A custom class name to apply to the header */
+	className?: string;
+	
 }
 
 /**

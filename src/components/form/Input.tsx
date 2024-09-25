@@ -21,29 +21,35 @@ interface InputProps {
     placeholder?: string;
     /** If the input should be disabled */
     disabled?: boolean;
-    /** A custom class name to apply to the input */
-    className?: string;
     /** If the input should be focused when rendered */
     focus?: boolean;
     /** The step value for the input. Only number type inputs support this */
     step?: number;
+    /** A custom class name to apply to the input */
+    className?: string;
+    /** A custom style object to apply to the input */
+    style?: React.CSSProperties;
 }
 
 /**
  * An input component that can be customized with different props.
  * This component needs to be used inside a Form component.
+ *
+ * @param {InputProps} props the props for the component
+ * @returns {React.ReactElement} the input component
  */
 const Input: React.FC<InputProps> = ({
     type,
     name,
-    value = "",
+    value = '',
     onChange,
     onBlur,
     placeholder,
     disabled,
-    className = "",
     focus = false,
-    step
+    step,
+    className = '',
+    style,
 }) => {
     useFormContext();
 
@@ -59,6 +65,7 @@ const Input: React.FC<InputProps> = ({
             className={classNames("carone-input inherit-font", className)}
             autoFocus={focus}
             step={step}
+            style={style}
         />
     );
 }
