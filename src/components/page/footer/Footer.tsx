@@ -5,8 +5,11 @@ import { classNames } from '../../../utils/classNameUtil';
  * The props for the Footer component.
  */
 interface FooterProps {
+    /** A custom class name to apply to the footer */
     className?: string;
+    /** A custom style object to apply to the footer */
     style?: React.CSSProperties;
+    /** The children components */
     children: React.ReactNode;
 }
 

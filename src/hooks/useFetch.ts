@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 /**
  * A callback function that fetches data.
  * @returns A promise that returns the data (T). This data can be any entity or any array of entities.
-*/
+ */
 type FetchCallback<T> = () => Promise<T>;
 
 /**

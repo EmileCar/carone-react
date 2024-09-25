@@ -15,7 +15,7 @@ type ExtendedValues<T> = T & ValueMethods;
 /**
  * A hook that handles form state and submission.
  * @param initialValues The initial values of the form.
- * @param submitFunction The function to call when the form is submitted.
+ * @param submitFunction The callback function to call when the form is submitted.
  * @returns An object with the form values, error states, value change handler, error setter, and form submission handler.
  */
 const useForm = <T extends Record<string, any>>(initialValues: T, submitFunction: (request: T, method: "POST" | "PUT") => Promise<void>) => {

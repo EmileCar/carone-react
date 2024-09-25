@@ -9,29 +9,35 @@ import "../../../styles/Page.css";
 interface SectionTitleProps {
     /** The title of the section */
     title: string;
-    /** Additional content to apply below the title */
-    children?: ReactNode;
     /** The maximum width of the component */
     maxWidth?: number;
     /** If the title should have a border below */
     showBorder?: boolean;
-    /** A custom class name to apply to the component */
-    className?: string;
     /** If the title should be uppercase */
     uppercase?: boolean;
+    /** A custom class name to apply to the component */
+    className?: string;
+    /** A custom style object to apply to the component */
+    style?: React.CSSProperties;
+    /** Additional content to apply below the title */
+    children?: ReactNode;
 }
 
 /**
  * A section title component that displays a title with an optional border and content below.
  * This component can be customized with different props.
+ *
+ * @param {SectionTitleProps} props the props for the component
+ * @returns {React.ReactElement} the section title component
 */
 const SectionTitle: React.FC<SectionTitleProps> = ({
     title,
-    children,
     maxWidth,
     showBorder = true,
+    uppercase = false,
     className = '',
-    uppercase = false
+    style,
+    children,
 }) => {
     return (
         <div className={classNames(
@@ -39,7 +45,8 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
                 className
             )}
             style={{
-                maxWidth: maxWidth ? `${maxWidth}px` : '100%'
+                maxWidth: maxWidth ? `${maxWidth}px` : '100%',
+                ...style
             }}
         >
             <div className="carone-section-title">

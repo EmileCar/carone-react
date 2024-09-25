@@ -3,17 +3,23 @@ import Button from '../button/Button';
 import { HoverEffect } from '../../utils/hoverEffect';
 
 /**
-* The props for the Paginator component.
-*/
+ * The props for the Paginator component.
+ */
 interface PaginatorProps {
+    /** The total amount of pages */
     totalPages: number;
+    /** The current page */
     currentPage: number;
+    /** The callback function to call when the page is changed */
     onPageChange: (page: number) => void;
 }
 
 /**
  * A paginator component that can be used to navigate through pages.
-*/
+ *
+ * @param {PaginatorProps} props the props for the component
+ * @returns {React.ReactElement} the paginator component
+ */
 const Paginator: React.FC<PaginatorProps> = ({ totalPages, currentPage, onPageChange }) => {
     const handlePrev = () => {
         if (currentPage > 0) onPageChange(currentPage - 1);

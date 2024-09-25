@@ -10,16 +10,22 @@ interface PageContentProps {
     maxContentWidth?: number;
     /** A custom class name to apply to the content */
     className?: string;
+    /** A custom style object to apply to the content */
+    style?: React.CSSProperties;
     /** The content of the page */
     children: ReactNode;
 }
 
 /**
  * The content of a page.
-*/
+ *
+ * @param {PageContentProps} props the props for the component
+ * @returns {React.ReactElement} the page content component
+ */
 const PageContent: React.FC<PageContentProps> = ({
     maxContentWidth,
     className = '',
+    style,
     children,
 }) => {
     usePageContext();
@@ -29,6 +35,7 @@ const PageContent: React.FC<PageContentProps> = ({
             className={classNames('carone-page__content', className)}
             style={{
                 maxWidth: maxContentWidth ? `${maxContentWidth}px` : "var(--max-content-width)",
+                ...style
             }}
         >
             {children}

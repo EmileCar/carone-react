@@ -9,7 +9,7 @@ import { useConfig } from '../../contexts/CaroneContext';
  * The props for the Form component.
  */
 interface FormProps {
-    /** The function to call when the form is submitted */
+    /** The callback function to call when the form is submitted */
     onSubmit?: () => void;
     /** If the form should be disabled */
     disabled?: boolean;

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 /**
  * The available colors of the application.
  * The values of these colors are used as CSS variables.
-*/
+ */
 export enum Color {
 	MAIN = 'var(--main-color)',
 	SECONDARY = 'var(--secondary-color)',
@@ -16,7 +16,7 @@ export enum Color {
 /**
  * The available sizes of the application.
  * The values of these sizes are used as CSS variables.
-*/
+ */
 export enum Size {
 	XXS = 'var(--xxs)',
 	XS = 'var(--xs)',
@@ -30,7 +30,7 @@ export enum Size {
 /**
  * The available font sizes of the application.
  * The values of these sizes are used as CSS variables.
-*/
+ */
 export enum FontSize {
 	SMALL = 'var(--small-font-size)',
 	DEFAULT = 'var(--default-font-size)',
@@ -42,7 +42,7 @@ export enum FontSize {
 /**
  * The available border radius sizes of the application.
  * The values of these sizes are used as CSS variables.
-*/
+ */
 export enum BorderRadius {
 	SMALL = 'var(--border-radius-sm)',
 	MEDIUM = 'var(--border-radius-md)',
@@ -52,26 +52,40 @@ export enum BorderRadius {
 type ColorConfig = {
 	/** The main color of the application */
 	main: string;
+	/** The secondary color of the application */
 	secondary: string;
+	/** The error color of the application */
 	error: string;
+	/** The success color of the application */
 	success: string;
+	/** The default font color of the application */
 	font: string;
+	/** The font color on the main color of the application */
 	fontOnMain: string;
 };
 
 type FontConfig = {
+	/** The main font family of the application. Enter the values like in CSS */
 	mainFont: string;
+	/** The title font family of the application. Enter the values like in CSS */
 	titleFont: string;
+	/** The font sizes of the application. Use these sizes in the app from the FontSize enum */
 	sizes: {
+		/** The font size for small text */
 		small: string;
+		/** The font size for default text */
 		default: string;
+		/** The font size for large text */
 		large: string;
+		/** The font size for subtitle text */
 		subtitle: string;
+		/** The font size for title text */
 		title: string;
 	}
 };
 
 type SizeConfig = {
+	/** The padding sizes of the application. Use these sizes in the app from the Size enum */
 	padding: {
 		xxs: string;
 		xs: string;
@@ -81,6 +95,7 @@ type SizeConfig = {
 		xl: string;
 		xxl: string;
 	},
+	/** The border radius sizes of the application. Use these sizes in the app from the BorderRadius enum */
 	borderRadius: {
 		small: string;
 		medium: string;

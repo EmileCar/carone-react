@@ -17,3 +17,4 @@ export const CustomClassNameHeader = () => <Page><Header title="Custom Class Nam
 export const StickyHeader = () => <Page><div style={{height: "100rem"}}><Header title="Sticky Header" links={links} sticky /></div></Page>;
 export const ResponsiveHeader = () => <Page><Header title="Responsive Header" links={links} responsiveAt={600} />;</Page>
 export const StickyAndResponsiveHeader = () => <Page><div style={{height: "100rem"}}><Header title="Sticky and Responsive Header" links={links} sticky responsiveAt={600} /></div></Page>;
+export const HeaderWithChildren = () => <Page><Header title="Header with Children" links={links}><div>Children</div></Header></Page>;

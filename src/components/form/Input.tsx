@@ -13,9 +13,9 @@ interface InputProps {
     name?: string;
     /** The value of the input. Only string and number are supported */
     value?: string | number;
-    /** The function to call when the input value changes */
+    /** The callback function to call when the input value changes */
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    /** The function to call when the input loses focus */
+    /** The callback function to call when the input loses focus */
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     /** The placeholder text for the input */
     placeholder?: string;

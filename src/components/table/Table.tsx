@@ -15,14 +15,10 @@ import '../../styles/Table.css';
 interface TableProps<T> {
     /* The values to display in the table */
     values: T[];
-    /* The columns to display in the table */
-    children: ReactNode;
     /* The number of rows to display per page */
     rows?: number;
     /* The responsive layout of the table */
     responsiveLayout?: 'stack' | 'scroll';
-    /* A custom class name to apply to the table */
-    className?: string;
     /* A callback function to call when a row is clicked */
     onRowClick?: (row: T) => void;
     /* The message to display when there are no values */
@@ -31,22 +27,32 @@ interface TableProps<T> {
     globalSearchFunction?: (value: string) => T[];
     /* If the table should have an export to excel button */
     exportToExcel?: boolean;
+    /* A custom class name to apply to the table */
+    className?: string;
+    /* A custom style object to apply to the table */
+    style?: React.CSSProperties;
+    /* The columns to display in the table */
+    children: ReactNode;
 }
 
 /**
  * A table component that can be customized with different props.
-*/
-const Table = <T,>(props: TableProps<T>) => {
+ *
+ * @param {TableProps} props the props for the component
+ * @returns {React.ReactElement} the table component
+ */
+const Table = <T,>(props: TableProps<T>): React.ReactElement => {
     const {
         values,
-        children,
         rows = 10,
         responsiveLayout = 'stack',
-        className = '',
         onRowClick,
         emptyMessage = 'Geen data gevonden',
         globalSearchFunction,
         exportToExcel,
+        className = '',
+        style,
+        children,
     } = props;
 
     const [page, setPage] = useState(0);
@@ -199,7 +205,7 @@ const Table = <T,>(props: TableProps<T>) => {
                     )}
                 </Form>
             )}
-            <div className={`${responsiveLayout} ${className}`}>
+            <div className={`${responsiveLayout} ${className}`} style={style}>
                 <table className='carone-table'>
                     <thead>
                         <tr>{renderColumns()}</tr>

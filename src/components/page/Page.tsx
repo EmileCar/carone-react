@@ -12,6 +12,8 @@ import { useConfig } from '../../contexts/CaroneContext';
 interface PageProps {
     /** A custom class name to apply to the page */
     className?: string;
+    /** A custom style object to apply to the page */
+    style?: React.CSSProperties;
     /** The children components */
     children: React.ReactNode;
 }
@@ -49,10 +51,14 @@ interface PageProps {
  *      </Page>
  * )};
  * ```
+ *
+ * @param {PageProps} props the props for the component
+ * @returns {React.ReactElement} the page component
  */
 const Page: React.FC<PageProps> = ({
+    className= '',
+    style,
     children,
-    className= ''
 }) => {
     useConfig();
     const { banner } = useBanner();
@@ -62,6 +68,7 @@ const Page: React.FC<PageProps> = ({
         <PageContext.Provider value={true}>
             <div
                 className={classNames('carone-page', className)}
+                style={style}
             >
                 {banner}
                 {children}
