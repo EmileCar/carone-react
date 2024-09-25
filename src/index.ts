@@ -24,6 +24,7 @@ export { default as Table } from './components/table/Table';
 export { default as Column } from './components/table/Column';
 export { default as Paginator } from './components/table/Paginator';
 export { default as Hero } from './components/hero/Hero';
+export { HeroSliderImageProps, HeroSliderProps } from './components/hero/HeroSlider';
 
 // Exporting hooks
 export { useWindowResize } from './hooks/useWindowResize';

@@ -9,6 +9,10 @@ export interface HeroSliderImageProps {
     path: string;
     /** The alt text for the image */
     alt?: string;
+    /** A custom class name to apply to the image */
+    className?: string;
+    /** A custom style object to apply to the image */
+    style?: React.CSSProperties;
 }
 
 /*
@@ -82,8 +86,12 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
                 >
                     <img
                         src={image.path}
+                        className={image.className ?? ''}
                         alt={image.alt}
-                        style={{ display: loadedImages[index] ? "block" : "none" }}
+                        style={{
+                            display: loadedImages[index] ? "block" : "none",
+                            ...image.style,
+                        }}
                     />
                 </div>
             ))}
@@ -92,6 +100,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
                     <img
                         src={blurredImagePath.path}
                         alt={blurredImagePath.alt}
+                        className={blurredImagePath.className ?? ''}
+                        style={blurredImagePath.style}
                     />
                 </div>
             )}

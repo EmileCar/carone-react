@@ -4,7 +4,6 @@ import Hero from './Hero';
 import Page from '../page/Page';
 import Header from '../page/header/Header';
 import PageContent from '../page/PageContent';
-import HeroSlider from './HeroSlider';
 
 export default {
     title: 'Hero',
@@ -14,8 +13,6 @@ export default {
 const heroSliderProps = {
     images: [
         { path: 'https://ksaoosterzele.be/assets/hero/stellingstartdag.jpg', alt: 'Stelling Startdag' },
-        { path: 'https://ksaoosterzele.be/assets/hero/kampsfeer.jpg', alt: 'Kampsfeer' },
-        { path: 'https://via.placeholder.com/1920x1080', alt: 'Placeholder' },
     ],
     interval: 5000,
     altText: 'Hero image',

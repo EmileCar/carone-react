@@ -44,11 +44,15 @@ const Hero: React.FC<HeroProps> = ({
             className={classNames('carone-hero', "layered-grid", className)}
             style={{
                 minHeight: minHeight ? `${minHeight}px` : '100vh',
-                maxWidth: maxContentWidth ? `${maxContentWidth}px` : '100%',
                 ...style,
         }}>
             {heroSliderProps && <HeroSlider {...heroSliderProps} />}
-            <div className={classNames('carone-hero__content', contentClassName)}>
+            <div
+                className={classNames('carone-hero__content', contentClassName)}
+                style={{
+                    maxWidth: maxContentWidth ? `${maxContentWidth}px` : 'var(--max-content-width)',
+                }}
+            >
                 {children}
             </div>
         </div>
