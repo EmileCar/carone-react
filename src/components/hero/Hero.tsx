@@ -24,6 +24,7 @@ interface HeroProps {
 
 /**
  * A hero component that can be customized with different props.
+ * If the height of the Hero is not as expected because of a Header component, you can use the `insideHero` prop in the Header component.
  *
  * @param {HeroProps} props the props for the component
  * @returns {React.ReactElement} the hero component
@@ -41,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({
             className={classNames('carone-hero', className)}
             style={{
                 backgroundImage: `url(${backgroundImage})`,
-                minHeight: minHeight ? `${minHeight}px` : 'auto',
+                minHeight: minHeight ? `${minHeight}px` : '100vh',
                 maxWidth: maxContentWidth ? `${maxContentWidth}px` : '100%',
                 ...style,
         }}>

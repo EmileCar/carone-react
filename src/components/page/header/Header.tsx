@@ -34,6 +34,8 @@ interface HeaderProps {
 	responsiveAt?: number;
 	/** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
 	maxContentWidth?: number;
+	/** If the header is inside a hero component */
+	insideHero?: boolean;
 	/** A custom class name to apply to the header */
 	className?: string;
 	/** A custom class name for the links */
@@ -60,6 +62,7 @@ const Header: React.FC<HeaderProps> = ({
 	sticky = false,
 	responsiveAt,
 	maxContentWidth,
+	insideHero,
 	className = '',
 	linkClassName = '',
 	contentClassName,
@@ -89,6 +92,19 @@ const Header: React.FC<HeaderProps> = ({
 		}
 	});
 
+	const getHeaderPosition = () => {
+		if (sticky && insideHero) {
+			return 'fixed';
+		}
+		if (sticky) {
+			return 'sticky';
+		}
+		if (insideHero) {
+			return 'absolute';
+		}
+		return 'relative';
+	};
+
 	return (
 		<header
 			className={classNames(
@@ -98,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({
 			)}
 			ref={headerRef}
 			style={{
-				...(sticky && { position: 'sticky', top: 0 }),
+				position: getHeaderPosition(),
 				...style,
 		}}>
       		<div className={

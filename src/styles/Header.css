@@ -6,6 +6,7 @@
     color: var(--font-color-on-main-color);
     box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.4);
     position: relative;
+    top: 0;
     flex-shrink: 0;
 }
 
