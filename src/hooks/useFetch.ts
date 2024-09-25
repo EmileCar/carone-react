@@ -11,7 +11,7 @@ type FetchCallback<T> = () => Promise<T>;
  * @param callback The callback function that fetches the data.
  * @returns An object with the pending state, the data, the error and a refetch function.
  */
-const useFetch = <T>(callback: FetchCallback<T>) => {
+export const useFetch = <T>(callback: FetchCallback<T>) => {
     const [pending, setPending] = useState<boolean>(true);
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -35,5 +35,3 @@ const useFetch = <T>(callback: FetchCallback<T>) => {
 
     return { pending, data, error, refetch: fetchData };
 }
-
-export default useFetch;

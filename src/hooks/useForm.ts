@@ -18,7 +18,7 @@ type ExtendedValues<T> = T & ValueMethods;
  * @param submitFunction The callback function to call when the form is submitted.
  * @returns An object with the form values, error states, value change handler, error setter, and form submission handler.
  */
-const useForm = <T extends Record<string, any>>(initialValues: T, submitFunction: (request: T, method: "POST" | "PUT") => Promise<void>) => {
+export const useForm = <T extends Record<string, any>>(initialValues: T, submitFunction: (request: T, method: "POST" | "PUT") => Promise<void>) => {
     const isNotEmpty = (values: T) => {
         return Object.values(values).some(value => value !== null && value !== undefined && value !== '');
     };
@@ -109,5 +109,3 @@ const useForm = <T extends Record<string, any>>(initialValues: T, submitFunction
         submitPending: isPending,
     };
 };
-
-export default useForm;

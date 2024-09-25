@@ -1,0 +1,14 @@
+.carone-hero{
+    background: url('../images/hero.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    position: relative;
+    flex-grow: 1;
+}

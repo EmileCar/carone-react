@@ -59,7 +59,6 @@ const Button: React.FC<ButtonProps> = ({
     style,
 }) => {
     const context = useConfig();
-    console.log(context)
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (preventDefault) e.preventDefault();

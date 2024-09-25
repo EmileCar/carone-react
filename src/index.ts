@@ -23,9 +23,12 @@ export { default as Group } from './components/form/Group';
 export { default as Table } from './components/table/Table';
 export { default as Column } from './components/table/Column';
 export { default as Paginator } from './components/table/Paginator';
+export { default as Hero } from './components/hero/Hero';
 
 // Exporting hooks
 export { useWindowResize } from './hooks/useWindowResize';
+export { useFetch } from './hooks/useFetch';
+export { useForm } from './hooks/useForm';
 
 // Exporting utilities
 export { HoverEffect } from './utils/hoverEffect';
