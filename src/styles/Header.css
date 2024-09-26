@@ -16,6 +16,7 @@
     padding: 0 var(--md);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: var(--md);
     white-space: nowrap;
     transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
