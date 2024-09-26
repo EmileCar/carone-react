@@ -34,7 +34,7 @@ const PageContent: React.FC<PageContentProps> = ({
         <main
             className={classNames('carone-page__content', className)}
             style={{
-                maxWidth: maxContentWidth ? `${maxContentWidth}px` : "var(--max-content-width)",
+                maxWidth: maxContentWidth ? `${maxContentWidth}px` : undefined,
                 ...style
             }}
         >

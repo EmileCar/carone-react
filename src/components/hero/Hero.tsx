@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({
     children,
 }) => {
     return (
-        <div
+        <section
             className={classNames('carone-hero', "layered-grid", className)}
             style={{
                 minHeight: minHeight ? `${minHeight}px` : 'auto',
@@ -59,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({
             >
                 {children}
             </div>
-        </div>
+        </section>
     );
 };
 

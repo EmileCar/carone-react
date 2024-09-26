@@ -6,6 +6,7 @@
 }
 
 .carone-hero__content{
+	padding: var(--md);
     position: relative;
     z-index: 20;
 }
