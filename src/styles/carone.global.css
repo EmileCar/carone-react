@@ -15,14 +15,3 @@
 .carone-error {
   color: var(--error-color);
 }
-
-/* HOVER EFFECTS */
-.carone-button.carone-button__darken:hover {
-	filter: brightness(0.8);
-}
-.carone-button.carone-button__lighten:hover {
-	filter: brightness(1.2);
-}
-.carone-button.carone-button__grow:hover {
-	transform: scale(1.05);
-}

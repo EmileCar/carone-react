@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 /**
  * The available colors of the application.
  * The values of these colors are used as CSS variables.
