@@ -33,4 +33,3 @@ export { useFetch } from './hooks/useFetch';
 export { useForm } from './hooks/useForm';
 
 // Exporting utilities
-export { HoverEffect } from './utils/hoverEffect';

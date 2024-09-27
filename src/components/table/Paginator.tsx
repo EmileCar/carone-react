@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../button/Button';
-import { HoverEffect } from '../../utils/hoverEffect';
+// import { HoverEffect } from '../../utils/hoverEffect';
 
 /**
  * The props for the Paginator component.
@@ -38,7 +38,7 @@ const Paginator: React.FC<PaginatorProps> = ({ totalPages, currentPage, onPageCh
             {currentPage > 0 && (
                 <Button
                     onClick={handlePrev}
-                    hoverEffect={HoverEffect.Darken}
+                    // hoverEffect={HoverEffect.Darken}
                     text='<'
                     aria-label="Previous Page"
                 />
@@ -47,7 +47,7 @@ const Paginator: React.FC<PaginatorProps> = ({ totalPages, currentPage, onPageCh
             {currentPage < totalPages - 1 && (
                 <Button
                     onClick={handleNext}
-                    hoverEffect={HoverEffect.Darken}
+                    // hoverEffect={HoverEffect.Darken}
                     text='>'
                     aria-label="Next Page"
                 />

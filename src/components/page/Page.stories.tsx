@@ -1,19 +1,19 @@
 // src/components/page/Page.stories.tsx
 import React from 'react';
 import Page from './Page';
-import Header, { HeaderLink } from './header/Header';
+import Header from './header/Header';
 import Footer from './footer/Footer';
 import PageContent from './PageContent';
-import DividedContent from '../dividedContent/DividedContent';
 import Section from './section/Section';
 import SectionTitle from './section/SectionTitle';
+import { HeaderLinkProps } from './header/HeaderLink';
 
 export default {
     title: 'Page',
     component: Page as React.FC,
 };
 
-const links: HeaderLink[] = [
+const links: HeaderLinkProps[] = [
     { label: 'Home', url: '/' },
     { label: 'About', url: '/about' },
     { label: 'Contact', url: '/contact' },

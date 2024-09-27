@@ -6,7 +6,7 @@ import Label from '../form/Label';
 import Input from '../form/Input';
 import Button from '../button/Button';
 import { exportToExcel as exportToExcelFunction } from '../../utils/exportToExcel';
-import { HoverEffect } from '../../utils/hoverEffect';
+import { HoverEffect } from '../../configurations/HoverEffect';
 import '../../styles/Table.css';
 
 /**
@@ -197,7 +197,7 @@ const Table = <T,>(props: TableProps<T>): React.ReactElement => {
                             <Button
                                 icon="pi-file-export"
                                 className="exportToExcel__button"
-                                hoverEffect={HoverEffect.Darken}
+                                // hoverEffect={HoverEffect.Darken}
                                 onClick={() => exportToExcelFunction(filteredData, "inschrijvingen")}
                             />
                             <span onClick={() => exportToExcelFunction(filteredData, "inschrijvingen")}>Exporteer naar Excel</span>

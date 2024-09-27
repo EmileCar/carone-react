@@ -2,8 +2,9 @@ import React from 'react';
 import '../../styles/Button.css';
 import LoadingSpinner from '../loading/LoadingSpinner';
 import { classNames } from '../../utils/classNameUtil';
-import { HoverEffect } from '../../utils/hoverEffect';
+import { HoverEffect } from '../../configurations/HoverEffect';
 import { useConfig } from '../../contexts/CaroneContext';
+import { withSharedProps } from '../../configurations/SharedProps';
 
 /**
  * The props for the Button component.
@@ -94,4 +95,10 @@ const Button: React.FC<ButtonProps> = ({
     );
 };
 
-export default Button;
+/**
+ * A button component that can be customized with different props.
+ *
+ * @param {ButtonProps & SharedProps} props the props for the component
+ * @returns {React.ReactElement} the button component
+ */
+export default withSharedProps(Button);
