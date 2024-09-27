@@ -9,7 +9,8 @@ export { usePopupContext } from './contexts/PopupContext';
 // Exporting components
 export { default as Page } from './components/page/Page';
 export { default as Banner } from './components/banner/Banner';
-export { default as Header, HeaderLink } from './components/page/header/Header';
+export { default as Header } from './components/page/header/Header';
+export { default as HeaderLink, HeaderLinkProps } from './components/page/header/HeaderLink';
 export { default as PageContent } from './components/page/PageContent';
 export { default as Section } from './components/page/section/Section';
 export { default as SectionTitle } from './components/page/section/SectionTitle';

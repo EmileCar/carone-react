@@ -5,18 +5,7 @@ import { classNames } from '../../../utils/classNameUtil';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useWindowResize } from '../../../hooks/useWindowResize';
 import { usePageContext } from '../../../contexts/PageContext';
-
-/**
- * A link in the header.
- */
-export interface HeaderLink {
-	/** The label of the link */
-	label: string;
-	/** The URL of the link */
-	url: string;
-	/** If the link should open in a new tab */
-	openInNewTab?: boolean;
-}
+import HeaderLink, { HeaderLinkProps } from './HeaderLink';
 
 /**
  * The props for the Header component.
@@ -25,7 +14,7 @@ interface HeaderProps {
 	/** The title of the header. This can be a string or a ReactNode */
 	title?: string | React.ReactNode;
 	/** The links to display in the header */
-	links: HeaderLink[];
+	links?: HeaderLinkProps[];
 	/** A callback function to call when the navigation is toggled */
 	onNavToggle?: (isOpen: boolean) => void;
 	/** If the header should stick to the top of the page */
@@ -42,6 +31,8 @@ interface HeaderProps {
 	linkClassName?: string;
 	/** A custom class name for the content */
 	contentClassName?: string;
+	/** A custom class name for the wrapper */
+	wrapperClassName?: string;
 	/** A custom style object to apply to the header */
 	style?: React.CSSProperties;
 	/** The children components */
@@ -65,7 +56,8 @@ const Header: React.FC<HeaderProps> = ({
 	insideHero,
 	className = '',
 	linkClassName = '',
-	contentClassName,
+	contentClassName = '',
+	wrapperClassName = '',
 	style,
 	children,
 }) => {
@@ -120,6 +112,7 @@ const Header: React.FC<HeaderProps> = ({
       		<div className={
 				classNames(
 					'carone-header__wrapper',
+					wrapperClassName,
 					isNavOpen && isResponsive && 'carone-header__navOpen'
 				)}
 				style={{
@@ -131,19 +124,16 @@ const Header: React.FC<HeaderProps> = ({
 						{typeof title === 'string' ? <h1 className="header__title">{title}</h1> : title}
 					</div>
 				}
-
 				<div className={classNames("carone-header__content", contentClassName)}>
-					<nav className={classNames("carone-header__navbar", (isNavOpen && isResponsive) && "carone-header__navOpen")}>
-						<ul className="carone-header__menu-items">
-							{links.map((link, index) => (
-								<li className="carone-header__menu-item" key={index}>
-									<a className={classNames("carone-header__menu-item-link", linkClassName)} href={link.url} {...(link.openInNewTab && { target: '_blank' })}>
-										{link.label}
-									</a>
-								</li>
-							))}
-						</ul>
-					</nav>
+					{links &&
+						<nav className={classNames("carone-header__navbar", (isNavOpen && isResponsive) && "carone-header__navOpen")}>
+							<ul className="carone-header__menu-items">
+								{links.map((link, index) => (
+									<HeaderLink key={index} {...link} className={linkClassName} />
+								))}
+							</ul>
+						</nav>
+					}
 					<div className="carone-header__toggle-button-container">
 						<span
 							className={`bi ${isNavOpen ? 'bi-x-lg' : 'bi-list'} carone-header__toggle-button`}
