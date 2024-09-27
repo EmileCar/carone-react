@@ -1,3 +1,8 @@
+export interface HoverEffectProps {
+    hoverEffect?: HoverEffect;
+    duration?: number;
+}
+
 /**
  * Enum for hover effect
  */
