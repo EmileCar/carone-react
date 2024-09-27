@@ -11,6 +11,8 @@ interface HeroProps {
     minHeight?: string | number;
     /** The maximum height of the hero */
     maxHeigh?: string | number;
+    /** The background color of the hero */
+    backgroundColor?: string;
     /** If you want background images, provide props for the HeroSlider component */
     heroSliderProps?: HeroSliderProps;
     /** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
@@ -35,6 +37,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({
     minHeight,
     maxHeigh,
+    backgroundColor,
     heroSliderProps,
     maxContentWidth,
     className = '',
@@ -46,6 +49,7 @@ const Hero: React.FC<HeroProps> = ({
         <section
             className={classNames('carone-hero', "layered-grid", className)}
             style={{
+                backgroundColor: backgroundColor ? backgroundColor : 'transparent',
                 minHeight: minHeight ? `${minHeight}px` : 'auto',
                 maxHeight: maxHeigh ? `${maxHeigh}px` : 'auto',
                 ...style,
