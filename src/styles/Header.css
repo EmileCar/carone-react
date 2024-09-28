@@ -69,7 +69,7 @@
 .carone-header .carone-header__toggle-button {
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     cursor: pointer;
-    display: block;
+    display: grid;
     height: 100%;
     padding: var(--sm);
 }
