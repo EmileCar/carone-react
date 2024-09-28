@@ -33,23 +33,25 @@ process.chdir(projectName);
 console.log(chalk.green('Installing carone-react, react-router-dom and other dependencies...'));
 runCommand('npm install carone-react react-router-dom');
 
-// Optional Step: Add custom files (e.g., eslint, prettier configs)
-// Add any additional files you want to automatically include in the project
+// Step 4: Add custom files
+
 console.log(chalk.green('Adding custom files...'));
-fs.writeFileSync('caroneConfig.ts', `
+
+// Step 4.1: Create CaroneConfig.ts
+const caroneConfigContent = `
 import { CaroneConfig } from 'carone-react';
 
 export const config: CaroneConfig = {
 	colors: {
-		main: 'blue',
-		secondary: 'black',
+		main: '#007ced',
+		secondary: '#fff',
 		error: 'red',
 		success: 'green',
-		font: 'green',
-		fontOnMain: 'white',
+		font: '#007ced',
+		fontOnMain: '#fff',
 	},
 	fonts: {
-		mainFont: 'Verdana',
+		mainFont: 'Arial',
 		titleFont: 'Arial',
 		sizes: {
 			small: '0.8rem',
@@ -77,8 +79,10 @@ export const config: CaroneConfig = {
 	},
 	maxContentWidth: '1200px'
 };
-`);
+`;
+fs.writeFileSync(path.join('src', 'caroneConfig.ts'), caroneConfigContent);
 
+// Step 4.2: Create custom index.tsx and index.css
 const indexTsxContent = `
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -102,15 +106,15 @@ body {
     line-height: 1.2;
 }
 `;
-
 fs.writeFileSync(path.join('src', 'index.tsx'), indexTsxContent);
 fs.writeFileSync(path.join('src', 'index.css'), indexCssContent);
 
+// Step 4.3: Create custom App.tsx
 const appTsxContent = `
 import { CaroneProvider } from 'carone-react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import { config } from '../caroneConfig';
+import Home from './pages/home/Home';
+import { config } from './caroneConfig';
 
 const App = () => {
 
@@ -127,23 +131,58 @@ const App = () => {
 
 export default App;
 `;
-
 fs.writeFileSync(path.join('src', 'App.tsx'), appTsxContent);
 
-const pagesDir = path.join('src', 'pages', 'Home');
+// Step 4.4: Create custom layout
+const layoutDir = path.join('src', 'layouts');
+fs.mkdirSync(layoutDir, { recursive: true });
+
+const layoutTsxContent = `
+import { Header, Page, PageContent } from "carone-react";
+
+interface PageLayoutProps {
+    children: React.ReactNode;
+}
+
+const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
+
+    return (
+        <Page>
+            <Header sticky title="Carone React" responsiveAt={700}/>
+            <PageContent>
+                {children}
+            </PageContent>
+        </Page>
+    );
+};
+
+export default PageLayout;
+`;
+fs.writeFileSync(path.join(layoutDir, 'Layout.tsx'), layoutTsxContent);
+
+// Step 4.5: Create custom Home page
+const pagesDir = path.join('src', 'pages', 'home');
 fs.mkdirSync(pagesDir, { recursive: true });
 
 const homeTsxContent = `
 import React from 'react';
 import './Home.css';
+import PageLayout from '../../layouts/Layout';
+import { Section } from 'carone-react';
 
 const Home = () => {
     return (
-        <div className="home">
-            <h1>Welcome to your new Carone React app!</h1>
-            <p>Edit the Home component in src/pages/Home/Home.tsx</p>
-            <p>It is recommended to create a Layout component in the /layouts directory</p>
-        </div>
+        <PageLayout>
+            <Section centered>
+                <h1>Welcome to your new Carone React App!</h1>
+                <div>
+                    <p>All necessary configurations have been set up for you. You can start building your app right away.</p>
+                    <p>This is the Homepage, you can edit it in <code>src/pages/Home/Home.tsx</code></p>
+                    <p>A PageLayout has also been created for you in <code>src/layouts/Layout.tsx</code></p>
+                </div>
+                <p>To customize your app, please change the values of the <code>config</code> object in <code>src/caroneConfig.ts</code></p>
+            </Section>
+        </PageLayout>
     );
 };
 
@@ -167,7 +206,6 @@ const homeCssContent = `
     font-size: var(--font-size-title);
 }
 `;
-
 fs.writeFileSync(path.join(pagesDir, 'Home.tsx'), homeTsxContent);
 fs.writeFileSync(path.join(pagesDir, 'Home.css'), homeCssContent);
 
