@@ -11,16 +11,19 @@ if (!_pageName) {
     process.exit(1);
 }
 
-const pageName = _pageName.charAt(0).toUpperCase() + _pageName.slice(1);
+// Step 1: Split the page name by '/' to handle nested pages
+const pageParts = _pageName.split('/').map(part => part.charAt(0).toUpperCase() + part.slice(1));
+const pageName = pageParts[pageParts.length - 1]; // The last part is the actual page component name
 
-const pageDir = path.join('src', 'pages', pageName.toLowerCase());
+// Create the directory path based on nested structure
+const pageDir = path.join('src', 'pages', ...pageParts.slice(0, -1).map(part => part.toLowerCase()), pageName.toLowerCase());
 const pageTsxFile = path.join(pageDir, `${pageName}.tsx`);
 const pageCssFile = path.join(pageDir, `${pageName}.css`);
 
-// Step 1: Create a new directory for the page
+// Step 2: Create a new directory for the page (including nested directories)
 fs.mkdirSync(pageDir, { recursive: true });
 
-// Step 2: Create the .tsx file
+// Step 3: Create the .tsx file
 const pageTsxContent = `
 import React from 'react';
 import './${pageName}.css';
@@ -32,7 +35,7 @@ const ${pageName} = () => {
         <PageLayout>
             <Section centered>
                 <h1>Welcome to the ${pageName} page!</h1>
-                <p>This is the ${pageName} page. You can edit it in <code>src/pages/${pageName}/${pageName}.tsx</code>.</p>
+                <p>This is the ${pageName} page. You can edit it in <code>src/pages/${pageParts.join('/')}/${pageName}.tsx</code>.</p>
             </Section>
         </PageLayout>
     );
@@ -43,7 +46,7 @@ export default ${pageName};
 
 fs.writeFileSync(pageTsxFile, pageTsxContent);
 
-// Step 3: Create the .css file
+// Step 4: Create the .css file
 const pageCssContent = `
 .${pageName.toLowerCase()} {
     display: flex;
@@ -64,19 +67,22 @@ const pageCssContent = `
 
 fs.writeFileSync(pageCssFile, pageCssContent);
 
-// Step 4: Update App.tsx to include the new route
+// Step 5: Update App.tsx to include the new route
 const appTsxPath = path.join('src', 'App.tsx');
 
 let appTsxContent = fs.readFileSync(appTsxPath, 'utf-8');
 
-// Insert the new import for the page if not already present
-const importStatement = `import ${pageName} from './pages/${pageName.toLowerCase()}/${pageName}';\n`;
+// Create the import path based on the nested structure
+const importPath = `./pages/${pageParts.slice(0, -1).map(part => part.toLowerCase()).join('/')}/${pageName.toLowerCase()}/${pageName}`;
+const importStatement = `import ${pageName} from '${importPath}';\n`;
+
 if (!appTsxContent.includes(importStatement)) {
   appTsxContent = importStatement + appTsxContent;
 }
 
-// Insert the new route
-const routeLine = `<Route path="/${pageName.toLowerCase()}" element={<${pageName} />} />`;
+// Create the route path based on the full nested structure
+const routePath = `/${pageParts.map(part => part.toLowerCase()).join('/')}`;
+const routeLine = `<Route path="${routePath}" element={<${pageName} />} />`;
 
 if (!appTsxContent.includes(routeLine)) {
   const routesEndIndex = appTsxContent.indexOf('</Routes>');
@@ -91,5 +97,5 @@ if (!appTsxContent.includes(routeLine)) {
 // Save the updated App.tsx
 fs.writeFileSync(appTsxPath, appTsxContent);
 
-console.log(chalk.green(`Page ${pageName} created successfully!`));
-console.log(chalk.green(`Route for ${pageName} added to App.tsx.`));
+console.log(chalk.green(`Page ${pageName} created successfully at ${pageDir}`));
+console.log(chalk.green(`Route for ${pageName} added to App.tsx as ${routePath}.`));
