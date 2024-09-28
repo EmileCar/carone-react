@@ -35,7 +35,7 @@ export const PageExampleWithDividedContent = () =>
     <Page>
         <Header links={links} title="Page example"/>
         <PageContent>
-            <Section style={{backgroundColor: 'red'}}>
+            <Section style={{backgroundColor: 'red'}} centerAtWidth={400}>
                 <SectionTitle title='Page Title'>
                     Section 1
                 </SectionTitle>

@@ -26,6 +26,15 @@ export enum Size {
 }
 
 /**
+ * The available fonts of the application.
+ * The values of these fonts are used as CSS variables.
+ */
+export enum Font {
+	MAIN = 'var(--main-font)',
+	TITLE = 'var(--title-font)'
+}
+
+/**
  * The available font sizes of the application.
  * The values of these sizes are used as CSS variables.
  */

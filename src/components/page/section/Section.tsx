@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { usePageContext } from '../../../contexts/PageContext';
 import { classNames } from '../../../utils/classNameUtil';
+import { useWindowResize } from '../../../hooks/useWindowResize';
 
 /**
  * The props for the Section component.
@@ -8,6 +9,10 @@ import { classNames } from '../../../utils/classNameUtil';
 interface SectionProps {
     /** The maximum width of the content. If not set, the default value of the CaroneConfig will be used */
     maxContentWidth?: number;
+    /** If the content should be centered */
+    centered?: boolean;
+    /** The width at which the content should be centered */
+    centerAtWidth?: number;
     /** A custom class name to apply to the section */
     className?: string;
     /** A custom style object to apply to the section */
@@ -25,15 +30,27 @@ interface SectionProps {
  */
 const Section: React.FC<SectionProps> = ({
     maxContentWidth,
+    centered = false,
+    centerAtWidth,
     className = '',
     style,
     children
 }) => {
     usePageContext();
+    const [isCentered, setIsCentered] = useState<boolean>(false);
+
+    useWindowResize(() => {
+        if (centerAtWidth) {
+            setIsCentered(window.innerWidth <= centerAtWidth);
+        }
+    });
 
     return (
         <section
-            className={classNames("carone-section", className)}
+            className={classNames(
+                "carone-section",
+                className,
+                (centered || isCentered) && 'carone-section__centered',            )}
             style={{
                 ...style
             }}

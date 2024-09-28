@@ -12,10 +12,13 @@
 }
 
 .carone-section {
-
     padding: var(--xl) var(--md);
     margin: 0 auto;
     width: 100%;
+}
+
+.carone-section__centered{
+    text-align: center;
 }
 
 .carone-section__content{
