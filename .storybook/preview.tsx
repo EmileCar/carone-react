@@ -7,11 +7,11 @@ import { CaroneConfig } from '../src/configurations/CaroneConfig';
 
 const config: CaroneConfig = {
     colors: {
-        main: 'red',
-        secondary: 'black',
+        main: 'darkblue',
+        secondary: 'lightblue',
         error: 'red',
         success: 'green',
-        font: 'green',
+        font: 'black',
         fontOnMain: 'white'
     },
     fonts: {
