@@ -15,3 +15,8 @@
 .carone-error {
   color: var(--error-color);
 }
+
+a {
+	text-decoration: none;
+	color: inherit;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from '../../../utils/classNameUtil';
+import { Link } from 'react-router-dom';
 
 /**
  * A link in the header.
@@ -32,14 +33,14 @@ const HeaderLink: React.FC<HeaderLinkProps> = ({
 }) => {
     return (
         <li className="carone-header__menu-item">
-            <a
+            <Link
                 className={classNames("carone-header__menu-item-link", className)}
                 style={style}
-                href={url}
+                to={url}
                 {...(openInNewTab && { target: '_blank' })}
             >
                 {label}
-            </a>
+            </Link>
         </li>
     );
 }
