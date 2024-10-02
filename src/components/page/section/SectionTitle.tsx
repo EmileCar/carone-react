@@ -17,6 +17,8 @@ interface SectionTitleProps {
     uppercase?: boolean;
     /** A custom class name to apply to the component */
     className?: string;
+    /** A custom class name for the border */
+    borderClassName?: string;
     /** A custom style object to apply to the component */
     style?: React.CSSProperties;
     /** Additional content to apply below the title */
@@ -36,6 +38,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     showBorder = true,
     uppercase = false,
     className = '',
+    borderClassName = '',
     style,
     children,
 }) => {
@@ -51,7 +54,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
         >
             <div className="carone-section-title">
                 <h2 style={{ textTransform: uppercase ? 'uppercase' : 'none' }}>{title}</h2>
-                {showBorder && <div className="carone-section-title__border"/>}
+                {showBorder && <div className={classNames("carone-section-title__border", borderClassName)}></div>}
             </div>
             {children}
         </div>
