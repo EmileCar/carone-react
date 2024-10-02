@@ -4,7 +4,8 @@
   "description": "A React library for simple web projects",
   "bin": {
     "carone-create-app": "./scripts/create-app.js",
-    "carone-create-page": "./scripts/create-page.js"
+    "carone-create-page": "./scripts/create-page.js",
+    "carone-create-component": "./scripts/create-component.js"
   },
   "main": "dist/build/index.js",
   "scripts": {
