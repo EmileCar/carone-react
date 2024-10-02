@@ -73,7 +73,7 @@ const appTsxPath = path.join('src', 'App.tsx');
 let appTsxContent = fs.readFileSync(appTsxPath, 'utf-8');
 
 // Create the import path based on the nested structure
-const importPath = `./pages/${pageParts.slice(0, -1).map(part => part.toLowerCase()).join('/')}/${pageName.toLowerCase()}/${pageName}`;
+const importPath = `./pages${pageParts.slice(0, -1).map(part => part.toLowerCase()).join('/')}/${pageName.toLowerCase()}/${pageName}`;
 const importStatement = `import ${pageName} from '${importPath}';\n`;
 
 if (!appTsxContent.includes(importStatement)) {
@@ -89,7 +89,7 @@ if (!appTsxContent.includes(routeLine)) {
   if (routesEndIndex !== -1) {
     appTsxContent =
       appTsxContent.slice(0, routesEndIndex) +
-      `  ${routeLine}\n` +
+      `  ${routeLine}\n\t\t\t\t` +
       appTsxContent.slice(routesEndIndex);
   }
 }
