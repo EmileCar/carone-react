@@ -22,7 +22,7 @@ const heroSliderProps = {
 
 export const SimpleHero = () => (
     <Page>
-        <Header sticky title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500} insideHero/>
+        <Header position='fixed' title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500}/>
         <Hero heroSliderProps={heroSliderProps}>
             <h1>Hero title</h1>
             <p>Hero subtitle</p>
@@ -37,7 +37,7 @@ export const SimpleHero = () => (
 
 export const HeroWithSlider = () => (
     <Page>
-        <Header sticky title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500} insideHero/>
+        <Header position='fixed' title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500}/>
         <PageContent>
             <Hero heroSliderProps={heroSliderProps} minHeight={600}>
                 <h1>Hero Title</h1>
