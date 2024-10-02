@@ -148,7 +148,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
 
     return (
         <Page>
-            <Header sticky title="Carone React" responsiveAt={700}/>
+            <Header title="Carone React" responsiveAt={700}/>
             <PageContent>
                 {children}
             </PageContent>
