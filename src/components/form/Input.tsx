@@ -2,6 +2,7 @@ import React from "react";
 import { useFormContext } from "../../contexts/FormContext";
 import { classNames } from "../../utils/classNameUtil";
 import '../../styles/Form.css';
+import { useConfig } from "../../contexts/CaroneContext";
 
 /**
  * The props for the Input component.
@@ -51,6 +52,8 @@ const Input: React.FC<InputProps> = ({
     className = '',
     style,
 }) => {
+    const context = useConfig();
+    const globalClassName = context.globalClassNames?.Input;
     useFormContext();
 
     return (
@@ -62,7 +65,7 @@ const Input: React.FC<InputProps> = ({
             onBlur={onBlur}
             placeholder={placeholder}
             disabled={disabled}
-            className={classNames("carone-input inherit-font", className)}
+            className={classNames("carone-input inherit-font", className, globalClassName)}
             autoFocus={focus}
             step={step}
             style={style}

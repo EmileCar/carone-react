@@ -2,6 +2,7 @@
 import React, { ReactNode } from "react";
 import { classNames } from "../../../utils/classNameUtil";
 import "../../../styles/Page.css";
+import { useConfig } from "../../../contexts/CaroneContext";
 
 /**
  * The props for the SectionTitle component.
@@ -42,10 +43,15 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     style,
     children,
 }) => {
+    const config = useConfig();
+    const globalClassName = config.globalClassNames?.SectionTitle?.className;
+    const globalBorderClassNames = config.globalClassNames?.SectionTitle?.borderClassName;
+
     return (
         <div className={classNames(
                 "carone-section-title__container",
-                className
+                className,
+                globalClassName
             )}
             style={{
                 maxWidth: maxWidth ? `${maxWidth}px` : '100%',
@@ -54,7 +60,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
         >
             <div className="carone-section-title">
                 <h2 style={{ textTransform: uppercase ? 'uppercase' : 'none' }}>{title}</h2>
-                {showBorder && <div className={classNames("carone-section-title__border", borderClassName)}></div>}
+                {showBorder && <div className={classNames("carone-section-title__border", borderClassName, globalBorderClassNames)}></div>}
             </div>
             {children}
         </div>

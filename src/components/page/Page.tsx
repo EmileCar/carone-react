@@ -60,14 +60,15 @@ const Page: React.FC<PageProps> = ({
     style,
     children,
 }) => {
-    useConfig();
+    const context = useConfig();
+    const globalClassName = context.globalClassNames?.Page;
     const { banner } = useBanner();
     const { popup } = usePopupContext();
 
     return (
         <PageContext.Provider value={true}>
             <div
-                className={classNames('carone-page', className)}
+                className={classNames('carone-page', className, globalClassName)}
                 style={style}
             >
                 {banner}

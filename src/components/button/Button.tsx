@@ -58,7 +58,8 @@ const Button: React.FC<ButtonProps> = ({
     className = '',
     style,
 }) => {
-    const context = useConfig();
+    const config = useConfig();
+    const globalClassName = config.globalClassNames?.Button;
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (preventDefault) e.preventDefault();
@@ -74,6 +75,7 @@ const Button: React.FC<ButtonProps> = ({
                 'carone-button inherit-font',
                 className,
                 hoverEffectClasses,
+                globalClassName,
             )}
             type={type}
             disabled={disabled}

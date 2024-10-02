@@ -37,7 +37,8 @@ const Form: React.FC<FormProps> = ({
     style,
     children,
 }) => {
-    useConfig();
+    const context = useConfig();
+    const globalClassName = context.globalClassNames?.Form;
 
     const [wrapped, setWrapped] = useState<boolean>(false);
 
@@ -59,7 +60,8 @@ const Form: React.FC<FormProps> = ({
                     'carone-form',
                     className,
                     disabled && 'disabled',
-                    wrapped && 'carone-form__wrapped'
+                    wrapped && 'carone-form__wrapped',
+                    globalClassName,
                 )}
                 onSubmit={handleSubmit}
                 style={style}

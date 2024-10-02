@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { usePageContext } from '../../../contexts/PageContext';
 import { classNames } from '../../../utils/classNameUtil';
 import { useWindowResize } from '../../../hooks/useWindowResize';
+import { useConfig } from '../../../contexts/CaroneContext';
 
 /**
  * The props for the Section component.
@@ -37,6 +38,8 @@ const Section: React.FC<SectionProps> = ({
     children
 }) => {
     usePageContext();
+    const config = useConfig();
+    const globalClassName = config.globalClassNames?.Section;
     const [isCentered, setIsCentered] = useState<boolean>(false);
 
     useWindowResize(() => {
@@ -50,7 +53,9 @@ const Section: React.FC<SectionProps> = ({
             className={classNames(
                 "carone-section",
                 className,
-                (centered || isCentered) && 'carone-section__centered',            )}
+                (centered || isCentered) && 'carone-section__centered',
+                globalClassName,
+            )}
             style={{
                 ...style
             }}

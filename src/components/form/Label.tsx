@@ -2,6 +2,7 @@ import React from "react";
 import { useFormContext } from "../../contexts/FormContext";
 import { classNames } from "../../utils/classNameUtil";
 import '../../styles/Form.css';
+import { useConfig } from "../../contexts/CaroneContext";
 
 /**
  * The props for the Label component.
@@ -36,13 +37,16 @@ const Label: React.FC<LabelProps> = ({
     style,
     children,
 }) => {
+    const context = useConfig();
+    const globalClassName = context.globalClassNames?.Label;
     useFormContext();
 
     return (
         <label className={classNames(
             "carone-label",
             className,
-            errorMessage && "carone-error"
+            errorMessage && "carone-error",
+            globalClassName
         )}
             style={style}
         >

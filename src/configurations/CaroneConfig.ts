@@ -110,6 +110,26 @@ type SizeConfig = {
 	}
 };
 
+type ClassNameConfig = {
+	/** The default class name for SectionTitle */
+	SectionTitle?: {
+		className?: string;
+		borderClassName?: string;
+	};
+	/** The default class name for Section */
+	Section?: string;
+	/** The default class name for Page */
+	Page?: string;
+	/** The default class name for Button */
+	Button?: string;
+	/** The default class name for Input */
+	Input?: string;
+	/** The default class name for Label */
+	Label?: string;
+	/** The default class name for Form */
+	Form?: string;
+};
+
 type DeepPartial<T> = {
 	[P in keyof T]?: DeepPartial<T[P]>;
 };
@@ -218,6 +238,8 @@ export interface CaroneConfig {
 	sizes?: DeepPartial<SizeConfig>;
 	/** The maximum width of the content */
 	maxContentWidth?: string;
+	/** The global class names for the application */
+	globalClassNames?: DeepPartial<ClassNameConfig>;
 }
 
 export const defaultConfig: CaroneConfig = {
