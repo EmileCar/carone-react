@@ -30,8 +30,6 @@ interface HeaderProps {
 	className?: string;
 	/** A custom class name for the links */
 	linkClassName?: string;
-	/** A custom class name for the content */
-	contentClassName?: string;
 	/** A custom class name for the wrapper */
 	wrapperClassName?: string;
 	/** A custom style object to apply to the header */
@@ -55,6 +53,8 @@ const Header: React.FC<HeaderProps> = ({
 	responsiveAt,
 	maxContentWidth,
 	className = '',
+	linkClassName,
+	wrapperClassName,
 	style,
 	children,
 }) => {
@@ -107,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({
 							return children
 						})()
 					:
-					<HeaderRow maxContentWidth={maxContentWidth} links={links} openNav={isNavOpen && isResponsive}>
+					<HeaderRow maxContentWidth={maxContentWidth} links={links} openNav={isNavOpen && isResponsive} linkClassName={linkClassName} className={wrapperClassName}>
 						{title &&
 							<div className="carone-header__title-container">
 								{typeof title === 'string' ? <h1 className="header__title">{title}</h1> : title}
