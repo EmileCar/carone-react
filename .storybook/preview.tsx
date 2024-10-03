@@ -4,6 +4,7 @@ import { CaroneProvider } from '../src/contexts/CaroneContext';
 import './../resources/reset.css';
 import './../src/styles/carone.global.css';
 import { CaroneConfig } from '../src/configurations/CaroneConfig';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const config: CaroneConfig = {
     colors: {
@@ -39,7 +40,9 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <CaroneProvider config={config}>
-        <Story />
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
       </CaroneProvider>
     ),
   ],

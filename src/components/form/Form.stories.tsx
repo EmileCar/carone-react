@@ -5,6 +5,7 @@ import Input from './Input';
 import Label from './Label';
 import Group from './Group';
 import Button from '../button/Button';
+import TextArea from './TextArea';
 
 export default {
     title: 'Form',
@@ -56,6 +57,9 @@ export const LabeledGroupedForm = () => {
                     <Input type="email" name='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 </Label>
             </Group>
+            <Label text='Message'>
+                    <TextArea name='Message' />
+                </Label>
             <Button text='Submit' type='submit' onClick={() => {}} />
         </Form>
 )}

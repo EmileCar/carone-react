@@ -1,6 +1,6 @@
 .carone-header {
     position: relative;
-    width: 100vw;
+    width: 100%;
     display: grid;
     flex-shrink: 0;
     top: 0;

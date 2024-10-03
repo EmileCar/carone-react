@@ -50,7 +50,9 @@ const Label: React.FC<LabelProps> = ({
         )}
             style={style}
         >
-            {text} {required && <span className="required">*</span>}
+            <span>
+                {text} {required && <span className="required">*</span>}
+            </span>
             {children}
             {errorMessage && <small className="error-message">{errorMessage}</small>}
         </label>

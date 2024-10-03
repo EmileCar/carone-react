@@ -24,8 +24,8 @@
 .carone-form .carone-label {
     font-weight: bold;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem;
+    flex-direction: column;
+    gap: var(--xs);
     width: 100%;
     align-self: flex-start;
 }
