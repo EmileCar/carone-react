@@ -22,6 +22,7 @@ export { default as Form } from './components/form/Form';
 export { default as Input } from './components/form/Input';
 export { default as Label } from './components/form/Label';
 export { default as Group } from './components/form/Group';
+export { default as TextArea } from './components/form/TextArea';
 export { default as Table } from './components/table/Table';
 export { default as Column } from './components/table/Column';
 export { default as Paginator } from './components/table/Paginator';
