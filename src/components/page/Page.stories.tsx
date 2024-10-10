@@ -7,6 +7,8 @@ import PageContent from './PageContent';
 import Section from './section/Section';
 import SectionTitle from './section/SectionTitle';
 import { HeaderLinkProps } from './header/HeaderLink';
+import SideBar from '../sidebar/SideBar';
+import Button from '../button/Button';
 
 export default {
     title: 'Page',
@@ -31,24 +33,31 @@ export const PageExample = () =>
         </Footer>
     </Page>;
 
-export const PageExampleWithDividedContent = () =>
-    <Page>
-        <Header links={links} title="Page example"/>
-        <PageContent>
-            <Section style={{backgroundColor: 'red'}} centerAtWidth={400}>
-                <SectionTitle title='Page Title'>
-                    Section 1
-                </SectionTitle>
-                <p>Content hereeee...</p>
-            </Section>
-            <Section>
-                <SectionTitle title='Page Title' showBorder>
-                    Section 2
-                </SectionTitle>
-                <p>Content hereeee...</p>
-            </Section>
-        </PageContent>
-        <Footer>
-            <p>Footer content</p>
-        </Footer>
-    </Page>;
+export const PageExampleWithDividedContent = () => {
+    const [visible, setVisible] = React.useState(false);
+    return (
+        <Page>
+            <SideBar visible={visible} onToggleClick={() => setVisible(!visible)} width={300}>
+                <p>Side bar content</p>
+            </SideBar>
+            <Header links={links} title="Page example"/>
+            <PageContent>
+                <Section style={{backgroundColor: 'red'}} centerAtWidth={400}>
+                    <SectionTitle title='Page Title'>
+                        Section 1
+                    </SectionTitle>
+                    <p>Content hereeee...</p>
+                </Section>
+                <Section>
+                    <SectionTitle title='Page Title' showBorder>
+                        Section 2
+                    </SectionTitle>
+                    <p>Content hereeee...</p>
+                </Section>
+            </PageContent>
+            <Footer>
+                <p>Footer content</p>
+            </Footer>
+        </Page>
+    );
+}

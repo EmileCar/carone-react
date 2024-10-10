@@ -44,3 +44,11 @@
 	font-family: var(--title-font);
 	font-size: var(--title-font-size);
 }
+
+.carone-page__with-sidebar{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr;
+    color: var(--main-color);
+    text-align: center;
+}

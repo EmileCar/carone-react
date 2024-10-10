@@ -5,6 +5,7 @@ import { classNames } from '../../utils/classNameUtil';
 import { useBanner } from '../../contexts/BannerContext';
 import { usePopupContext } from '../../contexts/PopupContext';
 import { useConfig } from '../../contexts/CaroneContext';
+import SideBar from '../sidebar/SideBar';
 
 /**
  * The props for the Page component.
@@ -65,10 +66,19 @@ const Page: React.FC<PageProps> = ({
     const { banner } = useBanner();
     const { popup } = usePopupContext();
 
+    const hasSideBar = React.Children.toArray(children).some(
+        (child) => React.isValidElement(child) && child.type === SideBar
+    );
+
     return (
         <PageContext.Provider value={true}>
             <div
-                className={classNames('carone-page', className, globalClassName)}
+                className={classNames(
+                    'carone-page',
+                    className,
+                    globalClassName,
+                    hasSideBar && 'carone-page__with-sidebar'
+                )}
                 style={style}
             >
                 {banner}
