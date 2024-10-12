@@ -27,7 +27,6 @@ export const PopupProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const [popup, setPopup] = useState<ReactElement<PopupProps> | null>(null);
 
     const registerPopup = (popup: ReactElement<PopupProps>) => {
-        console.log('registerPopup');
         setPopup(popup);
     };
 
