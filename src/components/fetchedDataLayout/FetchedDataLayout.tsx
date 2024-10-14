@@ -1,14 +1,26 @@
 import React from "react";
-import LoadingSpinner from "../loading/LoadingSpinner";
+import LoadingSpinner, { LoadingSpinnerProps } from "../loading/LoadingSpinner";
 import LoadingText from "../loading/LoadingText";
 
-const FetchedDataLayout = ({isPending, error, children} : {isPending: boolean, error: string | null, children: React.ReactNode}) => {
+interface FetchedDataLayoutProps {
+    isPending: boolean;
+    error: string | null;
+    children: React.ReactNode;
+    loadingSpinnerProps: LoadingSpinnerProps;
+}
+
+const FetchedDataLayout: React.FC<FetchedDataLayoutProps> = ({
+    isPending,
+    error,
+    loadingSpinnerProps,
+    children
+}) => {
 
     return (
         <>
             {isPending
                 ?
-                    <LoadingSpinner text={<LoadingText />}/>
+                    <LoadingSpinner {...loadingSpinnerProps} text={<LoadingText />} />
                 :
                 <>
                     {(error !== null && typeof error === 'string') &&

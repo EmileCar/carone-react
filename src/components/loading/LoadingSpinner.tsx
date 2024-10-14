@@ -1,9 +1,10 @@
 import React from "react";
 import "../../styles/Spinner.css";
+import { Size } from "../../configurations/CaroneConfig";
 
-interface LoadingSpinnerProps {
+export interface LoadingSpinnerProps {
   color?: string;
-  size?: number;
+  size?: number | string;
   text?: string | JSX.Element;
 }
 
@@ -12,14 +13,16 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size,
   text,
 }) => {
-  const spinnerColor = color || "#1576D1";
-  const spinnerSize = size ? `${size}px` : "60px";
+  const spinnerColor = color || "var(--main-color)";
 
   return (
     <div className="spinner-container">
       <div
         className="spinner"
-        style={{ height: spinnerSize, width: spinnerSize }}
+        style={{
+          height: typeof size === "number" ? `${size}px` : size,
+          width: typeof size === "number" ? `${size}px` : size,
+        }}
       >
         <svg
           version="1.1"
