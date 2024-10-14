@@ -6,7 +6,7 @@ interface FetchedDataLayoutProps {
     isPending: boolean;
     error: string | null;
     children: React.ReactNode;
-    loadingSpinnerProps: LoadingSpinnerProps;
+    loadingSpinnerProps?: LoadingSpinnerProps;
 }
 
 const FetchedDataLayout: React.FC<FetchedDataLayoutProps> = ({
