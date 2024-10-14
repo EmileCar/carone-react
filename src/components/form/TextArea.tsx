@@ -58,7 +58,7 @@ const TextArea: React.FC<TextAreaProps> = ({
             onBlur={onBlur}
             placeholder={placeholder}
             disabled={disabled}
-            className={classNames("carone-input inherit-font", className, globalClassName)}
+            className={classNames("carone-input carone-textarea inherit-font", className, globalClassName)}
             autoFocus={focus}
             style={style}
         />

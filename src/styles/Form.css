@@ -79,6 +79,11 @@
     opacity: 0.5;
 }
 
+.carone-form .carone-input.carone-textarea {
+    max-width: 100%;
+    max-height: 40vh;
+}
+
 /* CHECKBOX STYLING */
 .carone-form .checkbox {
     display: flex;
