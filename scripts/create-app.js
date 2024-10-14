@@ -158,7 +158,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
 
 export default PageLayout;
 `;
-fs.writeFileSync(path.join(layoutDir, 'Layout.tsx'), layoutTsxContent);
+fs.writeFileSync(path.join(layoutDir, 'PageLayout.tsx'), layoutTsxContent);
 
 // Step 4.5: Create custom Home page
 const pagesDir = path.join('src', 'pages', 'home');
@@ -167,7 +167,7 @@ fs.mkdirSync(pagesDir, { recursive: true });
 const homeTsxContent = `
 import React from 'react';
 import './Home.css';
-import PageLayout from '../../layouts/Layout';
+import PageLayout from '../../layouts/PageLayout';
 import { Section } from 'carone-react';
 
 const Home = () => {
