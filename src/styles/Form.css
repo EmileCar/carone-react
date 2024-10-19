@@ -62,7 +62,7 @@
     width: 100%;
     outline: var(--xxs) solid var(--main-color);
     border: var(--xs) solid transparent;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-small);
     transition: box-shadow 0.1s ease-in-out;
 }
 
@@ -131,7 +131,7 @@ form .label .required {
     justify-content: space-between;
     width: 100%;
     outline: var(--xxs) solid var(--main-color);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-small);
     position: relative;
 }
 

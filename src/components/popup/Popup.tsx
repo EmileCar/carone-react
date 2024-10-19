@@ -53,7 +53,7 @@ const Popup: React.FC<PopupProps> = ({
     };
 
     return (
-        <div className="overlay" onClick={closeHandler}>
+        <div className="carone-overlay" onClick={closeHandler}>
             <div className={classNames("carone-popup", className)} onClick={(e) => e.stopPropagation()} style={style}>
                 <span className="close" onClick={closeHandler}>
                     &times;

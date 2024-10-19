@@ -5,6 +5,8 @@
 export enum Color {
 	MAIN = 'var(--main-color)',
 	SECONDARY = 'var(--secondary-color)',
+	GREY = 'var(--grey-color)',
+	BACKGROUND = 'var(--background-color)',
 	ERROR = 'var(--error-color)',
 	SUCCESS = 'var(--success-color)',
 	FONT = 'var(--default-font-color)',
@@ -61,6 +63,10 @@ type ColorConfig = {
 	main: string;
 	/** The secondary color of the application */
 	secondary: string;
+	/** The grey color of the application */
+	grey: string;
+	/** The background color of the application */
+	background: string;
 	/** The error color of the application */
 	error: string;
 	/** The success color of the application */
@@ -246,6 +252,8 @@ export const defaultConfig: CaroneConfig = {
 	colors: {
 		main: 'blue',
 		secondary: 'black',
+		grey: 'grey',
+		background: 'white',
 		error: 'red',
 		success: 'green',
 		font: 'green',

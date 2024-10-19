@@ -1,4 +1,4 @@
-.overlay {
+.carone-overlay {
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -6,7 +6,7 @@
 	right: 0;
 	background: rgba(0, 0, 0, 0.7);
 	transition: opacity 500ms;
-	z-index: 20;
+	z-index: 100;
     padding: var(--xl) var(--md);
 	overflow-y: auto;
 	display: grid;

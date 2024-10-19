@@ -85,6 +85,8 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
         const colors = mergedConfig.colors || defaultConfig.colors!;
         root.style.setProperty('--main-color', colors.main || defaultConfig.colors!.main!);
         root.style.setProperty('--secondary-color', colors.secondary || defaultConfig.colors!.secondary!);
+        root.style.setProperty('--grey-color', colors.grey || defaultConfig.colors!.grey!);
+        root.style.setProperty('--background-color', colors.background || defaultConfig.colors!.background!);
         root.style.setProperty('--error-color', colors.error || defaultConfig.colors!.error!);
         root.style.setProperty('--success-color', colors.success || defaultConfig.colors!.success!);
         root.style.setProperty('--default-font-color', colors.font || defaultConfig.colors!.font!);
