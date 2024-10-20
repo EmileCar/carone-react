@@ -40,7 +40,7 @@
 .carone-popup .error:not(.label){
 	margin-bottom: var(--md);
 }
-.confirm-buttons{
+.carone-confirm-buttons{
 	display: flex;
 	gap: var(--md);
 	width: 100%;
