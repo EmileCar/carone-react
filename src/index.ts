@@ -29,6 +29,7 @@ export { default as Paginator } from './components/table/Paginator';
 export { default as Hero } from './components/hero/Hero';
 export { default as SideBar } from './components/sidebar/SideBar';
 export { default as Popup } from './components/popup/Popup';
+export { default as ConfirmButtons } from './components/popup/ConfirmButtons';
 export { default as FetchedDataLayout } from './components/fetchedDataLayout/FetchedDataLayout';
 export { default as LoadingSpinner } from './components/loading/LoadingSpinner';
 export { HeroSliderImageProps, HeroSliderProps } from './components/hero/HeroSlider';

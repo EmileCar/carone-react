@@ -46,13 +46,13 @@
 	width: 100%;
 	margin-top: var(--lg);
 }
-.confirm-button{
+.carone-confirm-button{
 	width: 100%;
 }
-.confirm-button.positive{
+.carone-confirm-button.positive{
 	background-color: var(--success-color);
 }
-.confirm-button.negative{
+.carone-confirm-button.negative{
 	background-color: var(--error-color);
 }
 @media screen and (min-width: 55rem) {
@@ -67,7 +67,7 @@
 }
 
 @media screen and (max-width: 450px) {
-	.confirm-buttons{
+	.carone-confirm-buttons{
 		flex-wrap: wrap;
 	}
 }
