@@ -39,7 +39,7 @@ const config: CaroneConfig = {
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <CaroneProvider config={config} fetchCMSData>
+      <CaroneProvider config={config}>
         <BrowserRouter>
           <Story />
         </BrowserRouter>

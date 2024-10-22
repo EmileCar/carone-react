@@ -9,13 +9,12 @@ interface CaroneCMSContextProps {
 
 const CaroneCMSContext = createContext<CaroneCMSContextProps | undefined>(undefined);
 
-export const CaroneCMSProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | undefined }> = ({ children, url }) => {
     const [data, setData] = useState<{ pages?: any; components?: any }>({});
     const [pending, setPending] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log(process.env)
-        const contentBaseUrl = process.env.STORYBOOK_CONTENT_BASE_URL;
+        const contentBaseUrl = url;
 
         if (!contentBaseUrl) {
             throw new Error('REACT_APP_CONTENT_BASE_URL environment variable is not defined. Please set it in your .env file.');

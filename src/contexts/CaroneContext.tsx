@@ -13,7 +13,7 @@ const CaroneContext = createContext<CaroneConfig & { provided: boolean }>(defaul
 
 interface ConfigProviderProps {
     config?: Partial<CaroneConfig>;
-    fetchCMSData?: boolean;
+    contentCMSBaseUrl?: string | undefined;
     children: ReactNode;
 }
 
@@ -25,7 +25,7 @@ interface ConfigProviderProps {
  * @param fetchCMSData - A flag to fetch data from a CMS. Default is false.
  * @param children - The children components (the rest of the application).
 */
-export const CaroneProvider = ({ config = {}, fetchCMSData = false, children }: ConfigProviderProps) => {
+export const CaroneProvider = ({ config = {}, contentCMSBaseUrl, children }: ConfigProviderProps) => {
     const mergedConfig: CaroneConfig & { provided: boolean } = {
         ...defaultConfig,
         ...config,
@@ -77,20 +77,20 @@ export const CaroneProvider = ({ config = {}, fetchCMSData = false, children }: 
 
     return (
         <CaroneContext.Provider value={mergedConfig}>
-            {fetchCMSData ? (
-            <CaroneCMSProvider>
-                <PopupProvider>
-                <BannerProvider>
-                    {children}
-                </BannerProvider>
-                </PopupProvider>
-            </CaroneCMSProvider>
+            {contentCMSBaseUrl ? (
+                <CaroneCMSProvider url={contentCMSBaseUrl}>
+                    <PopupProvider>
+                    <BannerProvider>
+                        {children}
+                    </BannerProvider>
+                    </PopupProvider>
+                </CaroneCMSProvider>
             ) : (
-            <PopupProvider>
-                <BannerProvider>
-                    {children}
-                </BannerProvider>
-            </PopupProvider>
+                <PopupProvider>
+                    <BannerProvider>
+                        {children}
+                    </BannerProvider>
+                </PopupProvider>
             )}
         </CaroneContext.Provider>
     );
