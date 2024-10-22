@@ -23,10 +23,10 @@ export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | un
         const fetchData = async () => {
             setPending(true);
             try {
-                const pagesResponse = await fetch(`${contentBaseUrl}/?action=content&resource=${ResourceType.PAGE}`);
+                const pagesResponse = await fetch(`${contentBaseUrl}/?action=pages_content&resource=${ResourceType.PAGE}`);
                 const pagesData = await pagesResponse.json();
 
-                const componentsResponse = await fetch(`${contentBaseUrl}/?action=content&resource=${ResourceType.COMPONENT}`);
+                const componentsResponse = await fetch(`${contentBaseUrl}/?action=components_content&resource=${ResourceType.COMPONENT}`);
                 const componentsData = await componentsResponse.json();
 
                 setData({
