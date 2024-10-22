@@ -3,6 +3,7 @@ import './styles/carone.global.css';
 // Exporting contexts, providers and configurations
 export { CaroneProvider, useConfig } from './contexts/CaroneContext';
 export { useCaroneCMS } from './contexts/CaroneCMSContext';
+export { ResourceType } from './configurations/CaroneCMSConfig';
 export { CaroneConfig, Size, FontSize, Color, BorderRadius } from './configurations/CaroneConfig';
 export { useBanner } from './contexts/BannerContext';
 export { usePopupContext } from './contexts/PopupContext';
