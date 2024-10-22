@@ -1,7 +1,8 @@
-import React, { createContext, ReactNode, useContext, useEffect } from 'react';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { CaroneConfig, defaultConfig } from '../configurations/CaroneConfig';
 import { BannerProvider } from './BannerContext';
 import { PopupProvider } from './PopupContext';
+import { CaroneCMSProvider } from './CaroneCMSContext';
 
 const defaultConfigWithFlag = {
     ...defaultConfig,
@@ -12,6 +13,7 @@ const CaroneContext = createContext<CaroneConfig & { provided: boolean }>(defaul
 
 interface ConfigProviderProps {
     config?: Partial<CaroneConfig>;
+    fetchCMSData?: boolean;
     children: ReactNode;
 }
 
@@ -20,55 +22,10 @@ interface ConfigProviderProps {
  * Put this in the root of your project.
  *
  * @param config - The configuration object. If certain properties are not provided, default values will be used.
+ * @param fetchCMSData - A flag to fetch data from a CMS. Default is false.
  * @param children - The children components (the rest of the application).
- *
- * @example
- * ```tsx
- * // the default configuration object as an example
-const config = {
-    	colors: {
-            main: 'blue',
-            secondary: 'black',
-            error: 'red',
-            success: 'green',
-            font: 'green',
-            fontOnMain: 'white'
-		  	},
-        fonts: {
-            mainFont: 'Verdana',
-            titleFont: 'Arial',
-            sizes: {
-                small: '0.8rem',
-                default: '1rem',
-                large: '1.5rem',
-                subtitle: '1.8rem',
-                title: '3rem',
-            }
-        },
-        sizes: {
-            padding: {
-                xs: '0.1rem',
-                sm: '0.2rem',
-                md: '0.5rem',
-                lg: '1rem',
-                xl: '1.5rem',
-                xxl: '2rem',
-                xxxl: '3rem',
-            },
-            borderRadius: {
-                small: '0.2rem',
-                medium: '0.5rem',
-                large: '1rem',
-            }
-        },
-		maxContentWidth: '1200px'
-    };
- * <CaroneProvider config={config}>
- *   <App />
- * </CaroneProvider>
- * ```
- */
-export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) => {
+*/
+export const CaroneProvider = ({ config = {}, fetchCMSData = false, children }: ConfigProviderProps) => {
     const mergedConfig: CaroneConfig & { provided: boolean } = {
         ...defaultConfig,
         ...config,
@@ -120,11 +77,21 @@ export const CaroneProvider = ({ config = {}, children }: ConfigProviderProps) =
 
     return (
         <CaroneContext.Provider value={mergedConfig}>
+            {fetchCMSData ? (
+            <CaroneCMSProvider>
+                <PopupProvider>
+                <BannerProvider>
+                    {children}
+                </BannerProvider>
+                </PopupProvider>
+            </CaroneCMSProvider>
+            ) : (
             <PopupProvider>
                 <BannerProvider>
                     {children}
                 </BannerProvider>
             </PopupProvider>
+            )}
         </CaroneContext.Provider>
     );
 };
