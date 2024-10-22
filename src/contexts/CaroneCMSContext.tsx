@@ -2,15 +2,15 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 import { ResourceType } from '../configurations/CaroneCMSConfig';
 
 interface CaroneCMSContextProps {
-    data: { pages?: any; components?: any };
-    setData: (data: any) => void;
+    content: { pages?: any; components?: any };
+    setContent: (data: any) => void;
     pending?: boolean;
 }
 
 const CaroneCMSContext = createContext<CaroneCMSContextProps | undefined>(undefined);
 
 export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | undefined }> = ({ children, url }) => {
-    const [data, setData] = useState<{ pages?: any; components?: any }>({});
+    const [content, setContent] = useState<{ pages?: any; components?: any }>({});
     const [pending, setPending] = useState<boolean>(false);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | un
                 const componentsResponse = await fetch(`${contentBaseUrl}/?action=components_content&resource=${ResourceType.COMPONENT}`);
                 const componentsData = await componentsResponse.json();
 
-                setData({
+                setContent({
                     pages: pagesData,
                     components: componentsData,
                 });
@@ -44,7 +44,7 @@ export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | un
     }, []);
 
     return (
-        <CaroneCMSContext.Provider value={{ data, setData, pending }}>
+        <CaroneCMSContext.Provider value={{ content, setContent, pending }}>
             {children}
         </CaroneCMSContext.Provider>
     );
