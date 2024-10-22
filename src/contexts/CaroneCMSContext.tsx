@@ -2,15 +2,14 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 import { ResourceType } from '../configurations/CaroneCMSConfig';
 
 interface CaroneCMSContextProps {
-    content: { pages?: any; components?: any };
-    setContent: (data: any) => void;
+    content: { pages: { [key: string]: any }; components: { [key: string]: any } };
     pending?: boolean;
 }
 
 const CaroneCMSContext = createContext<CaroneCMSContextProps | undefined>(undefined);
 
 export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | undefined }> = ({ children, url }) => {
-    const [content, setContent] = useState<{ pages?: any; components?: any }>({});
+    const [content, setContent] = useState<{ pages: {}; components: {} }>({ pages: {}, components: {} });
     const [pending, setPending] = useState<boolean>(false);
 
     useEffect(() => {
@@ -44,16 +43,32 @@ export const CaroneCMSProvider: React.FC<{ children: ReactNode, url: string | un
     }, []);
 
     return (
-        <CaroneCMSContext.Provider value={{ content, setContent, pending }}>
+        <CaroneCMSContext.Provider value={{ content, pending }}>
             {children}
         </CaroneCMSContext.Provider>
     );
 };
 
-export const useCaroneCMS = (): CaroneCMSContextProps => {
+export const useCaroneCMS = (resourceType: ResourceType, pageName: string) => {
     const context = useContext(CaroneCMSContext);
     if (!context) {
         throw new Error('useCaroneCMS must be used within a CaroneCMSProvider');
     }
-    return context;
+
+    const { content } = context;
+
+    switch (resourceType) {
+        case ResourceType.PAGE:
+            return {
+                content: content.pages[pageName],
+                pending: context.pending,
+            };
+        case ResourceType.COMPONENT:
+            return {
+                content: content.components[pageName],
+                pending: context.pending,
+            };
+        default:
+            throw new Error('Invalid resource type');
+    }
 };
