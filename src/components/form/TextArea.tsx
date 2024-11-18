@@ -8,6 +8,8 @@ import { useConfig } from "../../contexts/CaroneContext";
  * The props for the Input component.
  */
 interface TextAreaProps {
+    /** The number of rows for the textarea */
+    rows?: number;
     /** The name of the input */
     name?: string;
     /** The value of the input. Only string and number are supported */
@@ -36,6 +38,7 @@ interface TextAreaProps {
  * @returns {React.ReactElement} the input component
  */
 const TextArea: React.FC<TextAreaProps> = ({
+    rows,
     name,
     value = '',
     onChange,
@@ -52,6 +55,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 
     return (
         <textarea
+            rows={rows}
             name={name}
             value={value}
             onChange={onChange}
