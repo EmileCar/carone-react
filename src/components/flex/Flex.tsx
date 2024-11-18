@@ -30,9 +30,9 @@ interface FlexProps {
  * @returns {React.ReactElement} the flex component
  */
 const Page: React.FC<FlexProps> = ({
-    justifyContent= 'start',
-    alignItems= 'start',
-    direction= 'row',
+    justifyContent,
+    alignItems,
+    direction,
     gap,
     className= '',
     style,
