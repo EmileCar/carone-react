@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/Page.css';
 import { classNames } from '../../utils/classNameUtil';
 import { Size } from '../../configurations/CaroneConfig';
+import '../../../styles/Flex.css';
 
 /**
  * The props for the Flex component.
