@@ -35,6 +35,7 @@ export { default as ConfirmButtons } from './components/popup/ConfirmButtons';
 export { default as FetchedDataLayout } from './components/fetchedDataLayout/FetchedDataLayout';
 export { default as LoadingSpinner } from './components/loading/LoadingSpinner';
 export { HeroSliderImageProps, HeroSliderProps } from './components/hero/HeroSlider';
+export { default as Flex } from './components/flex/Flex';
 
 // Exporting hooks
 export { useWindowResize } from './hooks/useWindowResize';
