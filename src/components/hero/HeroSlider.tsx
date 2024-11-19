@@ -134,6 +134,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
                         autoPlay={video.autoplay ?? true}
                         loop={video.loop ?? true}
                         muted={video.muted ?? true}
+                        controls={false}
+                        playsInline
                     >
                         Your browser does not support the video tag.
                     </video>
