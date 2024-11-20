@@ -105,7 +105,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
             {images.map((image, index) => (
                 <div
                     key={image.alt}
-                    className={`carone-hero-media__image ${
+                    className={`carone-hero-media__item ${
                         index === activeMediaIndex ? "carone-hero-media__item--active" : ""
                     }`}
                 >
@@ -123,7 +123,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
             {videos.map((video, index) => (
                 <div
                     key={video.alt}
-                    className={`carone-hero-media__video ${
+                    className={`carone-hero-media__item ${
                         index + images.length === activeMediaIndex ? "carone-hero-media__item--active" : ""
                     }`}
                 >
