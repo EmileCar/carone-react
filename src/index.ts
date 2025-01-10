@@ -1,5 +1,3 @@
-import './styles/carone.global.css';
-
 // Exporting contexts, providers and configurations
 export { CaroneProvider, useConfig } from './contexts/CaroneContext';
 export { useCaroneCMS } from './contexts/CaroneCMSContext';
