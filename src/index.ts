@@ -2,6 +2,8 @@ import './styles/carone.global.css';
 
 // Exporting contexts, providers and configurations
 export { CaroneProvider, useConfig } from './contexts/CaroneContext';
+export { useCaroneCMS } from './contexts/CaroneCMSContext';
+export { ResourceType } from './configurations/CaroneCMSConfig';
 export { CaroneConfig, Size, FontSize, Color, BorderRadius } from './configurations/CaroneConfig';
 export { useBanner } from './contexts/BannerContext';
 export { usePopupContext } from './contexts/PopupContext';
@@ -32,7 +34,8 @@ export { default as Popup } from './components/popup/Popup';
 export { default as ConfirmButtons } from './components/popup/ConfirmButtons';
 export { default as FetchedDataLayout } from './components/fetchedDataLayout/FetchedDataLayout';
 export { default as LoadingSpinner } from './components/loading/LoadingSpinner';
-export { HeroSliderImageProps, HeroSliderProps } from './components/hero/HeroSlider';
+export { HeroSliderImageProps, HeroSliderVideoProps, HeroSliderProps } from './components/hero/HeroSlider';
+export { default as Flex } from './components/flex/Flex';
 
 // Exporting hooks
 export { useWindowResize } from './hooks/useWindowResize';

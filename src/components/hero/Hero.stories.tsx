@@ -20,6 +20,14 @@ const heroSliderProps = {
     altText: 'Hero image',
 };
 
+const heroSliderPropsVideo = {
+    videos: [
+        { path: 'https://videos.pexels.com/video-files/4549682/4549682-hd_1920_1080_30fps.mp4', alt: 'Video' },
+    ],
+    interval: 5000,
+    altText: 'Hero image',
+};
+
 export const SimpleHero = () => (
     <Page>
         <Header position='fixed' title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500}/>
@@ -40,6 +48,32 @@ export const HeroWithSlider = () => (
         <Header position='fixed' title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500}/>
         <PageContent>
             <Hero heroSliderProps={heroSliderProps} minHeight={600}>
+                <h1>Hero Title</h1>
+                <p>Hero subtitle</p>
+                <p>Hero content</p>
+                <p>Hero content</p>
+                <p>Hero content</p>
+            </Hero>
+            <Section style={{ backgroundColor: "lightgray"}}>
+                <h2>Section title</h2>
+                <p>Section content</p>
+            </Section>
+            <Section style={{ height: "10rem", backgroundColor: "lightblue"}}>
+                <h2>Section title</h2>
+                <p>Section content</p>
+            </Section>
+        </PageContent>
+        <Footer>
+            <p>Footer content</p>
+        </Footer>
+    </Page>
+);
+
+export const HeroWithVideo = () => (
+    <Page>
+        <Header position='fixed' title="Hero" links={[{ label: 'Home', url: '/' }]} responsiveAt={500}/>
+        <PageContent>
+            <Hero heroSliderProps={heroSliderPropsVideo} minHeight={600}>
                 <h1>Hero Title</h1>
                 <p>Hero subtitle</p>
                 <p>Hero content</p>

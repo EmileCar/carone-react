@@ -1,0 +1,4 @@
+.carone-flex {
+    display: flex;
+    gap: var(--md);
+}

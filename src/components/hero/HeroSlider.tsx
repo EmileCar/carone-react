@@ -14,12 +14,31 @@ export interface HeroSliderImageProps {
     style?: React.CSSProperties;
 }
 
+export interface HeroSliderVideoProps {
+    /** The path to the video */
+    path: string;
+    /** The alt text for the video (used for accessibility) */
+    alt?: string;
+    /** A custom class name to apply to the video */
+    className?: string;
+    /** A custom style object to apply to the video */
+    style?: React.CSSProperties;
+    /** Whether the video should autoplay */
+    autoplay?: boolean;
+    /** Whether the video should loop */
+    loop?: boolean;
+    /** Whether the video should play muted */
+    muted?: boolean;
+}
+
 /*
  * The props for the HeroSlider component
  */
 export interface HeroSliderProps {
     /** The array of images to display in the slider. If there is only one image, it will be displayed without a slider */
-    images: HeroSliderImageProps[];
+    images?: HeroSliderImageProps[];
+    /** The array of videos to display in the slider */
+    videos?: HeroSliderVideoProps[];
     /** The interval in milliseconds between image transitions */
     interval?: number;
     /** The path to the blurred image */
@@ -34,24 +53,26 @@ export interface HeroSliderProps {
  */
 const HeroSlider: React.FC<HeroSliderProps> = ({
     images = [],
+    videos = [],
     interval = 7000,
     blurredImagePath,
 }) => {
-    const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+    const mediaItems = [...images, ...videos];
+    const [activeMediaIndex, setActiveMediaIndex] = useState<number>(0);
     const [loadedImages, setLoadedImages] = useState<boolean[]>(Array(images.length).fill(false));
-    const [allImagesLoaded, setAllImagesLoaded] = useState<boolean>(false);
+    const [allMediaLoaded, setAllMediaLoaded] = useState<boolean>(false);
 
     useEffect(() => {
-        if(!allImagesLoaded || images.length <= 1) return;
+        if (!allMediaLoaded || mediaItems.length <= 1) return;
         const effectiveInterval = Math.max(interval, 1000);
         const intervalObj = setInterval(() => {
-            setActiveImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+            setActiveMediaIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
         }, effectiveInterval);
 
         return () => {
             clearInterval(intervalObj);
         };
-    }, [images.length, allImagesLoaded]);
+    }, [mediaItems.length, allMediaLoaded]);
 
     useEffect(() => {
         const loadImages = () => {
@@ -63,24 +84,28 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
                         const updated = [...prev];
                         updated[index] = true;
                         if (updated.every((status) => status)) {
-                            setAllImagesLoaded(true);
+                            setAllMediaLoaded(true);
                         }
                         return updated;
                     });
                 };
             });
+
+            if (videos.length > 0) {
+                setAllMediaLoaded(true);
+            }
         };
 
         loadImages();
-    }, [images]);
+    }, [images, videos]);
 
     return (
-        <div className="carone-hero-images layered-grid">
+        <div className="carone-hero-media layered-grid">
             {images.map((image, index) => (
                 <div
                     key={image.alt}
-                    className={`carone-hero-images__image ${
-                        index === activeImageIndex ? "carone-hero-images__image--active" : ""
+                    className={`carone-hero-media__item ${
+                        index === activeMediaIndex ? "carone-hero-media__item--active" : ""
                     }`}
                 >
                     <img
@@ -94,8 +119,29 @@ const HeroSlider: React.FC<HeroSliderProps> = ({
                     />
                 </div>
             ))}
-            {(blurredImagePath && !allImagesLoaded) && (
-                <div className="carone-hero-images__image carone-hero-images__image--active">
+            {videos.map((video, index) => (
+                <div
+                    key={video.alt}
+                    className={`carone-hero-media__item ${
+                        index + images.length === activeMediaIndex ? "carone-hero-media__item--active" : ""
+                    }`}
+                >
+                    <video
+                        src={video.path}
+                        className={video.className ?? ''}
+                        style={video.style}
+                        autoPlay={video.autoplay ?? true}
+                        loop={video.loop ?? true}
+                        muted={video.muted ?? true}
+                        controls={false}
+                        playsInline
+                    >
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            ))}
+            {(blurredImagePath && !allMediaLoaded) && (
+                <div className="carone-hero-media__image carone-hero-media__item--active">
                     <img
                         src={blurredImagePath.path}
                         alt={blurredImagePath.alt}
