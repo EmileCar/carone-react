@@ -1,6 +1,6 @@
 {
   "name": "carone-react",
-  "version": "1.2.45",
+  "version": "1.2.46",
   "description": "A React library for simple web projects",
   "bin": {
     "carone-create-app": "./scripts/create-app.js",
