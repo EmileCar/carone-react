@@ -1,7 +1,6 @@
 import React from "react";
 import { useFormContext } from "../../contexts/FormContext";
 import { classNames } from "../../utils/classNameUtil";
-import '../../styles/Form.css';
 import { useConfig } from "../../contexts/CaroneContext";
 
 /**

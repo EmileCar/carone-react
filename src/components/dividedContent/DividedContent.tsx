@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useWindowResize } from '../../hooks/useWindowResize';
 import { classNames } from '../../utils/classNameUtil';
-import '../../styles/DividedContent.css';
 
 /**
  * The props for the DividedContent component.

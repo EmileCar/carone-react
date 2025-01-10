@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/Page.css';
 import PageContext from '../../contexts/PageContext';
 import { classNames } from '../../utils/classNameUtil';
 import { useBanner } from '../../contexts/BannerContext';

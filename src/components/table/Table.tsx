@@ -6,8 +6,6 @@ import Label from '../form/Label';
 import Input from '../form/Input';
 import Button from '../button/Button';
 import { exportToExcel as exportToExcelFunction } from '../../utils/exportToExcel';
-import { HoverEffect } from '../../configurations/HoverEffect';
-import '../../styles/Table.css';
 
 /**
  * The props for the Table component.

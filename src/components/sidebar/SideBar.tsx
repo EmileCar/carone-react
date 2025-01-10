@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import '../../styles/SideBar.css';
 import { classNames } from '../../utils/classNameUtil';
 
 interface SideBarProps {

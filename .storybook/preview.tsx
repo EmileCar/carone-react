@@ -2,7 +2,7 @@ import React from 'react';
 import { Preview } from '@storybook/react';
 import { CaroneProvider } from '../src/contexts/CaroneContext';
 import './../resources/reset.css';
-import './../src/styles/carone.global.css';
+import './../resources/carone.global.css';
 import { CaroneConfig } from '../src/configurations/CaroneConfig';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 

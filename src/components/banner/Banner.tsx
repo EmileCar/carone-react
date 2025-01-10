@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/Banner.css';
 import { useConfig } from '../../contexts/CaroneContext';
 import { classNames } from '../../utils/classNameUtil';
 

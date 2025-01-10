@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import FormContext from '../../contexts/FormContext';
 import { classNames } from '../../utils/classNameUtil';
-import '../../styles/Form.css';
 import { useWindowResize } from '../../hooks/useWindowResize';
 import { useConfig } from '../../contexts/CaroneContext';
 

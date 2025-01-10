@@ -1,7 +1,6 @@
 
 import React, { ReactNode } from "react";
 import { classNames } from "../../../utils/classNameUtil";
-import "../../../styles/Page.css";
 import { useConfig } from "../../../contexts/CaroneContext";
 
 /**

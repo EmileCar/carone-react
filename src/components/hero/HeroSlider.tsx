@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import "../../styles/Hero.css";
 
 /**
  * The props for each image in the HeroSlider component
