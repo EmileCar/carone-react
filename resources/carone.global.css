@@ -280,7 +280,7 @@ form .label .required {
     cursor: pointer;
 }.carone-header {
     position: relative;
-    width: 100%;
+    width: 100vw;
     display: grid;
     flex-shrink: 0;
     top: 0;
@@ -431,7 +431,42 @@ form .label .required {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-}.carone-page{
+
+}
+
+
+
+.carone-hero-media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carone-hero-media__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+	pointer-events: none;
+}
+
+.carone-hero-media__item img, .carone-hero-media__item video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.carone-hero-media__item--active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carone-page{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -741,4 +776,9 @@ form .label .required {
     .carone-table tbody tr.hoverable:hover {
         background-color: transparent;
     }
+}
+
+.carone-flex {
+    display: flex;
+    gap: var(--md);
 }
