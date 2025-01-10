@@ -1,5 +1,4 @@
 import React from "react";
-import "./form.css";
 
 interface CheckboxProps {
     name: string;

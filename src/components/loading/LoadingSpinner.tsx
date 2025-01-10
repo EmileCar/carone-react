@@ -1,6 +1,4 @@
 import React from "react";
-import "../../styles/Spinner.css";
-import { Size } from "../../configurations/CaroneConfig";
 
 export interface LoadingSpinnerProps {
 	color?: string;

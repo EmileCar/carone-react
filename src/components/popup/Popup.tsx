@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/Popup.css";
 import LoadingText from "../loading/LoadingText";
 import { usePopupContext } from "../../contexts/PopupContext";
 import SectionTitle from "../page/section/SectionTitle";

@@ -1,7 +1,6 @@
 import React from 'react';
 import { classNames } from '../../utils/classNameUtil';
 import { Size } from '../../configurations/CaroneConfig';
-import '../../styles/Flex.css';
 
 /**
  * The props for the Flex component.

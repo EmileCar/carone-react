@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/Hero.css';
 import { classNames } from '../../utils/classNameUtil';
 import HeroSlider, { HeroSliderProps } from './HeroSlider';
 
